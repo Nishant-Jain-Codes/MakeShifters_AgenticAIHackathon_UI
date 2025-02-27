@@ -14,4 +14,5 @@ const MenuItem: React.FC<MenuItemProps> = ({ name, price, imgSrc }) => {
   );
 };
 
+
 export default MenuItem;
