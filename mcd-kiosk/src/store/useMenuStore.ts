@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { DataObject } from "../types";
 interface BasketItem {
   id: string;
   customizations?: string[];
@@ -6,6 +7,7 @@ interface BasketItem {
 type OrderType = "dine in" | "take away";
 interface MenuStoreState {
   menuList: any[] | null;
+  itemTypeList: DataObject[] | null;
   menuLoaded: boolean;
   orderId: string | null;
   orderType: OrderType | null;
@@ -20,6 +22,7 @@ interface MenuStoreState {
 
   // Actions
   setMenu: (menu: any[]) => void;
+  setItemTypeList: (itemTypeList: DataObject[]) => void;
   setMenuLoaded: (loaded: boolean) => void;
   setOrderId: (id: string) => void;
   setOrderType: (type:OrderType) => void;
@@ -37,6 +40,7 @@ interface MenuStoreState {
 
 const useMenuStore = create<MenuStoreState>((set) => ({
   menuList: null,
+  itemTypeList: [],
   menuLoaded: false,
   orderId: null,
   orderType: null,
@@ -51,6 +55,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
 
   // Actions
   setMenu: (menu) => set({ menuList: menu }),
+  setItemTypeList: (itemTypeList) => set({ itemTypeList }),
   setMenuLoaded: (loaded) => set({ menuLoaded: loaded }),
   setOrderId: (id) => set({ orderId: id }),
   setOrderType: (type) => set({ orderType: type }),

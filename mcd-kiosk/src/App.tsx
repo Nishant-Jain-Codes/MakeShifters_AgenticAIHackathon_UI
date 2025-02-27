@@ -10,9 +10,11 @@ import axios from "axios";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import useMenuStore from "./store/useMenuStore";
 import Loader from "./components/Loader";
+import { ItemTypes } from "./utils/constants";
 
 function App() {
   const setMenu = useMenuStore((state: any) => state.setMenu);
+  const setItemTypeList = useMenuStore((state: any) => state.setItemTypeList);
   const menuLoaded = useMenuStore((state: any) => state.menuLoaded);
 
   useEffect(() => {
@@ -25,6 +27,7 @@ function App() {
         if (response.status === 200) {
           setMenu(response.data);
         }
+        setItemTypeList(ItemTypes);
       } catch (error) {
         console.log(error);
       }
