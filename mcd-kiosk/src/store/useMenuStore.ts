@@ -1,15 +1,14 @@
 import { create } from "zustand";
-
 interface BasketItem {
   id: string;
   customizations?: string[];
 }
-
+type OrderType = "dine in" | "take away";
 interface MenuStoreState {
   menuList: any[] | null;
   menuLoaded: boolean;
   orderId: string | null;
-  orderType: "dine in" | "take away" | null;
+  orderType: OrderType | null;
   paymentDetails: string | null;
   basket: BasketItem[];
   currentSelectedItemType: string | null;
@@ -23,7 +22,7 @@ interface MenuStoreState {
   setMenu: (menu: any[]) => void;
   setMenuLoaded: (loaded: boolean) => void;
   setOrderId: (id: string) => void;
-  setOrderType: (type: "dine in" | "take away") => void;
+  setOrderType: (type:OrderType) => void;
   setPaymentDetails: (details: string) => void;
   addItemToBasket: (itemId: string, customizations?: string[]) => void;
   removeItemFromBasket: (itemId: string, customizations?: string[]) => void;
@@ -94,5 +93,4 @@ const useMenuStore = create<MenuStoreState>((set) => ({
       currentScreen: "home",
     }),
 }));
-
 export default useMenuStore;
