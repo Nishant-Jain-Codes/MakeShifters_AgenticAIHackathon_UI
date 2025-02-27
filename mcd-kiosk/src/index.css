@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+    --color-primaryYellow: #FFC72C;
+    --color-primaryRed: #DA291C;
+    --color-primaryBlack: #27251F;
+  
+    --font-proxima: "Proxima Nova";
+    --font-poppins: "Poppins";
+  }
+  
