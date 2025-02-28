@@ -20,7 +20,7 @@ export default function OrderTypeSelectionScreen() {
           console.log("⏳ No age detected, defaulting to 18");
           handleDetectAge(18);
         }
-      }, 30000);
+      }, 3000);
     }
 
     return () => clearTimeout(timeout);

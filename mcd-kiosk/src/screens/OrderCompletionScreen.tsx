@@ -5,8 +5,8 @@ export default function OrderCompletionScreen() {
   const orderId = useMenuStore((state) => state.orderId) ?? "0000";
   
   return (
-    <div className="flex items-center justify-center bg-gray-100 max-h-[60vh]">
-      <div className="bg-primaryYellow shadow-lg rounded-2xl p-20 w-full h-[1040px] flex flex-col items-center justify-start text-center">
+    <div className="flex items-center justify-center bg-gray-100">
+      <div className="bg-primaryYellow shadow-lg rounded-2xl p-20 w-full flex flex-col items-center justify-start text-center">
         
         {/* Takeaway Mode */}
         {orderType === "take away" ? (
