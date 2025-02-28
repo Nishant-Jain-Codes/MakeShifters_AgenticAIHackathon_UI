@@ -1,0 +1,5 @@
+#!/Users/salescode/Documents/Projects/hackathon/MakeShifters_AgenticAIHackathon_UI/bedrock/venv/bin/python3.10
+
+from idlelib.pyshell import main
+if __name__ == '__main__':
+    main()
