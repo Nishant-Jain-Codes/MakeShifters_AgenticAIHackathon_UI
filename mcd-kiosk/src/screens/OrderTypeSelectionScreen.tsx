@@ -1,7 +1,8 @@
-import { use, useState } from "react";
+import {  useState } from "react";
 // import { Switch } from "@/components/ui/switch"
 import { OrderTypes } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { loadMenuData } from "../utils/functions";
 
 export default function OrderTypeSelectionScreen() {
   const [takeOut, setTakeOut] = useState(false);
@@ -27,6 +28,7 @@ export default function OrderTypeSelectionScreen() {
               }`}
               onClick={() => {
                 setTakeOut(order.id === "take away");
+                loadMenuData();
                 Navigate("/menu");
               }}
             >

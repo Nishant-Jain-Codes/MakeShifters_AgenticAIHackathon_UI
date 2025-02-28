@@ -1,4 +1,23 @@
+import useMenuStore from '../store/useMenuStore';
+import { MenuItem } from './../types';
+import MenuItemCard from './MenuItemCard';
+
 export default function Menu() {
-    return <div><h1>Menu Component</h1></div>;
-  }
-  
+  const { currentSelectedItemType, currentSelectedItem, menuList, setCurrentSelectedItem } = useMenuStore();
+
+  // Filter menu based on selected category
+  const filteredMenu: MenuItem[] = menuList.filter((item: MenuItem) => item.categoryId === currentSelectedItemType);
+
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 h-screen overflow-y-auto">
+      {filteredMenu.map((item: MenuItem) => (
+        <MenuItemCard
+          key={item.id} 
+          item={item} 
+          isSelected={currentSelectedItem === item.id} 
+          onSelect={() => setCurrentSelectedItem(item.id)}
+        />
+      ))}
+    </div>
+  );
+}
