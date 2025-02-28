@@ -1,0 +1,277 @@
+[
+    {
+        "id": 4897,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/20240522134734169542.png",
+        "seo_title": null,
+        "active": true,
+        "name": "Menu @199",
+        "type": null,
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": null,
+        "seo_keywords": null,
+        "seo_footer": "",
+        "grid_cols": null,
+        "grid_rows": null,
+        "grid_style": null,
+        "index": 2,
+        "url": "Menu @199",
+        "business_model_id": 4,
+        "parent_id": null
+    },
+    {
+        "id": 4898,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/20240918043600447449.png",
+        "seo_title": "Newly Launched",
+        "active": true,
+        "name": "Newly Launched",
+        "type": "Newly Launched",
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": "Newly Launched",
+        "seo_keywords": "Newly Launched",
+        "seo_footer": "",
+        "grid_cols": null,
+        "grid_rows": null,
+        "grid_style": null,
+        "index": 3,
+        "url": "newly_launched",
+        "business_model_id": 4,
+        "parent_id": null
+    },
+    {
+        "id": 4886,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/1709551887533338.png",
+        "seo_title": "Match Time Sharers",
+        "active": true,
+        "name": "Group Sharing Combos",
+        "type": null,
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": "Match Time Sharers",
+        "seo_keywords": "match-time-sharers",
+        "seo_footer": "",
+        "grid_cols": null,
+        "grid_rows": null,
+        "grid_style": null,
+        "index": 5,
+        "url": "match-time-sharers",
+        "business_model_id": 1,
+        "parent_id": null
+    },
+    {
+        "id": 4885,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/1709551865208239.png",
+        "seo_title": "Match Time Meals",
+        "active": true,
+        "name": "McSaver Combos (2 Pc Meals)",
+        "type": null,
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": "Match Time Meals",
+        "seo_keywords": "match-time-meals",
+        "seo_footer": "",
+        "grid_cols": null,
+        "grid_rows": null,
+        "grid_style": null,
+        "index": 6,
+        "url": "match-time-meals",
+        "business_model_id": 1,
+        "parent_id": null
+    },
+    {
+        "id": 3899,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/1709551696767245.png",
+        "seo_title": "McDonald's Meal for One | McDonald's Combo Meals - McDelivery",
+        "active": true,
+        "name": "Burger Combos ( 3 Pc Meals )",
+        "type": null,
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": "Order your favorite McDonald's meals for one online from McDelivery. Find McDonald's combo meal option and get it delivered right at your doorstep. Buy Now.",
+        "seo_keywords": "mcdonalds combo meals,mcdonalds combo meals,meals for one",
+        "seo_footer": "",
+        "grid_cols": "1 / 9",
+        "grid_rows": "21 / 28",
+        "grid_style": {
+            "bg": "#FFF8E6",
+            "color": "#FBB900",
+            "width": [
+                "160"
+            ],
+            "border": "#9a7f626b",
+            "height": [
+                "120"
+            ],
+            "fontSize": "18px"
+        },
+        "index": 8,
+        "url": "meals-for-one",
+        "business_model_id": 1,
+        "parent_id": null
+    },
+    {
+        "id": 659,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/170955171681248.png",
+        "seo_title": "Order McDonalds Wraps and Burger Online - McDelivery",
+        "active": true,
+        "name": "Burgers & Wraps",
+        "type": null,
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": "Order McDonalds burger and wraps items from our veg and non-veg options. Get McDonald's cheese burgers and wraps menu prices online now with McDelivery.",
+        "seo_keywords": "mcdonalds wraps,mcdonalds burgers,mcdonalds burger online,best mcdonald's burger,mcdonalds wrap menu,mcdonalds burgers menu,mcdonalds cheese burger",
+        "seo_footer": "<p>Step into the world of savoury indulgence with McDonald’s burgers and wraps. With a perfect blend of global favourites and locally inspired creations, McDonald’s wraps and burgers are a culinary masterpiece designed to tantalize your taste buds and satisfy your cravings.</p>\r\n<h2>The Symphony of Flavours</h2>\r\n<p>At McDonald's, we believe in offering a symphony of flavours that cater to every palate. From the iconic Veg Maharaja Mac to the classic McAloo Tikki burger and from juicy Big Spicy Chicken wrap to the desi Big Spicy Paneer wrap, McDonald’s burgers and wraps menu encompasses a spectrum of tastes that celebrate diversity and innovation.</p>\r\n<h2>Locally Crafted Delights</h2>\r\n<p>Indulge in the rich flavours of Indian cuisine with our locally inspired creations. The McSpicy Paneer burger blends zesty spices with a paneer patty, while the Big Spicy Chicken wrap satisfies non-veg enthusiasts with its irresistible crunch and texture, both celebrating India's culinary legacy. These offerings are a testament to our commitment to delighting our customers with unique and delightful choices.</p>\r\n<h2>Customization: Your Food Your Way</h2>\r\n<p>We believe that every individual's taste is unique, and our burgers & wraps can be tailored to suit your preferences. With the option to add or omit ingredients, McDonald’s burgers/wraps menu is highly customisable and allows you to create a meal that is truly your own. Whether it's an extra slice of cheese or a double helping of veggies, the power to personalise your culinary experience lies in your hands.</p>\r\n<h2>Quality is Everything</h2>\r\n<p>McDonald's India is committed to maintaining the highest standards of quality and safety. Our ingredients undergo rigorous quality checks, ensuring that only the freshest and finest components find their way into our burgers & wraps. Our cooking processes adhere to strict hygiene protocols, providing you with a meal that is not only delicious but also prepared with utmost care. So, McDonald’s is a place to get the best burgers.</p>\r\n<h2>Order Now!</h2>\r\n<p>Experience the artistry of flavours, the joy of customization, and the assurance of quality with burgers & wraps by <b><a href=\"https://www.mcdelivery.co.in/\" title=\"McDelivery\">McDelivery</b></a>. Order McDonald’s burgers/wraps online and embark on a gastronomic journey that celebrates the fusion of global culinary excellence with the vibrant tapestry of Indian tastes. Join us in savouring these delectable creations that define the essence of McDonald's India.</p>\r\n\r\n<p><b>FAQs:</p></b>\r\n\r\n<p> Q. Which are the healthiest McDonald's burgers or McDonald's wraps?</p>\r\n<p>A. Both McDonald's burgers and wraps offer various options, and the \"healthiest\" choice depends on individual preferences and dietary needs. Wraps like the Big Spicy Chicken wrap tend to be comparatively lower in calories and fat. However, it is always advisable to check nutritional information to make an informed choice.</p>\r\n<p> Q. What are McDonald's burgers made up of?</p>\r\n<p> A. McDonald's burgers are typically made with a combination of ingredients including a patty (veg or non-veg), various toppings such as lettuce, tomato, cheese, sauces, and a bun. Each burger is carefully crafted to deliver a flavourful and satisfying experience.</p>\r\n<p> Q. What is McDonald's wrap made up of?</p>\r\n<p> A. McDonald's wraps are crafted with a delicious fusion of flavours. They usually consist of a soft tortilla wrapped around a protein option like grilled chicken or paneer in combination with veggies. These wraps are complemented by fresh vegetables, flavourful sauces, and occasionally cheese, offering a delightful handheld meal option.</p>",
+        "grid_cols": "1 / 9",
+        "grid_rows": "1 / 9",
+        "grid_style": {
+            "bg": "#FFF8E6",
+            "color": "#FBB900",
+            "width": [
+                "160"
+            ],
+            "border": "#9a7f626b",
+            "height": [
+                "120"
+            ],
+            "fontSize": "18px"
+        },
+        "index": 9,
+        "url": "burgers-wraps",
+        "business_model_id": 4,
+        "parent_id": null
+    },
+    {
+        "id": 4611,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/1709551827742126.png",
+        "seo_title": "Order McDonald's Fries and Sides Online - McDelivery",
+        "active": true,
+        "name": "Fries & Sides",
+        "type": null,
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": "Order McDonald's side menu online from McDelivery. Explore and choose from small french fries to large fries and varieties of McDonald's dipping sauces from McDelivery",
+        "seo_keywords": "mcdonalds fries,mcdonalds side menu,mcdonalds dips",
+        "seo_footer": "<h2>McDonald's Side Menu and Dips: An Irresistible Complement to Your Meal</h2> \r\n\r\n\r\n\r\n<p>Indulge in the ultimate snacking experience with McDonald's side menu and dips, crafted to enhance the flavor and elevate your meal. Whether you're craving something cheese, spicy, or crunchy, our sides and dips are here to satiate your appetite and satisfy your cravings. With a plethora of options to choose from, we have something for everyone!</p> \r\n\r\n<h2>McDonald's Side Menu - The Variety of Choices at McDelivery</h2> \r\n\r\nTake a dive into our menu and explore the world of <b><a href= \"https://mcdelivery.co.in/menu/4611-sides-dips/\" title= \"Sides and Dips\" >sides and dips</b></a>, where every bite is a burst of flavor. Here's a breakdown of our menu: \r\n\r\n\r\n\r\n\r\n<b><h3>Barbeque and Mustard Sauces</b></h3> \r\n\r\nOur tangy and sweet Barbeque and Mustard sauces are the perfect dip to elevate your nuggets, fries, etc. They are also available as standalone sauces and are the best McDonald's dipping sauces. \r\n\r\n\r\n\r\n<b><h3>Fries</b></h3> \r\n\r\nOur fries are freshly prepared with premium quality potatoes and served hot and crispy. You can choose from Large, Medium, or Regular sizes according to your preference. And if you're looking for some spice, try our Piri Piri Mix or Chatpata Spice Mix with your fries. \r\n\r\n\r\n\r\n<b><h3>Veg Pizza McPuff</b></h3> \r\n\r\nSatisfy your pizza cravings with our Veg Pizza McPuff, a crispy, flaky pastry filled with a mouth-watering combination of tomato sauce, cheese, and vegetables. \r\n\r\n\r\n<b><h3>Classic Corn Cup</b></h3> \r\n\r\nOur Classic Corn Cup is a perfect blend of sweet corn and creamy butter, making it the perfect side dish for your meal. \r\n\r\n\r\n\r\nAnd more: We also offer Chilli Sauce and Tomato Ketchup Sachets, which add a spicy kick to any dish, and our Piri Piri Spice Mix, which can be sprinkled on any dish for an extra burst of flavor. \r\n\r\n<h2>Best Offers and Deals on McDonald's Side Menu at McDelivery</h2> \r\n\r\nAt McDonald's India, we love treating our customers to amazing <b><a href=\"https://mcdelivery.co.in/offers/\" title= \"Offers\">deals and discounts</b></a> that make their dining experience even more enjoyable. From value combos to limited-time offers, we've got something for everyone. Our deals and combos are the perfect way to satisfy your cravings without emptying your wallet. So, why settle for just one burger when you can have a complete meal at a fraction of the price? Keep an eye on our website and mobile app to stay updated on our latest offers and discounts, and indulge in your favorite McDonald's treats without burning a hole in the pocket. \r\n\r\n<h2>McDonald's Side Menu with Quick Payment and Order Platforms</h2> \r\n\r\nAt McDonald's India, we believe that ordering food should be a hassle-free experience. That's why we offer you a range of payment options to choose from, so you can pay for your delicious meals in the way that suits you best. Whether you prefer the old-fashioned way of cash payments or the convenience of credit/debit cards and mobile wallets, we've got you covered. And that's not all - we also offer you the flexibility of ordering through our website, mobile app, or by simply calling our delivery hotline. \r\n\r\nSo, go ahead and place your order, and leave the rest to us. We'll make sure your food is delivered piping hot and fresh, right to your doorstep. \r\n\r\n<h2>Your favourite McDonald's Dips from McDelivery at your Loved Locations</h2> \r\n\r\nLooking to indulge in our mouth-watering sides and dips? Visit any of our McDonald's restaurants across India, located in top cities including Mumbai, Pune, Ahmedabad, Chennai, Bangalore, and Hyderabad. With our convenient <b><a href=\"https://mcdelivery.co.in/\" title= \"McDelivery\">online ordering platform</b></a>, McDelivery, you can also enjoy our sides and dips from the comfort of your own home. And if you're ever in the mood for a quick bite, just drop by any of our restaurants located in prime locations throughout the city. \r\n\r\n\r\n\r\nFrom bustling shopping malls to busy commercial areas, we're always close by, ready to serve you our delicious sides and dips. So what are you waiting for? Visit your nearest McDonald's restaurant or order online from McDelivery and experience the taste of McDonald's sides and dips today\r\n\r\n<div itemscope itemtype=\"https://schema.org/FAQPage\">\r\n<div itemtype=\"http://schema.org/Question\" itemscope=\"\" itemprop=\"mainEntity\">\r\n\t<h2 itemprop=\"name\"> FAQ</h2>\r\n\t</div>\r\n\t<div itemtype=\"http://schema.org/Question\" itemscope=\"\" itemprop=\"mainEntity\">\r\n\t<h2 itemprop=\"name\">Q: What type of sides and dips McDonald's give? </h2>\r\n    <div itemtype=\"http://schema.org/Answer\" itemscope=\"\" itemprop=\"acceptedAnswer\">\r\n\t<div itemprop=\"text\">A: McDonald's India offers a wide range of sides and dips, including  Barbeque and Mustard Sauces, Fries, Veg Pizza McPuff, Chicken Strips, Classic Corn Cup, Chilli Sauce Sachets, and Piri Piri Spice Mix.</div>\r\n\t</div>\r\n\t</div>\r\n    \r\n    \t<div itemtype=\"http://schema.org/Question\" itemscope=\"\" itemprop=\"mainEntity\">\r\n\t<h2 itemprop=\"name\">Q: Which dips best go with McDonald's burger?  </h2>\r\n    <div itemtype=\"http://schema.org/Answer\" itemscope=\"\" itemprop=\"acceptedAnswer\">\r\n\t<div itemprop=\"text\">A: Our Barbeque and Mustard sauces are the most popular dips that go well with McDonald's burgers. However, you can also try our other dips like the Piri Piri Spice Mix for a spicy kick or the Chilli Sauce Sachets for a tangy flavor. </div>\r\n\t</div>\r\n\t</div>\r\n\t<div itemtype=\"http://schema.org/Question\" itemscope=\"\" itemprop=\"mainEntity\">\r\n\t<h2 itemprop=\"name\">Q: Is dips given free of cost with McDonald's order?</h2>\r\n    <div itemtype=\"http://schema.org/Answer\" itemscope=\"\" itemprop=\"acceptedAnswer\">\r\n\t<div itemprop=\"text\">A: No, dips are not given free of cost with McDonald's orders. However, you can add them to your order at an affordable price. </div>\r\n\t</div>\r\n\t</div>\r\n</div>",
+        "grid_cols": "1 / 9",
+        "grid_rows": "1 / 9",
+        "grid_style": {
+            "bg": "#FFF8E6",
+            "color": "#FBB900",
+            "width": [
+                "160"
+            ],
+            "border": "#9a7f626b",
+            "height": [
+                "120"
+            ],
+            "fontSize": "18px"
+        },
+        "index": 10,
+        "url": "fries-sides",
+        "business_model_id": 1,
+        "parent_id": null
+    },
+    {
+        "id": 702,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/1709551762235584.png",
+        "seo_title": "Buy McDonald's Beverages Online | McDonald's Coffee and Shakes - McDelivery",
+        "active": true,
+        "name": "Coffee & Beverages (Hot and Cold)",
+        "type": null,
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": "Order mcdonald's beverages online at best price from McDelivery. Explore from the extensive mcdonald's home delivery beverages menu. Buy beverages online now!",
+        "seo_keywords": "mcdonald's beverages,order beverages online,online beverages,beverages home delivery,mcdonalds drinks,buy beverages online, mcdonalds shakes,order coffee online",
+        "seo_footer": "",
+        "grid_cols": "1 / 9",
+        "grid_rows": "1 / 9",
+        "grid_style": {
+            "bg": "#FFF8E6",
+            "color": "#FBB900",
+            "width": [
+                "160"
+            ],
+            "border": "#9a7f626b",
+            "height": [
+                "120"
+            ],
+            "fontSize": "18px"
+        },
+        "index": 11,
+        "url": "coffee-beverages-hot-and-cold",
+        "business_model_id": 1,
+        "parent_id": null
+    },
+    {
+        "id": 4892,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/20240503094824231560.png",
+        "seo_title": null,
+        "active": true,
+        "name": "Cakes Brownies and Cookies",
+        "type": null,
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": null,
+        "seo_keywords": null,
+        "seo_footer": "",
+        "grid_cols": null,
+        "grid_rows": null,
+        "grid_style": null,
+        "index": 12,
+        "url": "cakes-brownies-croissants",
+        "business_model_id": 4,
+        "parent_id": null
+    },
+    {
+        "id": 690,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/1709551788552933.png",
+        "seo_title": "McDonald's Desserts Menu| Order McDonald's Muffins, Cake - McDelivery",
+        "active": true,
+        "name": "Desserts",
+        "type": null,
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": "Treat yourself with McDonald's desserts which will burst into your mouth and melt your heart. Get McDonald's muffins, cake, and sundae delivered at your doorstep with McDelivery.",
+        "seo_keywords": "mcdonalds desserts, mcdonalds desserts menu, mcdonalds sundae,mcdonalds mcflurry,mcdonalds muffins,mcdonalds cake",
+        "seo_footer": "",
+        "grid_cols": "1 / 9",
+        "grid_rows": "9 / 16",
+        "grid_style": {
+            "bg": "#FFF8E6",
+            "color": "#FBB900",
+            "width": [
+                "160"
+            ],
+            "border": "#9a7f626b",
+            "height": [
+                "120"
+            ],
+            "fontSize": "18px"
+        },
+        "index": 13,
+        "url": "desserts",
+        "business_model_id": 1,
+        "parent_id": null
+    },
+    {
+        "id": 4901,
+        "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/20240918043658774628.png",
+        "seo_title": "Burgers With Millet Bun",
+        "active": true,
+        "name": "Burgers With Millet Bun",
+        "type": "Burgers With Millet Bun",
+        "is_custom_menu": false,
+        "is_home_category": false,
+        "seo_description": "Burgers With Millet Bun",
+        "seo_keywords": "Burgers With Millet Bun",
+        "seo_footer": "",
+        "grid_cols": null,
+        "grid_rows": null,
+        "grid_style": null,
+        "index": 4,
+        "url": "millet_bun",
+        "business_model_id": 4,
+        "parent_id": null
+    }
+]

@@ -1,3 +1,3 @@
 export default function Loader() {
-  return <div><h1>Loader</h1></div>;
+  return <img src="/assets/mcd-loader.gif" alt="Loading..." />;
 }

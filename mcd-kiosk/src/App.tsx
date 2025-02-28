@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import OrderTypeSelectionScreen from './screens/OrderTypeSelectionScreen';
 import MenuScreen from './screens/MenuScreen';
 import ItemViewScreen from './screens/ItemViewScreen';
@@ -6,58 +5,20 @@ import OrderSummaryScreen from './screens/OrderSummaryScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import OrderCompletionScreen from './screens/OrderCompletionScreen';
 import "./App.css";
-import axios from "axios";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider ,Outlet} from "react-router-dom";
 import useMenuStore from "./store/useMenuStore";
 import Loader from "./components/Loader";
-import { ItemTypes } from "./utils/constants";
 
 function App() {
-  const setMenu = useMenuStore((state: any) => state.setMenu);
-  const setItemTypeList = useMenuStore((state: any) => state.setItemTypeList);
-  const menuLoaded = useMenuStore((state: any) => state.menuLoaded);
+  const isLoading = useMenuStore((state) => state.isLoading);
 
-  useEffect(() => {
-    const fetchTestData = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/test`
-        );
+  const Layout = () => (
+    <div className="max-h-[100vh] mx-auto aspect-[9/16]">
+      {/* <Navbar /> */}
+      <Outlet/>
+    </div>
+  );
 
-        if (response.status === 200) {
-          setMenu(response.data);
-        }
-        setItemTypeList(ItemTypes);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchTestData();
-
-
-    setTimeout(() => {
-      useMenuStore.getState().setMenuLoaded(true);
-    }, 1500);
-  }, []);
-
-  if (!menuLoaded) {
-    return (
-      <div className="w-full h-[100vh] flex justify-center items-center">
-        <Loader />
-      </div>
-    );
-  }
-  const Layout = () => {
-    return (
-      <div className="max-h-[100vh] mx-auto aspect-[9/16]">
-        {/* <Navbar /> */}
-        <div className="">
-          <Outlet />
-        </div>
-      </div>
-    );
-  };
   const router = createBrowserRouter([
     {
       path: '/',
@@ -73,11 +34,7 @@ function App() {
     },
   ]);
 
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+  return isLoading ? <Loader /> : <RouterProvider router={router} />;
 }
 
 export default App;

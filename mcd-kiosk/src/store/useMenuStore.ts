@@ -1,37 +1,38 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { create } from "zustand";
-import { DataObject } from "../types";
+import { ItemCategory ,MenuItem } from "../types";
 interface BasketItem {
   id: string;
   customizations?: string[];
 }
 type OrderType = "dine in" | "take away";
-interface MenuStoreState {
-  menuList: any[] | null;
-  itemTypeList: DataObject[] | null;
-  menuLoaded: boolean;
+export interface MenuStoreState {
+  menuList: MenuItem[] | [];
+  itemCategories: ItemCategory[] | [];
+  isLoading: boolean;
   orderId: string | null;
   orderType: OrderType | null;
   paymentDetails: string | null;
   basket: BasketItem[];
-  currentSelectedItemType: string | null;
-  currentSelectedItemSubType: string | null;
-  currentSelectedItem: string | null;
+  currentSelectedItemType: number | null;
+  currentSelectedItemSubType: number | null;
+  currentSelectedItem: number | null;
   currentScreen: string;
   language: string;
   menu: string[];
 
   // Actions
-  setMenu: (menu: any[]) => void;
-  setItemTypeList: (itemTypeList: DataObject[]) => void;
-  setMenuLoaded: (loaded: boolean) => void;
+  setMenu: (menu: MenuItem[]) => void;
+  setItemCategories: (itemCategories: ItemCategory[]) => void;
+  setIsLoading: (loaded: boolean) => void;
   setOrderId: (id: string) => void;
   setOrderType: (type:OrderType) => void;
   setPaymentDetails: (details: string) => void;
   addItemToBasket: (itemId: string, customizations?: string[]) => void;
   removeItemFromBasket: (itemId: string, customizations?: string[]) => void;
-  setCurrentSelectedItemType: (type: string) => void;
-  setCurrentSelectedItemSubType: (subType: string) => void;
-  setCurrentSelectedItem: (itemId: string) => void;
+  setCurrentSelectedItemType: (type: number) => void;
+  setCurrentSelectedItemSubType: (subType: number) => void;
+  setCurrentSelectedItem: (itemId: number) => void;
   setCurrentScreen: (screen: string) => void;
   setLanguage: (language: string) => void;
   confirmOrder: () => void;
@@ -39,9 +40,9 @@ interface MenuStoreState {
 }
 
 const useMenuStore = create<MenuStoreState>((set) => ({
-  menuList: null,
-  itemTypeList: [],
-  menuLoaded: false,
+  menuList: [],
+  itemCategories: [],
+  isLoading: false,
   orderId: null,
   orderType: null,
   paymentDetails: null,
@@ -55,8 +56,8 @@ const useMenuStore = create<MenuStoreState>((set) => ({
 
   // Actions
   setMenu: (menu) => set({ menuList: menu }),
-  setItemTypeList: (itemTypeList) => set({ itemTypeList }),
-  setMenuLoaded: (loaded) => set({ menuLoaded: loaded }),
+  setItemCategories: (itemCategories) => set({ itemCategories }),
+  setIsLoading: (loaded) => set({ isLoading: loaded }),
   setOrderId: (id) => set({ orderId: id }),
   setOrderType: (type) => set({ orderType: type }),
   setPaymentDetails: (details) => set({ paymentDetails: details }),

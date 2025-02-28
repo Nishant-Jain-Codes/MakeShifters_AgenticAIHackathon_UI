@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { OrderTypes } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { loadMenuData } from "../utils/functions";
 import FaceDetection from "../components/FaceDetect";
 import Loader from "../components/Loader";
 
@@ -55,6 +56,7 @@ export default function OrderTypeSelectionScreen() {
               onClick={() => {
                 if (!loading) {
                   setSelectedOrder(order.id);
+                loadMenuData();
                   setLoading(true);
                 }
               }}
