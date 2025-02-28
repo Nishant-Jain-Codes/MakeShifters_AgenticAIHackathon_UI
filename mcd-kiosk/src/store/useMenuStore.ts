@@ -12,7 +12,7 @@ type OrderType = "dine in" | "take away";
 type CustomerAgeClass = "child" | "adult" | "senior";
 export interface MenuStoreState {
   menuList: MenuItem[] | [];
-  mealList: MealItem[] | []; // ✅ Added meal items
+  mealList: MealItem[] | []; // ✅ Added meal items list
   customizationOptions: CustomizationOption[] | []; // ✅ Added customization options
   itemCategories: ItemCategory[] | [];
   isLoading: boolean;

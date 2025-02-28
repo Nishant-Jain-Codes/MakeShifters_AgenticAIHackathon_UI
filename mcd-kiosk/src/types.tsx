@@ -3,6 +3,7 @@ export type DataObject = {
   label: string;
   imgSrc: string;
 };
+
 export type ItemCategory = {
   id: number;
   imageUrl: string;
@@ -28,6 +29,7 @@ export type MenuItem = {
   id: number;
   description: string;
 };
+
 export type CustomizationOption = {
   extraPrice: number;
   isVeg: boolean;

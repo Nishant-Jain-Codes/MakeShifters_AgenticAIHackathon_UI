@@ -68,8 +68,11 @@ export const loadMenuData = async () => {
     );
 
     // Update global store states
+    // Update global store states
     setItemCategories(categories);
     setMenu(menuList);
+    setMealItems(mealList);
+    setCustomizationOptions(customizationOptions);
     setMealItems(mealList);
     setCustomizationOptions(customizationOptions);
   } catch (error) {
@@ -108,4 +111,5 @@ export const moveToPreviousScreen = () => {
 
   setCurrentScreen(flow[currentIndex - 1]);
 };
+
 
