@@ -1,12 +1,13 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import useMenuStore from "../store/useMenuStore";
+import { moveToNextScreen } from "../utils/functions";
 import { MenuItem } from "./../types";
 import MenuItemCard from "./MenuItemCard";
 
 export default function Menu() {
   const { currentSelectedItem, currentSelectedItemType, menuList } =
     useMenuStore();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Filter menu based on selected category
   const filteredMenu: MenuItem[] = menuList.filter(
@@ -20,7 +21,7 @@ export default function Menu() {
           key={item.id}
           item={item}
           isSelected={currentSelectedItem === item.id}
-          onSelect={() => navigate(`/item/${item.id}`)} // ✅ Navigate to Item Details Page
+          onSelect={moveToNextScreen} // ✅ Navigate to Item Details Page
         />
       ))}
     </div>
