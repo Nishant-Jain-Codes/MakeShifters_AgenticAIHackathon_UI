@@ -1,0 +1,20 @@
+{
+    "modelId": "amazon.nova-lite-v1:0",
+    "contentType": "application/json",
+    "accept": "application/json",
+    "body": {
+      "inferenceConfig": {
+        "max_new_tokens": 200
+      },
+      "messages": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "text": "this is where you place your input text"
+            }
+          ]
+        }
+      ]
+    }
+  }
