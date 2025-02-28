@@ -9,6 +9,7 @@ import "./App.css";
 import useMenuStore from "./store/useMenuStore";
 import Loader from "./components/Loader";
 import { loadMenuData } from "./utils/functions";
+import CartFooter from "./components/CartFooter";
 
 function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
@@ -24,13 +25,13 @@ function App() {
       </div>
 
       {/* Middle Section - Scrollable */}
-      <div className="h-[60vh] w-full overflow-y-auto bg-black pb-[5.125vh]">
+      <div className="h-[60vh] w-full overflow-y-auto pb-[5.125vh]">
         {children}
       </div>
 
       {/* Bottom Section - Static */}
       <div className="h-[5.125vh] w-full bg-blue flex items-center justify-center">
-        Bottom Section
+        <CartFooter />
       </div>
     </div>
   );

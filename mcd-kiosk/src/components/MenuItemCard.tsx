@@ -51,15 +51,12 @@ export default function MenuItemCard({
       <p className="mt-2 text-center font-semibold">{item.name}</p>
 
       {/* Price Display */}
-      <p className="text-center text-gray-700 mt-1 font-medium">
-        <span className="line-through text-gray-500">
-          {item.price.currencySymbol}
-          {item.price.price}
+      <p className="text-center text-gray-700 mt-1 font-medium  text-xl" >
+        <span className=" text-gray-500">
+          {"₹"}
+          {item.price}
         </span>
-        <span className="ml-2 font-bold">
-          {item.price.currencySymbol}
-          {item.price.discountPrice}
-        </span>
+       
       </p>
 
       {/* Quantity Selector (Using Zustand) */}

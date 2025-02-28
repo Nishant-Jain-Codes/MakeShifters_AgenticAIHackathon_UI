@@ -1,29 +1,289 @@
 [
     {
-        "id": 101,
-        "price": 150,
-        "isVeg": false,
-        "categoryId": 1,
-        "name": "McChicken",
-        "imageUrl": "/assets/placeholder-category-item.webp",
-        "description": "A crispy chicken burger with lettuce and mayo."
+      "name": "McAloo Tikki Burger with Cheese",
+      "price": 99,
+      "description": "Savor the classic McAloo Tikki Burger, with an add-on cheese slice for a cheesy indulgence",
+      "id": 301,
+      "isVeg": true,
+      "categoryId": 3,
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20241025110121066884.png"
     },
     {
-        "id": 102,
-        "price": 120,
-        "isVeg": true,
-        "categoryId": 1,
-        "name": "McVeggie",
-        "imageUrl":"/assets/placeholder-category-item.webp",
-        "description": "A delicious veggie patty with fresh lettuce."
+      "id": 302,
+      "name": "Peppery McAloo Tikki Burger",
+      "description": "Introducing the new peppery McAloo Tikki Burger which has the perfect balance of a crispy aloo tikki patty, the crunch of onions , and a delicious black pepper mayo sauce",
+      "price": 75.23,
+      "categoryId": 3,
+      "isVeg": true,
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20250131165019288219.png"
     },
     {
-        "id": 201,
-        "price": 90,
-        "isVeg": true,
-        "categoryId": 2,
-        "name": "Large Fries",
-        "imageUrl": "/assets/placeholder-category-item.webp",
-        "description": "Golden crispy fries with salt."
+      "id": 303,
+      "categoryId": 3,
+      "name": "Peppery Chicken Surprise Burger",
+      "description": "Introducing the new peppery Chicken Surprise Burger which has the perfect balance of a crispy fried chicken patty, the crunch of onions, and a delicious black pepper mayo sauce",
+      "price": 80,
+      "isVeg": false,
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20241209142917231314.png"
+    },
+    {
+      "id": 304,
+      "categoryId": 3,
+      "name": "McChicken Double Patty Burger",
+      "description": "Enjoy the classic, tender double chicken patty with creamy mayonnaise and lettuce in every bite",
+      "price": 173.0,
+      "isVeg": false,
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1707816179276582.png"
+    },
+    {
+      "id": 305,
+      "categoryId": 3,
+      "name": "Big Spicy Paneer Wrap",
+      "description": "Rich & filling cottage cheese patty coated in spicy crispy batter, topped with tom mayo sauce wrapped with lettuce, onions, tomatoes & cheese.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1710932989253749.png",
+      "isVeg": true,
+      "price": 250.0
+    },
+    {
+      "id": 306,
+      "categoryId": 3,
+      "name": "Big Spicy Paneer Wrap",
+      "description": "Rich & filling cottage cheese patty coated in spicy crispy batter, topped with tom mayo sauce wrapped with lettuce, onions, tomatoes & cheese.",
+      "isVeg": true,
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1710932989253749.png",
+      "price": 240.0
+    },
+    {
+      "id": 401,
+      "categoryId": 4,
+      "name": "20 Pc Chicken Nuggets",
+      "description": "20 pieces of our iconic crispy, golden fried Chicken McNuggets!",
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/TTNGET-2094-1-2094.png",
+      "isVeg": false,
+      "price": 422.01
+    },
+    {
+      "id": 402,
+      "categoryId": 4,
+      "name": "Salsa Cheese Fries",
+      "description": "The world famous, crispy, golden Fries, served with rich cheese sauce and a tangy twist of salsa",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1696847348606864.png",
+      "isVeg": true,
+      "price": 136.0
+    },
+    {
+      "id": 403,
+      "categoryId": 4,
+      "name": "Classic Cheese Fries",
+      "description": "The world famous, crispy golden Fries, served with delicious cheese sauce with a hint of spice. Contains cheese & mayonnaise",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1696847267947337.png",
+      "isVeg": true,
+      "price": 157.0
+    },
+    {
+      "id": 404,
+      "categoryId": 4,
+      "name": "4 Pcs Chicken Nuggets",
+      "description": "4 pieces of our iconic crispy, golden fried Chicken McNuggets!",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_RGNGET-1102-1-1102.png",
+      "isVeg": false,
+      "price": 110.0
+    },
+    {
+      "id": 405,
+      "categoryId": 4,
+      "name": "Veg Pizza McPuff",
+      "description": "Crispy brown crust with a generous filling of rich tomato sauce, mixed with carrots, bell peppers, beans, onions and mozzarella. Served HOT.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_PIZPUF-67-1-67.png",
+      "isVeg": true,
+      "price": 66.0
+    },
+    {
+      "id": 501,
+      "categoryId": 5,
+      "name": "Cinnamon Raisin Cookie",
+      "description": "Enjoy the wholesome flavours of this chewy and satisfying cookie",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1689606826538453.png",
+      "isVeg": true,
+      "price": 95.0
+    },
+    {
+      "id": 502,
+      "categoryId": 5,
+      "name": "Cinnamon Raisin Cookie",
+      "description": "Enjoy the wholesome flavours of this chewy and satisfying cookie",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1689606826538453.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 95.0
+    },
+    {
+      "id": 503,
+      "categoryId": 5,
+      "name": "Cinnamon Raisin Cookie",
+      "description": "Enjoy the wholesome flavours of this chewy and satisfying cookie",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1689606826538453.png",
+      "isVeg": true,
+      "price": 95.0
+    },
+    {
+      "id": 504,
+      "categoryId": 5,
+      "name": "Chocochip Muffin",
+      "description": "Enjoy a dense chocochip muffin, with melty chocolate chips for a choco-lover's delight",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_CCMNEW-3673-1-3673.png",
+      "isVeg": true,
+      "price": 142.0
+    },
+    {
+      "id": 505,
+      "categoryId": 5,
+      "name": "Choco Brownie",
+      "description": "Delicious soft chocolate brownie, with the right balance of sweetness",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1689606951134265.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 95.0
+    },
+    {
+      "id": 506,
+      "categoryId": 5,
+      "name": "Indulge Choco Jar Dessert",
+      "description": "Rich chocolate for pure indulgence to satify your sweet tooth.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1695666027603627.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 76.0
+    },
+    {
+      "id": 601,
+      "categoryId": 6,
+      "name": "Small Latte with Almond Milk",
+      "description": "Latte (S) with Almond Milk",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20241025111101256451.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 197.14
+    },
+    {
+      "id": 602,
+      "categoryId": 6,
+      "name": "Citrus Burst Cold Brew",
+      "description": "Revitalize with our refreshing cold brew infused with citrus flavors. Smooth, low-acidity coffee perfect for any time.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20241008112630985127.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 189.52
+    },
+    {
+      "id": 603,
+      "categoryId": 6,
+      "name": "Classic Cold Brew",
+      "description": "Beat the heat with our Cold Brew Coffee! Brewed without heat, this refreshing drink is rich, smooth, and perfect for any occasion.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20241008112648246600.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 189.52
+    },
+    {
+      "id": 604,
+      "categoryId": 6,
+      "name": "Hot Chocolate (R)",
+      "description": "Sinfully creamy chocolate whisked with silky streamed milk",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1710177777588651.png",
+      "is_customizable": true,
+      "isVeg": true,
+      "price": 232.0
+    },
+    {
+      "id": 605,
+      "categoryId": 6,
+      "name": "Coke",
+      "description": "The perfect companion to your burger, fries and everything nice.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_MCOKE-16-1-16.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 103.0
+    },
+    {
+      "id": 606,
+      "categoryId": 6,
+      "name": "Fanta",
+      "description": "Add a zest of refreshing orange to your meal.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_MORG-21-1-21.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 103.0
+    },
+    {
+      "id": 607,
+      "categoryId": 6,
+      "name": "Sprite",
+      "description": "The perfect companion to your burger, fries and everything nice.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_MSPRT-30-1-30.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 103.0
+    },
+    {
+      "id": 609,
+      "categoryId": 6,
+      "name": "Mixed Fruit Beverage",
+      "description": "Made with puree, pulp & juice from 6 delicious fruits",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_MIXFBV-6112-1-6112.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 84.76
+    },
+    {
+      "id": 608,
+      "categoryId": 6,
+      "name": "Schweppes Water bottle",
+      "description": "Quench your thirst with the Schweppes Water bottle",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20250121113949776163.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 66.67
+    },
+    {
+      "id": 701,
+      "categoryId": 7,
+      "name": "Chocolate Overload McFlurry with Oreo Small",
+      "description": "Indulge in your chocolatey dream with creamy soft serve, a rich Hazelnut brownie, and two decadent chocolate sauces. Tempting, irresistible, and unforgettable",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20240913163049111668.png",
+      "is_customizable": false,
+      "isVeg": true,
+      "price": 104.0
+    },
+    {
+      "id": 702,
+      "categoryId": 7,
+      "name": "Hot Fudge Sundae",
+      "description": "A sinful delight, soft serve topped with delicious, gooey hot chocolate fudge. Always grab an extra spoon.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_NMFGS-5-1-5.png",
+      "is_customizable": true,
+      "isVeg": true,
+      "price": 66.0
+    },
+    {
+      "id": 703,
+      "categoryId": 7,
+      "name": "Black Forest McFlurry Medium",
+      "description": "A sweet treat to suit your every mood",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_RBLKFR-2803-1-2803.png",
+      "is_customizable": true,
+      "isVeg": true,
+      "price": 139.0
+    },
+    {
+      "id": 704,
+      "categoryId": 7,
+      "name": "Strawberry Sundae",
+      "description": "The cool vanilla soft serve ice cream with twirls of strawberry syrup.",
+      "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_NMSTR-421-1-421.png",
+      "is_customizable": true,
+      "isVeg": true,
+      "price": 66.0
     }
-]
+  ]
+  

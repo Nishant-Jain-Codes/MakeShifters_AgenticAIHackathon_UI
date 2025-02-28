@@ -1,17 +1,37 @@
 [
-    {
-        "id": 1,
-        "imageUrl": "https://example.com/images/burgers.png",
-        "name": "Burgers"
-    },
-    {
-        "id": 2,
-        "imageUrl": "https://example.com/images/fries.png",
-        "name": "Fries"
-    },
-    {
-        "id": 3,
-        "imageUrl": "https://example.com/images/beverages.png",
-        "name": "Beverages"
-    }
+  {
+    "name": "Desserts",
+    "id": 7,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551788552933.png"
+  },
+  {
+    "name": "Cakes Brownies and Cookies",
+    "id": 5,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20240503094824231560.png"
+  },
+  {
+    "name": "Coffee & Beverages (Hot and Cold)",
+    "id": 6,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551762235584.png"
+  },
+  {
+    "name": "Burgers & Wraps",
+    "id": 3,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_170955171681248.png"
+  },
+  {
+    "name": "Special for you",
+    "id": 1,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20240918043600447449.png"
+  },
+  {
+    "name": "Meal of the day",
+    "id": 2,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551887533338.png"
+  },
+  {
+    "name": "Fries & Sides",
+    "id": 4,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551827742126.png"
+  }
 ]
