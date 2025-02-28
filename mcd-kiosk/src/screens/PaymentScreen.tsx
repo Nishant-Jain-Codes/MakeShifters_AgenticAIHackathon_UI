@@ -5,9 +5,9 @@ export default function PaymentScreen() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white p-6">
+    <div className="flex flex-col items-center bg-white p-6 max-h-[55vh]">
       {/* Card Container */}
-      <div className="bg-white shadow-lg rounded-2xl p-10 w-[700px] h-[1200px] flex flex-col items-center justify-between">
+      <div className="bg-white rounded-2xl p-10 w-[700px] h-[1000px] flex flex-col items-center justify-between">
         <h1 className="text-2xl font-semibold text-center text-black mt-10">
           Please select a payment type
         </h1>

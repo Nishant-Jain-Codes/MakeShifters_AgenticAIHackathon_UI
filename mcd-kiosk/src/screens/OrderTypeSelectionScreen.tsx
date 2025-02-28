@@ -39,13 +39,12 @@ export default function OrderTypeSelectionScreen() {
 
   return (
     <div className="flex flex-col items-center min-h-[50vh] bg-[#f1ece5]">
-      <img src="assets/mcd-logo-unfilled.svg" alt="" className="w-64 mt-40" />
 
       <h1 className="w-full flex flex-col items-center my-50 text-3xl font-bold">
         Where will you be eating today?
       </h1>
 
-      <div className="bg-primaryYellow p-20 w-full min-h-[50vh]">
+      <div className="bg-primaryYellow p-20 w-full min-h-[35.2vh]">
         <div className="flex gap-20 px-6 w-full max-w-3xl mx-auto">
           {OrderTypes.map((order) => (
             <button
