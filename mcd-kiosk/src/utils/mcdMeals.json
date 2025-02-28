@@ -1,0 +1,24 @@
+[
+    {
+        "id": 301,
+        "items": [
+            101,
+            201
+        ],
+        "imageUrl": "/assets/placeholder-category-item.webp",
+        "isVeg": false,
+        "price": 230,
+        "description": "McChicken meal with fries and a drink."
+    },
+    {
+        "id": 302,
+        "items": [
+            102,
+            201
+        ],
+        "imageUrl": "/assets/placeholder-category-item.webp",
+        "isVeg": true,
+        "price": 200,
+        "description": "McVeggie meal with fries and a drink."
+    }
+]

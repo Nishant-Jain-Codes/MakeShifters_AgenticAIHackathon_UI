@@ -1,35 +1,38 @@
 export type DataObject = {
-    id: string,
-    label: string,
-    imgSrc: string,
-}
+  id: string;
+  label: string;
+  imgSrc: string;
+};
 export type ItemCategory = {
-    id: number;
-    imageUrl: string;
-    name: string;
+  id: number;
+  imageUrl: string;
+  name: string;
 };
-export type ItemPrice = {
-    id: number;
-    discountPrice: number;
-    price: number;
-    cgst: string;
-    sgst: string;
-    cgstPer: string;
-    sgstPer: string;
-    currency: string;
-    currencySymbol: string;
-    offerPrice: string;
-    offerCgst: string;
-    offerSgst: string;
-};
+export type MealItem = {
+  items: number[];
+  imageUrl: string;
+  isVeg: boolean;
+  price: number;
+  id: number;
+  description: string;
+  name: string;
+  categoryId: number;
 
+};
 export type MenuItem = {
-    price: ItemPrice;
-    isVeg: boolean;
-    categoryId: number;
-    name: string;
-    description: string;
-    imageUrl: string;
-    isCustomizable: boolean;
-    id:number;
+  price: number;
+  isVeg: boolean;
+  categoryId: number;
+  name: string;
+  imageUrl: string;
+  id: number;
+  description: string;
+};
+export type CustomizationOption = {
+  extraPrice: number;
+  isVeg: boolean;
+  categoryId: number;
+  imageUrl: string;
+  name: string;
+  id: number;
 };

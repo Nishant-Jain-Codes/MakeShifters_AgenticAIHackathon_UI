@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { create } from "zustand";
-import { ItemCategory ,MenuItem } from "../types";
+import { CustomizationOption, ItemCategory ,MealItem,MenuItem } from "../types";
 interface BasketItem {
   id: number;
   customizations?: string[];
@@ -9,8 +9,11 @@ interface BasketItem {
   price: number;
 }
 type OrderType = "dine in" | "take away";
+type CustomerAgeClass = "child" | "adult" | "senior";
 export interface MenuStoreState {
   menuList: MenuItem[] | [];
+  mealList: MealItem[] | []; // ✅ Added meal items
+  customizationOptions: CustomizationOption[] | []; // ✅ Added customization options
   itemCategories: ItemCategory[] | [];
   isLoading: boolean;
   orderId: string | null;
@@ -23,13 +26,16 @@ export interface MenuStoreState {
   currentScreen: string;
   language: string;
   menu: string[];
+  customerAgeClass: CustomerAgeClass | null;
 
   // Actions
   setMenu: (menu: MenuItem[]) => void;
+  setMealItems: (meals: MealItem[]) => void; // ✅ New action for meal items
+  setCustomizationOptions: (options: CustomizationOption[]) => void; // ✅ New action for customization options
   setItemCategories: (itemCategories: ItemCategory[]) => void;
   setIsLoading: (loaded: boolean) => void;
   setOrderId: (id: string) => void;
-  setOrderType: (type:OrderType) => void;
+  setOrderType: (type: OrderType) => void;
   setPaymentDetails: (details: string) => void;
   addItemToBasket: (itemId: number, customizations?: string[]) => void;
   removeItemFromBasket: (itemId: number, customizations?: string[]) => void;
@@ -40,10 +46,12 @@ export interface MenuStoreState {
   setLanguage: (language: string) => void;
   confirmOrder: () => void;
   resetOrder: () => void;
+  setCustomerAgeClass: (ageClass: CustomerAgeClass) => void;
 }
-
 const useMenuStore = create<MenuStoreState>((set) => ({
   menuList: [],
+  mealList: [], // ✅ Added meal items list
+  customizationOptions: [], // ✅ Added customization options list
   itemCategories: [],
   isLoading: false,
   orderId: null,
@@ -53,19 +61,23 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   currentSelectedItemType: null,
   currentSelectedItemSubType: null,
   currentSelectedItem: null,
-  currentScreen: "home",
+  currentScreen: "OrderTypeSelection",
   language: "English",
   menu: [],
+  customerAgeClass: null,
 
-  // Actions
-  setMenu: (menu) => set({ menuList: menu }),
-  setItemCategories: (itemCategories) => set({ itemCategories }),
-  setIsLoading: (loaded) => set({ isLoading: loaded }),
-  setOrderId: (id) => set({ orderId: id }),
+  // ✅ Setters for newly added state
+  setMenu: (menu: MenuItem[]) => set({ menuList: menu }),
+  setMealItems: (meals: MealItem[]) => set({ mealList: meals }), // ✅ New setter for meal items
+  setCustomizationOptions: (options: CustomizationOption[]) =>
+    set({ customizationOptions: options }), // ✅ New setter for customization options
+  setItemCategories: (itemCategories: ItemCategory[]) => set({ itemCategories }),
+  setIsLoading: (loaded: boolean) => set({ isLoading: loaded }),
+  setOrderId: (id: string) => set({ orderId: id }),
   setOrderType: (type) => set({ orderType: type }),
-  setPaymentDetails: (details) => set({ paymentDetails: details }),
-
-  addItemToBasket: (itemId: number, customizations?: string[]) =>
+  setPaymentDetails: (details: string) => set({ paymentDetails: details }),
+  setCustomerAgeClass: (ageClass) => set({ customerAgeClass: ageClass }),
+  addItemToBasket: (itemId: number, customizations: string[] = []) =>
     set((state) => {
       const menuItem = state.menuList.find((item) => item.id === itemId);
       if (!menuItem) return {}; // ✅ Don't modify state if menuItem is not found
@@ -94,7 +106,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
             customizations,
             MenuItem: menuItem,
             qty: 1,
-            price: menuItem.price.discountPrice,
+            price: menuItem.price,
           } as BasketItem,
         ],
       };
@@ -125,13 +137,12 @@ const useMenuStore = create<MenuStoreState>((set) => ({
     
 
   setCurrentSelectedItemType: (type) => set({ currentSelectedItemType: type }),
-  setCurrentSelectedItemSubType: (subType) =>
-    set({ currentSelectedItemSubType: subType }),
+  setCurrentSelectedItemSubType: (subType) => set({ currentSelectedItemSubType: subType }),
   setCurrentSelectedItem: (itemId) => set({ currentSelectedItem: itemId }),
   setCurrentScreen: (screen) => set({ currentScreen: screen }),
   setLanguage: (language) => set({ language }),
 
-  confirmOrder: () => console.log("Order confirmed!", useMenuStore.getState()),
+  confirmOrder: () => console.log("✅ Order confirmed!", useMenuStore.getState()),
 
   resetOrder: () =>
     set({
@@ -142,7 +153,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
       currentSelectedItemType: null,
       currentSelectedItemSubType: null,
       currentSelectedItem: null,
-      currentScreen: "home",
+      currentScreen: "OrderTypeSelection",
     }),
 }));
 export default useMenuStore;

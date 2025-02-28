@@ -1,0 +1,26 @@
+[
+    {
+        "id": 401,
+        "extraPrice": 20,
+        "isVeg": true,
+        "categoryId": 1,
+        "imageUrl": "https://example.com/images/cheese_slice.png",
+        "name": "Extra Cheese"
+    },
+    {
+        "id": 402,
+        "extraPrice": 15,
+        "isVeg": false,
+        "categoryId": 1,
+        "imageUrl": "/assets/placeholder-category-item.webp",
+        "name": "Bacon Strips"
+    },
+    {
+        "id": 403,
+        "extraPrice": 10,
+        "isVeg": true,
+        "categoryId": 2,
+        "imageUrl": "/assets/placeholder-category-item.webp",
+        "name": "Spicy Seasoning"
+    }
+]
