@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
 
-const FaceDetection: React.FC = () => {
+interface FaceDetectionProps {
+  onDetect: (age: number) => void;
+}
+
+const FaceDetection: React.FC<FaceDetectionProps> = ({ onDetect }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [modelsLoaded, setModelsLoaded] = useState(false);
-  const detectionStopped = useRef(false); // Flag to stop detection
+  const detectionStopped = useRef(false);
 
   useEffect(() => {
     const loadModels = async () => {
@@ -14,9 +18,9 @@ const FaceDetection: React.FC = () => {
           faceapi.nets.ageGenderNet.loadFromUri("/models"),
         ]);
         setModelsLoaded(true);
-        console.log("✅ Face API Models Loaded Successfully");
+        console.log("Face API models loaded successfully!");
       } catch (error) {
-        console.error("❌ Error loading Face API:", error);
+        console.error("Error loading Face API:", error);
       }
     };
 
@@ -24,51 +28,53 @@ const FaceDetection: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!modelsLoaded || !videoRef.current) return;
+    if (!modelsLoaded) return;
 
     const startVideo = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        videoRef.current!.srcObject = stream;
 
-        videoRef.current!.addEventListener("play", () => {
-          const detectFace = async () => {
-            if (!videoRef.current || detectionStopped.current) return;
+        if (videoRef.current) {
+          videoRef.current.srcObject = stream;
+          videoRef.current.play();
+        }
 
-            const detections = await faceapi
-              .detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions())
-              .withAgeAndGender();
-
-            if (detections) {
-              console.log(`🎉 Detected Age: ${Math.round(detections.age)}`);
-              detectionStopped.current = true; // Stop further detections
-
-              // Turn off the camera
-              if (videoRef.current?.srcObject) {
-                const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
-                tracks.forEach((track) => track.stop()); // Stop each track
-                videoRef.current.srcObject = null; // Clear video source
-              }
-            } else {
-              requestAnimationFrame(detectFace); // Keep detecting if no face found
-            }
-          };
-
-          detectFace(); // Start face detection
+        videoRef.current?.addEventListener("loadedmetadata", () => {
+          detectFace(); // Start detecting
         });
       } catch (error) {
-        console.error("❌ Error accessing webcam:", error);
+        console.error("Error accessing webcam:", error);
+      }
+    };
+
+    const detectFace = async () => {
+      if (!videoRef.current || detectionStopped.current) return;
+
+      const detections = await faceapi
+        .detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+        .withAgeAndGender();
+
+      if (detections) {
+        const age = Math.round(detections.age);
+        console.log(`🎉 Detected Age: ${age}`);
+        onDetect(age);
+        detectionStopped.current = true;
+
+        // Stop camera after detection
+        const stream = videoRef.current.srcObject as MediaStream;
+        if (stream) {
+          stream.getTracks().forEach((track) => track.stop());
+          videoRef.current.srcObject = null;
+        }
+      } else {
+        requestAnimationFrame(detectFace); 
       }
     };
 
     startVideo();
   }, [modelsLoaded]);
 
-  return (
-    <div>
-      <video ref={videoRef} autoPlay playsInline muted width="0" height="0"></video>
-    </div>
-  );
+  return <video ref={videoRef} autoPlay playsInline muted className="hidden"></video>;
 };
 
 export default FaceDetection;
