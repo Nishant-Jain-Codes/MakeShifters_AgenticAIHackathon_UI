@@ -22,7 +22,8 @@ export const loadMenuData = async () => {
     const menuList: MenuItem[] = menuData.map((item: Record<string, any>) => ({
       price: {
         id: item["item_price"]?.["id"] ?? 0,
-        discountPrice: item["item_price"]?.["discount_price"] ?? null,
+        discountPrice: item["item_price"]?.["discount_price"] ?? "0",
+        price: item["item_price"]?.["price"] ?? "0",
         cgst: item["item_price"]?.["cgst"] ?? "0",
         sgst: item["item_price"]?.["sgst"] ?? "0",
         cgstPer: item["item_price"]?.["cgst_per"] ?? "0",

@@ -11,6 +11,7 @@ export type ItemCategory = {
 export type ItemPrice = {
     id: number;
     discountPrice: number;
+    price: number;
     cgst: string;
     sgst: string;
     cgstPer: string;

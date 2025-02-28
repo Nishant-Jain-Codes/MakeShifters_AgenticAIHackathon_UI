@@ -10,12 +10,15 @@ import useMenuStore from "./store/useMenuStore";
 import Loader from "./components/Loader";
 import { useEffect } from "react";
 import { loadMenuData } from "./utils/functions";
+import CartFooter from "./components/CartFooter";
+import MenuItem from "./components/MenuItem";
 
 function App() {
-  const isLoading = useMenuStore((state) => state.isLoading);
-useEffect(()=>{
-  loadMenuData();
-},[])  
+  const { basket, isLoading } = useMenuStore();
+
+  useEffect(() => {
+    loadMenuData();
+  }, []);
   const Layout = () => (
     // <div className="relative w-screen h-screen flex flex-col items-center bg-gray-100">
     //   <div className="relative w-[900px] h-[1600px] bg-white shadow-lg">
@@ -31,25 +34,22 @@ useEffect(()=>{
     //     </div>
     //   </div>
     // </div>
-    (
-      <div className="flex flex-col h-full w-full">
-        {/* Top Section - 30% (Static) */}
-        <div className="h-[27vh] w-full bg-red-50 flex items-center justify-center">
-          Top Section
-        </div>
-  
-        {/* Middle Section - 62.5% (Scrollable) */}
-        <div className="h-[60vh] w-full overflow-y-hidden bg-black pb-[5.125vh]">
-          {/* {children} */}
-          <Outlet />
-        </div>
-  
-        {/* Bottom Section - 7.5% (Static) */}
-        <div className="h-[5.125vh] w-full bg-blue flex items-center justify-center">
-          Bottom Section
-        </div>
+    <div className="flex flex-col  h-full w-full">
+      <div className="h-[27vh] w-full bg-amber-500  flex items-center justify-center">
+        Top Section
       </div>
-    ));
+
+      <div className="h-[60vh] w-full overflow-y-auto pb-[5.125vh] ">
+        <Outlet />
+      </div>
+
+      {/* {basket.length > 0 && ( */}
+        <div className="h-[5.125vh] w-full flex items-center justify-center border">
+          <CartFooter />
+        </div>
+      {/* )} */}
+    </div>
+  );
 
   const router = createBrowserRouter([
     {
@@ -62,6 +62,7 @@ useEffect(()=>{
         { path: "/summary", element: <OrderSummaryScreen /> },
         { path: "/payment", element: <PaymentScreen /> },
         { path: "/completion", element: <OrderCompletionScreen /> },
+        { path: "/item/:id", element: <MenuItem /> }
       ],
     },
   ]);
