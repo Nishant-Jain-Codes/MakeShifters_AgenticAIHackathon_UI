@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { use, useState } from "react";
 // import { Switch } from "@/components/ui/switch"
 import { OrderTypes } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderTypeSelectionScreen() {
   const [takeOut, setTakeOut] = useState(false);
+  const Navigate = useNavigate();
 
   return (
     <div className="flex flex-col items-center min-h-[50vh] bg-[#f1ece5]">
-      <img src="assets/mcd-logo-unfilled.svg" alt="" className="w-64 mt-40"/>
+      <img src="assets/mcd-logo-unfilled.svg" alt="" className="w-64 mt-40" />
 
       <h1 className=" w-full flex flex-col items-center my-50 text-3xl font-bold">
         Where will you be eating today?
@@ -23,7 +25,10 @@ export default function OrderTypeSelectionScreen() {
                   ? "ring-4 ring-red-500"
                   : ""
               }`}
-              onClick={() => setTakeOut(order.id === "take away")}
+              onClick={() => {
+                setTakeOut(order.id === "take away");
+                Navigate("/menu");
+              }}
             >
               <div className="mb-4">
                 <img
