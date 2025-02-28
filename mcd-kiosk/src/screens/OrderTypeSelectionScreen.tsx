@@ -6,7 +6,7 @@ import FaceDetection from "../components/FaceDetect";
 
 export default function OrderTypeSelectionScreen() {
   const [selectedOrder, setSelectedOrder] = useState<string | null>(null);
-
+  const [isFaceDetected, setIsFaceDetected] = useState(false);
 
   return (
     <div className="flex flex-col items-center min-h-[50vh] bg-[#f1ece5]">
@@ -23,9 +23,8 @@ export default function OrderTypeSelectionScreen() {
                 order.id === selectedOrder ? "ring-4 ring-red-500" : ""
               }`}
               onClick={() => {
-                moveToNextScreen();
                 setSelectedOrder(order.id);
-                loadMenuData();
+                // Don't move to next screen yet, wait for face detection
               }}
             >
               <div className="mb-4">
@@ -40,8 +39,16 @@ export default function OrderTypeSelectionScreen() {
           ))}
         </div>
       </div>
-
-      {selectedOrder && <FaceDetection  />}
+      {selectedOrder && !isFaceDetected && (
+        <FaceDetection
+          onFaceDetected={() => {
+            console.log("✅ Face detected! Moving to next screen...");
+            setIsFaceDetected(true);
+            moveToNextScreen();
+            loadMenuData();
+          }}
+        />
+      )}
     </div>
   );
 }

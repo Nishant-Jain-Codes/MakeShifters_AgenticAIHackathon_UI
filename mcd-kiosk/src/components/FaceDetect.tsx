@@ -1,37 +1,27 @@
 import { useEffect, useRef, useState } from "react";
 import * as faceapi from "face-api.js";
-import useMenuStore from "../store/useMenuStore";
 
+interface FaceDetectionProps {
+  onFaceDetected: () => void;
+}
 
-const FaceDetection  = () => {
+const FaceDetection = ({ onFaceDetected }: FaceDetectionProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [modelsLoaded, setModelsLoaded] = useState(false);
-  const detectionStopped = useRef(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const { setIsLoading , setCustomerAgeClass} = useMenuStore.getState();
-  const onDetect = (age : number) => {
-    const customerClass = age < 18 ? "child" : age < 60 ? "adult" : "senior";
-    setCustomerAgeClass(customerClass);
-  };
+
   useEffect(() => {
-    // ✅ Start loading models and set isLoading
     const loadModels = async () => {
-      setIsLoading(true);
       try {
+        console.log("⏳ Loading Face API models...");
         await Promise.all([
           faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
           faceapi.nets.ageGenderNet.loadFromUri("/models"),
         ]);
-        setModelsLoaded(true);
         console.log("✅ Face API models loaded successfully!");
+        setModelsLoaded(true);
       } catch (error) {
-        console.error("❌ Error loading Face API:", error);
+        console.error("❌ Error loading Face API models:", error);
       }
-      finally{
-        setIsLoading(false);
-
-      }
-      
     };
 
     loadModels();
@@ -40,73 +30,62 @@ const FaceDetection  = () => {
   useEffect(() => {
     if (!modelsLoaded) return;
 
-    const startVideo = async () => {
-      
+    const startCamera = async () => {
       try {
+        console.log("⏳ Requesting camera access...");
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
-          videoRef.current.play();
+          videoRef.current.onloadedmetadata = () => {
+            videoRef.current?.play();
+            console.log("✅ Camera is ready!");
+            detectFace(); // Start detection
+          };
         }
-
-        videoRef.current?.addEventListener("loadedmetadata", () => {
-          detectFace(); // ✅ Start detecting
-        });
-
-        // ✅ Start timeout for fallback age (5 sec)
-        timeoutRef.current = setTimeout(() => {
-          if (!detectionStopped.current) {
-            console.warn("⏳ No face detected in 5 seconds, defaulting to age 18");
-            onDetect(18);
-            stopDetection();
-          }
-        }, 5000);
       } catch (error) {
         console.error("❌ Error accessing webcam:", error);
-      }
-      finally{
-        setIsLoading(false);
-
       }
     };
 
     const detectFace = async () => {
-      if (!videoRef.current || detectionStopped.current) return;
+      if (!videoRef.current) return;
 
-      const detections = await faceapi
-        .detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions())
-        .withAgeAndGender();
+      console.log("⏳ Starting face detection...");
+      const interval = setInterval(async () => {
+        if (!videoRef.current) return;
 
-      if (detections) {
-        const age = Math.round(detections.age);
-        console.log(`🎉 Detected Age: ${age}`);
-        onDetect(age);
-        stopDetection();
-      } else {
-        requestAnimationFrame(detectFace); // Keep trying
-      }
-    };
+        const detections = await faceapi
+          .detectSingleFace(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+          .withAgeAndGender();
 
-    const stopDetection = () => {
-      detectionStopped.current = true;
-      setIsLoading(false);
-
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
-      if (videoRef.current) {
-        const stream = videoRef.current.srcObject as MediaStream;
-        if (stream) {
-          stream.getTracks().forEach((track) => track.stop());
-          videoRef.current.srcObject = null;
+        if (detections) {
+          console.log(`🎉 Face detected! Age: ${Math.round(detections.age)}`);
+          clearInterval(interval);
+          stopCamera();
+          onFaceDetected(); // ✅ Redirect after detecting face
         }
+      }, 500); // Check every 500ms
+    };
+
+    const stopCamera = () => {
+      console.log("⏹ Stopping camera...");
+      if (videoRef.current?.srcObject) {
+        (videoRef.current.srcObject as MediaStream).getTracks().forEach(track => track.stop());
+        videoRef.current.srcObject = null;
       }
     };
 
-    startVideo();
+    startCamera();
+
+    return () => stopCamera();
   }, [modelsLoaded]);
 
-  return <video ref={videoRef} autoPlay playsInline muted className="hidden"></video>;
+  return (
+    <>
+      <video ref={videoRef} autoPlay playsInline muted className="hidden"></video>
+    </>
+  );
 };
 
 export default FaceDetection;
