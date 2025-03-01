@@ -12,7 +12,7 @@ import { loadMenuData, moveToPreviousScreen } from "./utils/functions";
 import CartFooter from "./components/CartFooter";
 import { ChevronLeft } from "lucide-react";
 import Avatar from "./components/Avatar";
-import { Toaster } from "react-hot-toast";
+import VoiceAssistant from './components/VoiceAssistant'
 
 function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
@@ -36,6 +36,7 @@ function App() {
             </>
           )}
         </button>
+        <VoiceAssistant/>
         <Avatar />
       </div>
 
