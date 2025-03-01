@@ -34,8 +34,6 @@ export interface MenuStoreState {
   menu: string[];
   customerAgeClass: CustomerAgeClass | null;
 
- 
-
   // Actions
   setMenu: (menu: MenuItem[]) => void;
   setMealItems: (meals: MealItem[]) => void; // ✅ New action for meal items
@@ -67,7 +65,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   orderType: null,
   paymentDetails: null,
   basket: [],
-  currentSelectedItemType: null,
+  currentSelectedItemType: 7,
   currentSelectedItemSubType: null,
   currentSelectedItem: null,
   currentScreen: "OrderTypeSelection",

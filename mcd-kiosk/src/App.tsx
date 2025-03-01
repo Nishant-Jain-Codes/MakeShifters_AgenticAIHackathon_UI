@@ -12,6 +12,7 @@ import { loadMenuData, moveToPreviousScreen } from "./utils/functions";
 import CartFooter from "./components/CartFooter";
 import { ChevronLeft } from "lucide-react";
 import Avatar from "./components/Avatar";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
@@ -43,6 +44,8 @@ function App() {
       <div className="h-[5.125vh] w-full bg-blue flex items-center justify-center">
         <CartFooter />
       </div>
+
+      <Toaster />
     </div>
   );
 
