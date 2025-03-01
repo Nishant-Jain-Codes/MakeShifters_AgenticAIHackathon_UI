@@ -284,6 +284,71 @@
       "is_customizable": true,
       "isVeg": true,
       "price": 66.0
+    },
+    {
+      "id": 201,
+      "categoryId": 2,
+      "name": "4 Pc Chicken Nuggets + McChicken Burger + Coke",
+      "description": "Tender and juicy chicken patty cooked to perfection, with creamy mayonnaise and crunchy lettuce adding flavour to each bite. Served with 6 Pc Nuggets and Coke.",
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/SC6NMC-5445-1-5445.png",
+      "is_customizable": true,
+      "isVeg": false,
+      "price": 424.0,
+      "items": [404, 303, 605]
+    },
+    {
+      "id": 202,
+      "categoryId": 2,
+      "name": "Burger Combo for 2: McSpicy Paneer + McAloo Tikki with Pizza McPuff",
+      "description": "Get the best value in your meal for 2. Save big on your favourite sharing meal - McSpicy Paneer Burger  + 2 Fries (M) + McAloo Tikki Burger + Veg Pizza McPuff",
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/1700819390285448.png",
+      "is_customizable": true,
+      "isVeg": true,
+      "price": 548.0,
+      "items": [305, 402, 402, 301, 405]
+    },
+    {
+      "id": 101,
+      "categoryId": 1,
+      "name": "Mc Crispy Chicken Burger + McChicken Burger + Fries (M)",
+      "description": "Feel the crunch with McCrispy Chicken Burger+ McChicken + Fries (M)",
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/20241205182430611626.png",
+      "isVeg": false,
+      "discount_price": 430.47,
+      "items": [303, 304, 402]
+    },
+    {
+      "id": 102,
+      "categoryId": 1,
+      "name": "Crispy Veggie Burger + McVeggie Burger + Fries (M)",
+      "description": "Feel the crunch with Crispy Veggie Burger+ McVeggie + Fries (M)",
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/20241205182412797616.png",
+      "is_customizable": true,
+      "isVeg": true,
+      "price": 470.0,
+      "items": [301, 302, 402]
+    },
+    {
+      "id": 103,
+      "categoryId": 1,
+      "name": "2 Crispy Veggie Burger  + Fries (L) + 2 Coke",
+      "description": "Feel the crunch with Burger Combos for 2: 2 Crispy Veggie Burger + Fries (L)+ 2 Coke",
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/20240913162602376876.png",
+      "is_customizable": true,
+      "isVeg": true,
+      "price": 746.0,
+      "items": [302, 302, 403, 605, 605]
+    },
+    {
+      "id": 104,
+      "categoryId": 1,
+      "name": "Crispy Veggie Burger + McAloo Tikki",
+      "description": "Feel the crunch with our newly launched Crispy Veggie Burger + McAloo Tikki",
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/20241205182515249890.png",
+      "is_customizable": true,
+      "isVeg": true,
+      "price": 275.0,
+      "items": [301, 302]
     }
   ]
   
