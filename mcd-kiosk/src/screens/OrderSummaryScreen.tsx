@@ -31,7 +31,7 @@ export default function OrderSummaryScreen() {
           <h2 className="text-2xl font-bold text-gray-800">Total: 
             <span className="text-gray-500"> ₹{totalPrice}</span>
           </h2>
-          <button className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-200">
+          <button className="bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-primaryYellow transition duration-200">
             Proceed to Payment
           </button>
         </div>
