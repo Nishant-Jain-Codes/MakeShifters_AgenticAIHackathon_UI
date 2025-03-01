@@ -1,26 +1,43 @@
 [
     {
-        "id": 401,
-        "extraPrice": 20,
-        "isVeg": true,
-        "categoryId": 1,
-        "imageUrl": "https://example.com/images/cheese_slice.png",
-        "name": "Extra Cheese"
+      "id": 3001,
+      "extraPrice": 82,
+      "isVeg": false,
+      "categoryId": 3,
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/20240914103917094671.png",
+      "name": "McCrispy Chicken Patty"
     },
     {
-        "id": 402,
-        "extraPrice": 15,
-        "isVeg": false,
-        "categoryId": 1,
-        "imageUrl": "/assets/placeholder-category-item.webp",
-        "name": "Bacon Strips"
+      "id": 3002,
+      "extraPrice": 10,
+      "isVeg": false,
+      "categoryId": 3,
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/150123143201-Add-Eatqual",
+      "name": "Add Eatqual"
     },
     {
-        "id": 403,
-        "extraPrice": 10,
-        "isVeg": true,
-        "categoryId": 2,
-        "imageUrl": "/assets/placeholder-category-item.webp",
-        "name": "Spicy Seasoning"
+      "id": 3003,
+      "extraPrice": 24,
+      "isVeg": true,
+      "categoryId": 3,
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/1710175853240984.png",
+      "name": "Cheese"
+    },
+    {
+      "id": 3004,
+      "extraPrice": 24,
+      "isVeg": true,
+      "categoryId": 3,
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/20240914104041805945.png",
+      "name": "Pepper Mayo"
+    },
+    {
+      "id": 3005,
+      "extraPrice": 10,
+      "isVeg": true,
+      "categoryId": 3,
+      "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/150123135805-Lettuce",
+      "name": "Lettuce"
     }
-]
+  ]
+  
