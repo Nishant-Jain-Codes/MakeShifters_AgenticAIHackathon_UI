@@ -1,9 +1,8 @@
-import { ChevronRight } from "lucide-react";
 import useMenuStore from "../store/useMenuStore"; // Import Zustand store
 import { moveToSpecificScreen } from "../utils/functions";
 
 const CartFooter = () => {
-  const { basket,currentScreen } = useMenuStore();
+  const { basket } = useMenuStore();
 
   // Safely access `price` and ensure it is a valid number
   const totalPrice: number = basket.reduce(
@@ -11,40 +10,11 @@ const CartFooter = () => {
     0
   );
 
-  return currentScreen === "OrderSummary" ? (
-    <footer
-    onClick={() => moveToSpecificScreen("Payment")}
-    className="w-full h-full border-t p-4 px-10 text-2xl bg-primaryYellow rounded-t-2xl shadow-xl flex gap-5 justify-between items-center"
-  >
-    <div className="flex gap-5 items-center">
-
-    <img src="/assets/cart-outline.svg" alt="" />
-    <span className="flex gap-4 font-medium">
-      <span className="font-bold">
-        {basket.length}
-        {basket.length > 1 ? " Items" : " Item"}
-      </span>
-      <span>{"|"}</span>
-    </span>
-    <span className=" font-medium">
-      <span className="font-bold">
-        {"₹"}
-        {totalPrice.toFixed(2)}
-      </span>
-    </span>
-    </div>
-
-    <p className="font-bold mr-10 flex gap-1 items-center">Proceed to Payment
-      <ChevronRight size={32} />
-    </p>
-  </footer>
-  ) : (
+  return (
     <footer
       onClick={() => moveToSpecificScreen("OrderSummary")}
-      className="w-full h-full border-t p-4 px-10 text-2xl bg-primaryYellow rounded-t-2xl shadow-xl flex gap-5 justify-between items-center"
+      className="w-full h-full border-t p-4 bg-primaryYellow rounded-t-2xl shadow-xl flex gap-5  items-center"
     >
-      <div className="flex gap-5 items-center">
-
       <img src="/assets/cart-outline.svg" alt="" />
       <span className="flex gap-4 font-medium">
         <span className="font-bold">
@@ -59,11 +29,6 @@ const CartFooter = () => {
           {totalPrice.toFixed(2)}
         </span>
       </span>
-      </div>
-
-      <p className="font-bold mr-10 flex gap-1 items-center">Go to Cart
-        <ChevronRight size={32} />
-      </p>
     </footer>
   );
 };

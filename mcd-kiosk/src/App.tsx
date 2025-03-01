@@ -16,6 +16,7 @@ import Avatar from "./components/Avatar";
 function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
   const currentScreen = useMenuStore((state) => state.currentScreen);
+  const basket = useMenuStore((state) => state.basket);
   useEffect(() => {
     loadMenuData();
   }, []);
@@ -39,10 +40,12 @@ function App() {
         {children}
       </div>
 
-      {/* Bottom Section - Static */}
-      <div className="h-[5.125vh] w-full bg-blue flex items-center justify-center">
-        <CartFooter />
-      </div>
+  {/* Bottom Section - Static */}
+  {basket.length > 0 && ( 
+    <div>
+          <CartFooter />
+        </div>
+      )}
     </div>
   );
 
