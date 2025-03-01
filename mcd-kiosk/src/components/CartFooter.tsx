@@ -1,4 +1,5 @@
 import useMenuStore from "../store/useMenuStore"; // Import Zustand store
+import { moveToSpecificScreen } from "../utils/functions";
 
 const CartFooter = () => {
   const { basket } = useMenuStore();
@@ -9,16 +10,20 @@ const CartFooter = () => {
     0
   );
 
-
   return (
-    <footer className="w-full h-full border-t p-4 bg-primaryYellow shadow-md flex gap-5  items-center">
+    <footer
+      onClick={() => moveToSpecificScreen("OrderSummary")}
+      className="w-full h-full border-t p-4 bg-primaryYellow shadow-md flex gap-5  items-center"
+    >
       <img src="/assets/cart-outline.svg" alt="" />
       <span className="flex gap-4 font-medium">
-       <span className="font-bold">{basket.length}{basket.length>1 ? " Items": " Item"}</span>
-       <span>{"|"}</span>
+        <span className="font-bold">
+          {basket.length}
+          {basket.length > 1 ? " Items" : " Item"}
+        </span>
+        <span>{"|"}</span>
       </span>
       <span className=" font-medium">
-       
         <span className="font-bold">
           {"₹"}
           {totalPrice.toFixed(2)}

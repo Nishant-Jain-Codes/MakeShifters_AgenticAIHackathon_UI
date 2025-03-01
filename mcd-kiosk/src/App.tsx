@@ -8,8 +8,10 @@ import OrderCompletionScreen from "./screens/OrderCompletionScreen";
 import "./App.css";
 import useMenuStore from "./store/useMenuStore";
 import Loader from "./components/Loader";
-import { loadMenuData } from "./utils/functions";
+import { loadMenuData, moveToPreviousScreen } from "./utils/functions";
 import CartFooter from "./components/CartFooter";
+import { ChevronLeft } from "lucide-react";
+import Avatar from "./components/Avatar";
 
 function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
@@ -20,8 +22,16 @@ function App() {
   const Layout = ({ children }: { children: React.ReactNode }) => (
     <div className="flex flex-col h-screen w-screen">
       {/* Top Section - Static */}
-      <div className="h-[27vh] w-full bg-red-50 flex items-center justify-center">
-        Top Section
+      <div className="relative h-[27vh] w-full bg-red-50 flex items-center border justify-center">
+        {/* Back Button - Positioned at the top-left */}
+        <button
+          onClick={moveToPreviousScreen}
+          className="absolute top-5 left-5 flex items-center gap-2 text-2xl text-yellow-500 hover:text-yellow-400"
+        >
+          <ChevronLeft size={31} />
+          Back
+        </button>
+        <Avatar />
       </div>
 
       {/* Middle Section - Scrollable */}

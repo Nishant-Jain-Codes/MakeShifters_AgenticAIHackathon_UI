@@ -112,4 +112,13 @@ export const moveToPreviousScreen = () => {
   setCurrentScreen(flow[currentIndex - 1]);
 };
 
+export const moveToSpecificScreen = (screenName: string) => {
+  const { setCurrentScreen } = useMenuStore.getState();
+  const currentIndex = flow.indexOf(screenName);
 
+  if (currentIndex === -1 || currentIndex === 0) {
+    return; // Do nothing if not found or at the first screen
+  }
+
+  setCurrentScreen(flow[currentIndex - 1]);
+};

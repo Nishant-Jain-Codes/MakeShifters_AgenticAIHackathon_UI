@@ -20,7 +20,9 @@ export default function MenuItemCard({
   const basketItem = basket.find((b) => b.id === item.id);
   const quantity = basketItem ? basketItem.qty : 0;
 
-  const imgSrc = item.imageUrl.replace("{format}", "png").replace("{size}", "128");
+  const imgSrc = item.imageUrl
+    .replace("{format}", "png")
+    .replace("{size}", "128");
 
   return (
     <motion.div
@@ -51,38 +53,56 @@ export default function MenuItemCard({
       <p className="mt-2 text-center font-semibold">{item.name}</p>
 
       {/* Price Display */}
-      <p className="text-center text-gray-700 mt-1 font-medium  text-xl" >
+      <p className="text-center text-gray-700 mt-1 font-medium  text-xl">
         <span className=" text-gray-500">
           {"₹"}
           {item.price}
         </span>
-       
       </p>
+      <div className="flex items-center mt-5 justify-center">
 
-      {/* Quantity Selector (Using Zustand) */}
-      <div className="flex items-center justify-center mt-3 space-x-3">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            removeItemFromBasket(item.id);
-          }}
-          className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 cursor-pointer"
-        >
-          <Minus size={16} />
-        </button>
 
-        <span className="text-lg font-semibold">{quantity}</span>
+      {quantity > 0 ? (
+        <div className="flex items-center gap-3 justify-center mt-3 space-x-3">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              removeItemFromBasket(item.id);
+            }}
+            className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 cursor-pointer"
+          >
+            <Minus size={20} />
+          </button>
 
+          <span className="text-lg font-semibold">{quantity}</span>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              addItemToBasket(item.id);
+            }}
+            className="bg-primaryYellow p-2 rounded-full hover:bg-yellow-400  cursor-pointer"
+          >
+            <Plus size={20} />
+          </button>
+        </div>
+      ) : (
         <button
           onClick={(e) => {
             e.stopPropagation();
             addItemToBasket(item.id);
           }}
-          className="bg-primaryYellow p-2 rounded-full hover:bg-yellow-400 cursor-pointer"
+          className="bg-primaryYellow py-2 px-4 rounded-lg hover:bg-yellow-400 cursor-pointer flex gap-2 items-center"
         >
-          <Plus size={16} />
+          Add
+          <span>
+            {" "}
+            <Plus size={20} />
+          </span>
         </button>
+      )}
       </div>
+
     </motion.div>
   );
 }

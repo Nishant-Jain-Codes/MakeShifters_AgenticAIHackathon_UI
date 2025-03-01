@@ -28,44 +28,57 @@ const ItemViewScreen = () => {
   }
 
   return (
-    <div className="border rounded-xl shadow-md p-4 flex gap-8 flex-col items-center bg-white h-full w-[80%] my-20 mx-auto">
-      <img
-        src={imgSrc}
-        alt={item.name}
-        className="w-full h-64 object-cover rounded-lg my-4"
-      />
-      <h2 className="text-lg font-bold">{item.name}</h2>
-      <p className="text-gray-700">{item.description}</p>
-      <p className="text-center text-gray-700 mt-1 font-medium  text-4xl">
-        <span className="text-gray-500">
-          {"₹"}
-          {item.price}
-        </span>
-      </p>
+    <div className="rounded-xl shadow-md p-4 flex gap-8 flex-col bg-white h-full  my-20 mx-auto">
+      <div className="flex flex-col items-center gap-8 justify-center">
+        <img
+          src={imgSrc}
+          alt={item.name}
+          className="w-64 h-64 border border-gray-100 object-cover rounded-xl my-4"
+        />
+        <h2 className="text-lg font-bold">{item.name}</h2>
+        <p className="text-gray-700">{item.description}</p>
+        <p className="text-center text-gray-700 mt-1 font-medium  text-4xl">
+          <span className="text-gray-500">
+            {"₹"}
+            {item.price}
+          </span>
+        </p>
 
-      {/* Quantity Selector (Using Zustand) */}
-      <div className="flex items-center gap-3 justify-center mt-3 space-x-3">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            removeItemFromBasket(item.id);
-          }}
-          className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 cursor-pointer"
-        >
-          <Minus size={20} />
-        </button>
+        {quantity > 0 ? (
+          <div className="flex items-center gap-3 justify-center mt-3 space-x-3">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                removeItemFromBasket(item.id);
+              }}
+              className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 cursor-pointer"
+            >
+              <Minus size={20} />
+            </button>
 
-        <span className="text-lg font-semibold">{quantity}</span>
+            <span className="text-lg font-semibold">{quantity}</span>
 
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            addItemToBasket(item.id);
-          }}
-          className="bg-primaryYellow p-2 rounded-full hover:bg-yellow-400 cursor-pointer"
-        >
-          <Plus size={20} />
-        </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                addItemToBasket(item.id);
+              }}
+              className="bg-primaryYellow p-2 rounded-full hover:bg-yellow-400 cursor-pointer"
+            >
+              <Plus size={20} />
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              addItemToBasket(item.id);
+            }}
+            className="bg-primaryYellow p-2 rounded-full hover:bg-yellow-400 cursor-pointer"
+          >
+            Add to Cart
+          </button>
+        )}
       </div>
     </div>
   );

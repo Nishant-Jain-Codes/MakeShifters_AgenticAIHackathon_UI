@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { create } from "zustand";
-import { CustomizationOption, ItemCategory ,MealItem,MenuItem } from "../types";
-interface BasketItem {
+import {
+  CustomizationOption,
+  ItemCategory,
+  MealItem,
+  MenuItem,
+} from "../types";
+export interface BasketItem {
   id: number;
   customizations?: string[];
   MenuItem: MenuItem;
@@ -71,7 +76,8 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   setMealItems: (meals: MealItem[]) => set({ mealList: meals }), // ✅ New setter for meal items
   setCustomizationOptions: (options: CustomizationOption[]) =>
     set({ customizationOptions: options }), // ✅ New setter for customization options
-  setItemCategories: (itemCategories: ItemCategory[]) => set({ itemCategories }),
+  setItemCategories: (itemCategories: ItemCategory[]) =>
+    set({ itemCategories }),
   setIsLoading: (loaded: boolean) => set({ isLoading: loaded }),
   setOrderId: (id: string) => set({ orderId: id }),
   setOrderType: (type) => set({ orderType: type }),
@@ -81,7 +87,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
     set((state) => {
       const menuItem = state.menuList.find((item) => item.id === itemId);
       if (!menuItem) return {}; // ✅ Don't modify state if menuItem is not found
-  
+
       const updatedBasket = state.basket.map((item) => {
         if (
           item.id === itemId &&
@@ -91,12 +97,19 @@ const useMenuStore = create<MenuStoreState>((set) => ({
         }
         return item;
       });
-  
+
       // If the item exists, return the updated basket
-      if (state.basket.some(item => item.id === itemId && JSON.stringify(item.customizations) === JSON.stringify(customizations))) {
+      if (
+        state.basket.some(
+          (item) =>
+            item.id === itemId &&
+            JSON.stringify(item.customizations) ===
+              JSON.stringify(customizations)
+        )
+      ) {
         return { basket: updatedBasket };
       }
-  
+
       // ✅ If item does not exist, add it once
       return {
         basket: [
@@ -111,38 +124,38 @@ const useMenuStore = create<MenuStoreState>((set) => ({
         ],
       };
     }),
-  
-  
 
-    removeItemFromBasket: (itemId, customizations) =>
-      set((state) => {
-        const existingItemIndex = state.basket.findIndex(
-          (item) =>
-            item.id === itemId &&
-            JSON.stringify(item.customizations) === JSON.stringify(customizations)
-        );
-    
-        if (existingItemIndex === -1) return state; // If item not found, return unchanged state
-    
-        const updatedBasket = [...state.basket];
-    
-        if (updatedBasket[existingItemIndex].qty > 1) {
-          updatedBasket[existingItemIndex].qty -= 1; // Reduce quantity by 1
-        } else {
-          updatedBasket.splice(existingItemIndex, 1); // Remove item if qty is 1
-        }
-    
-        return { basket: updatedBasket };
-      }),
-    
+  removeItemFromBasket: (itemId: number, customizations: string[] = []) =>
+    set((state) => {
+      debugger;
+      const existingItemIndex = state.basket.findIndex(
+        (item) =>
+          item.id === itemId &&
+          JSON.stringify(item.customizations) === JSON.stringify(customizations)
+      );
+
+      if (existingItemIndex === -1) return state; // If item not found, return unchanged state
+
+      const updatedBasket = [...state.basket];
+
+      if (updatedBasket[existingItemIndex].qty > 1) {
+        updatedBasket[existingItemIndex].qty -= 1; // Reduce quantity by 1
+      } else {
+        updatedBasket.splice(existingItemIndex, 1); // Remove item if qty is 1
+      }
+
+      return { basket: updatedBasket };
+    }),
 
   setCurrentSelectedItemType: (type) => set({ currentSelectedItemType: type }),
-  setCurrentSelectedItemSubType: (subType) => set({ currentSelectedItemSubType: subType }),
+  setCurrentSelectedItemSubType: (subType) =>
+    set({ currentSelectedItemSubType: subType }),
   setCurrentSelectedItem: (itemId) => set({ currentSelectedItem: itemId }),
   setCurrentScreen: (screen) => set({ currentScreen: screen }),
   setLanguage: (language) => set({ language }),
 
-  confirmOrder: () => console.log("✅ Order confirmed!", useMenuStore.getState()),
+  confirmOrder: () =>
+    console.log("✅ Order confirmed!", useMenuStore.getState()),
 
   resetOrder: () =>
     set({
