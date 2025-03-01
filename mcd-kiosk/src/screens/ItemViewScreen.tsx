@@ -10,6 +10,7 @@ const ItemViewScreen = () => {
     addItemToBasket,
     removeItemFromBasket,
     currentSelectedItem,
+    customizationOptions
   } = useMenuStore();
 
   const id = currentSelectedItem;
@@ -28,7 +29,7 @@ const ItemViewScreen = () => {
   }
 
   return (
-    <div className="rounded-xl p-4 flex gap-8 flex-col bg-white h-full w-[60%] my-20 mx-auto">
+    <div className="rounded-xl p-4 flex gap-8 flex-col bg-white h-full w-[70%] my-20 mx-auto">
       <div className="flex flex-col items-center gap-8 justify-center">
         <img
           src={imgSrc}
@@ -85,7 +86,31 @@ const ItemViewScreen = () => {
             </button>
           )}
         </div>
+
+
+       
+        
       </div>
+
+      <div>
+          <p className="text-2xl font-bold">Customizations</p>
+
+          {customizationOptions.map((option) => (
+            <div key={option.id} className="flex items-center gap-3 mt-4">
+              <img src={option.imageUrl} alt="" className="w-40 h-40" />
+              <div>
+                {option.name}
+                <p className="text-gray-500">₹{option.extraPrice}</p>
+              </div>
+
+
+              
+              
+            </div>
+          ))}
+
+
+        </div>
     </div>
   );
 };
