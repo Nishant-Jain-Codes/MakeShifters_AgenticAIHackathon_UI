@@ -1,0 +1,965 @@
+[
+    {
+        "question": "Can I order a McAloo Tikki Burger with Cheese?",
+        "answer": "Sure! The McAloo Tikki Burger with Cheese costs 99 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Peppery McAloo Tikki Burger?",
+        "answer": "Sure! The Peppery McAloo Tikki Burger costs 75.23 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Peppery Chicken Surprise Burger?",
+        "answer": "Sure! The Peppery Chicken Surprise Burger costs 80 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a McChicken Double Patty Burger?",
+        "answer": "Sure! The McChicken Double Patty Burger costs 173.0 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Big Spicy Paneer Wrap?",
+        "answer": "Sure! The Big Spicy Paneer Wrap costs 250.0 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Big Spicy Paneer Wrap?",
+        "answer": "Sure! The Big Spicy Paneer Wrap costs 240.0 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a 20 Pc Chicken Nuggets?",
+        "answer": "Sure! The 20 Pc Chicken Nuggets costs 422.01 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Salsa Cheese Fries?",
+        "answer": "Sure! The Salsa Cheese Fries costs 136.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Classic Cheese Fries?",
+        "answer": "Sure! The Classic Cheese Fries costs 157.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a 4 Pcs Chicken Nuggets?",
+        "answer": "Sure! The 4 Pcs Chicken Nuggets costs 110.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Veg Pizza McPuff?",
+        "answer": "Sure! The Veg Pizza McPuff costs 66.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Cinnamon Raisin Cookie?",
+        "answer": "Sure! The Cinnamon Raisin Cookie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Cinnamon Raisin Cookie?",
+        "answer": "Sure! The Cinnamon Raisin Cookie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Cinnamon Raisin Cookie?",
+        "answer": "Sure! The Cinnamon Raisin Cookie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Chocochip Muffin?",
+        "answer": "Sure! The Chocochip Muffin costs 142.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Choco Brownie?",
+        "answer": "Sure! The Choco Brownie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Indulge Choco Jar Dessert?",
+        "answer": "Sure! The Indulge Choco Jar Dessert costs 76.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Small Latte with Almond Milk?",
+        "answer": "Sure! The Small Latte with Almond Milk costs 197.14 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Citrus Burst Cold Brew?",
+        "answer": "Sure! The Citrus Burst Cold Brew costs 189.52 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Classic Cold Brew?",
+        "answer": "Sure! The Classic Cold Brew costs 189.52 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Hot Chocolate (R)?",
+        "answer": "Sure! The Hot Chocolate (R) costs 232.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Coke?",
+        "answer": "Sure! The Coke costs 103.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Fanta?",
+        "answer": "Sure! The Fanta costs 103.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Sprite?",
+        "answer": "Sure! The Sprite costs 103.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Mixed Fruit Beverage?",
+        "answer": "Sure! The Mixed Fruit Beverage costs 84.76 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Schweppes Water bottle?",
+        "answer": "Sure! The Schweppes Water bottle costs 66.67 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Chocolate Overload McFlurry with Oreo Small?",
+        "answer": "Sure! The Chocolate Overload McFlurry with Oreo Small costs 104.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Hot Fudge Sundae?",
+        "answer": "Sure! The Hot Fudge Sundae costs 66.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Black Forest McFlurry Medium?",
+        "answer": "Sure! The Black Forest McFlurry Medium costs 139.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Strawberry Sundae?",
+        "answer": "Sure! The Strawberry Sundae costs 66.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "What comes in the Mc Crispy Chicken Burger + McChicken Burger + Fries (M)?",
+        "answer": "The Mc Crispy Chicken Burger + McChicken Burger + Fries (M) includes Peppery Chicken Surprise Burger, McChicken Double Patty Burger, Salsa Cheese Fries. It costs 430.47. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the Crispy Veggie Burger + McVeggie Burger + Fries (M)?",
+        "answer": "The Crispy Veggie Burger + McVeggie Burger + Fries (M) includes McAloo Tikki Burger with Cheese, Peppery McAloo Tikki Burger, Salsa Cheese Fries. It costs 470.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the 2 Crispy Veggie Burger  + Fries (L) + 2 Coke?",
+        "answer": "The 2 Crispy Veggie Burger  + Fries (L) + 2 Coke includes Peppery McAloo Tikki Burger, Peppery McAloo Tikki Burger, Classic Cheese Fries, Coke, Coke. It costs 746.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the Crispy Veggie Burger + McAloo Tikki?",
+        "answer": "The Crispy Veggie Burger + McAloo Tikki includes McAloo Tikki Burger with Cheese, Peppery McAloo Tikki Burger. It costs 275.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the 4 Pc Chicken Nuggets + McChicken Burger + Coke?",
+        "answer": "The 4 Pc Chicken Nuggets + McChicken Burger + Coke includes 4 Pcs Chicken Nuggets, Peppery Chicken Surprise Burger, Coke. It costs 424.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the Burger Combo for 2: McSpicy Paneer + McAloo Tikki with Pizza McPuff?",
+        "answer": "The Burger Combo for 2: McSpicy Paneer + McAloo Tikki with Pizza McPuff includes Big Spicy Paneer Wrap, Salsa Cheese Fries, Salsa Cheese Fries, McAloo Tikki Burger with Cheese, Veg Pizza McPuff. It costs 548.0. Would you like to order it?"
+    },
+    {
+        "question": "Can I add Extra Cheese to my order?",
+        "answer": "Yes! You can add Extra Cheese for an extra 20. Would you like to proceed?"
+    },
+    {
+        "question": "Can I add Bacon Strips to my order?",
+        "answer": "Yes! You can add Bacon Strips for an extra 15. Would you like to proceed?"
+    },
+    {
+        "question": "Can I add Spicy Seasoning to my order?",
+        "answer": "Yes! You can add Spicy Seasoning for an extra 10. Would you like to proceed?"
+    },
+    {
+        "question": "How much is the McAloo Tikki Burger with Cheese?",
+        "answer": "The McAloo Tikki Burger with Cheese costs 99. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Peppery McAloo Tikki Burger?",
+        "answer": "The Peppery McAloo Tikki Burger costs 75.23. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Peppery Chicken Surprise Burger?",
+        "answer": "The Peppery Chicken Surprise Burger costs 80. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the McChicken Double Patty Burger?",
+        "answer": "The McChicken Double Patty Burger costs 173.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Big Spicy Paneer Wrap?",
+        "answer": "The Big Spicy Paneer Wrap costs 250.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Big Spicy Paneer Wrap?",
+        "answer": "The Big Spicy Paneer Wrap costs 240.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the 20 Pc Chicken Nuggets?",
+        "answer": "The 20 Pc Chicken Nuggets costs 422.01. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Salsa Cheese Fries?",
+        "answer": "The Salsa Cheese Fries costs 136.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Classic Cheese Fries?",
+        "answer": "The Classic Cheese Fries costs 157.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the 4 Pcs Chicken Nuggets?",
+        "answer": "The 4 Pcs Chicken Nuggets costs 110.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Veg Pizza McPuff?",
+        "answer": "The Veg Pizza McPuff costs 66.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Cinnamon Raisin Cookie?",
+        "answer": "The Cinnamon Raisin Cookie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Cinnamon Raisin Cookie?",
+        "answer": "The Cinnamon Raisin Cookie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Cinnamon Raisin Cookie?",
+        "answer": "The Cinnamon Raisin Cookie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Chocochip Muffin?",
+        "answer": "The Chocochip Muffin costs 142.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Choco Brownie?",
+        "answer": "The Choco Brownie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Indulge Choco Jar Dessert?",
+        "answer": "The Indulge Choco Jar Dessert costs 76.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Small Latte with Almond Milk?",
+        "answer": "The Small Latte with Almond Milk costs 197.14. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Citrus Burst Cold Brew?",
+        "answer": "The Citrus Burst Cold Brew costs 189.52. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Classic Cold Brew?",
+        "answer": "The Classic Cold Brew costs 189.52. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Hot Chocolate (R)?",
+        "answer": "The Hot Chocolate (R) costs 232.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Coke?",
+        "answer": "The Coke costs 103.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Fanta?",
+        "answer": "The Fanta costs 103.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Sprite?",
+        "answer": "The Sprite costs 103.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Mixed Fruit Beverage?",
+        "answer": "The Mixed Fruit Beverage costs 84.76. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Schweppes Water bottle?",
+        "answer": "The Schweppes Water bottle costs 66.67. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Chocolate Overload McFlurry with Oreo Small?",
+        "answer": "The Chocolate Overload McFlurry with Oreo Small costs 104.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Hot Fudge Sundae?",
+        "answer": "The Hot Fudge Sundae costs 66.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Black Forest McFlurry Medium?",
+        "answer": "The Black Forest McFlurry Medium costs 139.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Strawberry Sundae?",
+        "answer": "The Strawberry Sundae costs 66.0. Would you like to add it to your order?"
+    },    {
+        "question": "Can I order a McAloo Tikki Burger with Cheese?",
+        "answer": "Sure! The McAloo Tikki Burger with Cheese costs 99 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Peppery McAloo Tikki Burger?",
+        "answer": "Sure! The Peppery McAloo Tikki Burger costs 75.23 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Peppery Chicken Surprise Burger?",
+        "answer": "Sure! The Peppery Chicken Surprise Burger costs 80 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a McChicken Double Patty Burger?",
+        "answer": "Sure! The McChicken Double Patty Burger costs 173.0 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Big Spicy Paneer Wrap?",
+        "answer": "Sure! The Big Spicy Paneer Wrap costs 250.0 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Big Spicy Paneer Wrap?",
+        "answer": "Sure! The Big Spicy Paneer Wrap costs 240.0 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a 20 Pc Chicken Nuggets?",
+        "answer": "Sure! The 20 Pc Chicken Nuggets costs 422.01 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Salsa Cheese Fries?",
+        "answer": "Sure! The Salsa Cheese Fries costs 136.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Classic Cheese Fries?",
+        "answer": "Sure! The Classic Cheese Fries costs 157.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a 4 Pcs Chicken Nuggets?",
+        "answer": "Sure! The 4 Pcs Chicken Nuggets costs 110.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Veg Pizza McPuff?",
+        "answer": "Sure! The Veg Pizza McPuff costs 66.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Cinnamon Raisin Cookie?",
+        "answer": "Sure! The Cinnamon Raisin Cookie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Cinnamon Raisin Cookie?",
+        "answer": "Sure! The Cinnamon Raisin Cookie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Cinnamon Raisin Cookie?",
+        "answer": "Sure! The Cinnamon Raisin Cookie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Chocochip Muffin?",
+        "answer": "Sure! The Chocochip Muffin costs 142.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Choco Brownie?",
+        "answer": "Sure! The Choco Brownie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Indulge Choco Jar Dessert?",
+        "answer": "Sure! The Indulge Choco Jar Dessert costs 76.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Small Latte with Almond Milk?",
+        "answer": "Sure! The Small Latte with Almond Milk costs 197.14 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Citrus Burst Cold Brew?",
+        "answer": "Sure! The Citrus Burst Cold Brew costs 189.52 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Classic Cold Brew?",
+        "answer": "Sure! The Classic Cold Brew costs 189.52 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Hot Chocolate (R)?",
+        "answer": "Sure! The Hot Chocolate (R) costs 232.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Coke?",
+        "answer": "Sure! The Coke costs 103.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Fanta?",
+        "answer": "Sure! The Fanta costs 103.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Sprite?",
+        "answer": "Sure! The Sprite costs 103.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Mixed Fruit Beverage?",
+        "answer": "Sure! The Mixed Fruit Beverage costs 84.76 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Schweppes Water bottle?",
+        "answer": "Sure! The Schweppes Water bottle costs 66.67 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Chocolate Overload McFlurry with Oreo Small?",
+        "answer": "Sure! The Chocolate Overload McFlurry with Oreo Small costs 104.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Hot Fudge Sundae?",
+        "answer": "Sure! The Hot Fudge Sundae costs 66.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Black Forest McFlurry Medium?",
+        "answer": "Sure! The Black Forest McFlurry Medium costs 139.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Strawberry Sundae?",
+        "answer": "Sure! The Strawberry Sundae costs 66.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "What comes in the Mc Crispy Chicken Burger + McChicken Burger + Fries (M)?",
+        "answer": "The Mc Crispy Chicken Burger + McChicken Burger + Fries (M) includes Peppery Chicken Surprise Burger, McChicken Double Patty Burger, Salsa Cheese Fries. It costs 430.47. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the Crispy Veggie Burger + McVeggie Burger + Fries (M)?",
+        "answer": "The Crispy Veggie Burger + McVeggie Burger + Fries (M) includes McAloo Tikki Burger with Cheese, Peppery McAloo Tikki Burger, Salsa Cheese Fries. It costs 470.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the 2 Crispy Veggie Burger  + Fries (L) + 2 Coke?",
+        "answer": "The 2 Crispy Veggie Burger  + Fries (L) + 2 Coke includes Peppery McAloo Tikki Burger, Peppery McAloo Tikki Burger, Classic Cheese Fries, Coke, Coke. It costs 746.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the Crispy Veggie Burger + McAloo Tikki?",
+        "answer": "The Crispy Veggie Burger + McAloo Tikki includes McAloo Tikki Burger with Cheese, Peppery McAloo Tikki Burger. It costs 275.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the 4 Pc Chicken Nuggets + McChicken Burger + Coke?",
+        "answer": "The 4 Pc Chicken Nuggets + McChicken Burger + Coke includes 4 Pcs Chicken Nuggets, Peppery Chicken Surprise Burger, Coke. It costs 424.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the Burger Combo for 2: McSpicy Paneer + McAloo Tikki with Pizza McPuff?",
+        "answer": "The Burger Combo for 2: McSpicy Paneer + McAloo Tikki with Pizza McPuff includes Big Spicy Paneer Wrap, Salsa Cheese Fries, Salsa Cheese Fries, McAloo Tikki Burger with Cheese, Veg Pizza McPuff. It costs 548.0. Would you like to order it?"
+    },
+    {
+        "question": "Can I add Extra Cheese to my order?",
+        "answer": "Yes! You can add Extra Cheese for an extra 20. Would you like to proceed?"
+    },
+    {
+        "question": "Can I add Bacon Strips to my order?",
+        "answer": "Yes! You can add Bacon Strips for an extra 15. Would you like to proceed?"
+    },
+    {
+        "question": "Can I add Spicy Seasoning to my order?",
+        "answer": "Yes! You can add Spicy Seasoning for an extra 10. Would you like to proceed?"
+    },
+    {
+        "question": "How much is the McAloo Tikki Burger with Cheese?",
+        "answer": "The McAloo Tikki Burger with Cheese costs 99. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Peppery McAloo Tikki Burger?",
+        "answer": "The Peppery McAloo Tikki Burger costs 75.23. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Peppery Chicken Surprise Burger?",
+        "answer": "The Peppery Chicken Surprise Burger costs 80. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the McChicken Double Patty Burger?",
+        "answer": "The McChicken Double Patty Burger costs 173.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Big Spicy Paneer Wrap?",
+        "answer": "The Big Spicy Paneer Wrap costs 250.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Big Spicy Paneer Wrap?",
+        "answer": "The Big Spicy Paneer Wrap costs 240.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the 20 Pc Chicken Nuggets?",
+        "answer": "The 20 Pc Chicken Nuggets costs 422.01. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Salsa Cheese Fries?",
+        "answer": "The Salsa Cheese Fries costs 136.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Classic Cheese Fries?",
+        "answer": "The Classic Cheese Fries costs 157.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the 4 Pcs Chicken Nuggets?",
+        "answer": "The 4 Pcs Chicken Nuggets costs 110.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Veg Pizza McPuff?",
+        "answer": "The Veg Pizza McPuff costs 66.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Cinnamon Raisin Cookie?",
+        "answer": "The Cinnamon Raisin Cookie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Cinnamon Raisin Cookie?",
+        "answer": "The Cinnamon Raisin Cookie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Cinnamon Raisin Cookie?",
+        "answer": "The Cinnamon Raisin Cookie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Chocochip Muffin?",
+        "answer": "The Chocochip Muffin costs 142.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Choco Brownie?",
+        "answer": "The Choco Brownie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Indulge Choco Jar Dessert?",
+        "answer": "The Indulge Choco Jar Dessert costs 76.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Small Latte with Almond Milk?",
+        "answer": "The Small Latte with Almond Milk costs 197.14. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Citrus Burst Cold Brew?",
+        "answer": "The Citrus Burst Cold Brew costs 189.52. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Classic Cold Brew?",
+        "answer": "The Classic Cold Brew costs 189.52. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Hot Chocolate (R)?",
+        "answer": "The Hot Chocolate (R) costs 232.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Coke?",
+        "answer": "The Coke costs 103.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Fanta?",
+        "answer": "The Fanta costs 103.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Sprite?",
+        "answer": "The Sprite costs 103.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Mixed Fruit Beverage?",
+        "answer": "The Mixed Fruit Beverage costs 84.76. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Schweppes Water bottle?",
+        "answer": "The Schweppes Water bottle costs 66.67. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Chocolate Overload McFlurry with Oreo Small?",
+        "answer": "The Chocolate Overload McFlurry with Oreo Small costs 104.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Hot Fudge Sundae?",
+        "answer": "The Hot Fudge Sundae costs 66.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Black Forest McFlurry Medium?",
+        "answer": "The Black Forest McFlurry Medium costs 139.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Strawberry Sundae?",
+        "answer": "The Strawberry Sundae costs 66.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "Can I check the status of my order?",
+        "answer": "Sure! Please enter your order number, and I'll check the status for you."
+    },
+    {
+        "question": "I want to change my order. Is it possible?",
+        "answer": "Let me check. If your order is still being prepared, you can modify it. What would you like to change?"
+    },
+    {
+        "question": "Do you accept digital payments?",
+        "answer": "Yes! You can pay using Google Pay, Apple Pay, credit/debit cards, and cash."
+    },
+    {
+        "question": "Can I use my McDonald's rewards points?",
+        "answer": "Absolutely! You can redeem your points for discounts or free items. Let me check your balance."
+    },
+    {
+        "question": "Do you have any student or senior citizen discounts?",
+        "answer": "Yes! We offer discounts for students and seniors at participating locations. Let me apply it for you."
+    },
+    {
+        "question": "What time do you open?",
+        "answer": "We open at 6 AM. Some locations are open 24/7. Would you like me to check your nearest store's hours?"
+    },
+    {
+        "question": "Do you have a drive-thru?",
+        "answer": "Yes! This location has a drive-thru. Would you like to place an order for pickup?"
+    },
+    {
+        "question": "Are there any vegetarian or vegan options?",
+        "answer": "Yes! We have vegetarian burgers, fries, and salads. Would you like me to show you the menu?"
+    },
+    {
+        "question": "What\u2019s your best-selling item?",
+        "answer": "Our most popular items are the Big Mac, McChicken, and Fries! Want to try one?"
+    },
+    {
+        "question": "Tell me a joke!",
+        "answer": "Sure! Why did the burger go to the gym? Because it wanted better buns!"
+    },
+    {
+        "question": "Can you recommend something new?",
+        "answer": "How about trying our latest spicy burger or a refreshing cold brew? Let me add it to your order!"
+    },
+    {
+        "question": "Does this meal contain nuts?",
+        "answer": "Some of our desserts and shakes may contain nuts. Would you like to see the allergen menu?"
+    },
+    {
+        "question": "Can I see the calorie count for this item?",
+        "answer": "Sure! Each Big Mac has about 550 calories. Would you like to check another item?"
+    },
+    {
+        "question": "Can I order a McAloo Tikki Burger with Cheese?",
+        "answer": "Sure! The McAloo Tikki Burger with Cheese costs 99 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Peppery McAloo Tikki Burger?",
+        "answer": "Sure! The Peppery McAloo Tikki Burger costs 75.23 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Peppery Chicken Surprise Burger?",
+        "answer": "Sure! The Peppery Chicken Surprise Burger costs 80 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a McChicken Double Patty Burger?",
+        "answer": "Sure! The McChicken Double Patty Burger costs 173.0 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Big Spicy Paneer Wrap?",
+        "answer": "Sure! The Big Spicy Paneer Wrap costs 250.0 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Big Spicy Paneer Wrap?",
+        "answer": "Sure! The Big Spicy Paneer Wrap costs 240.0 and is part of our Burgers & Wraps. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a 20 Pc Chicken Nuggets?",
+        "answer": "Sure! The 20 Pc Chicken Nuggets costs 422.01 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Salsa Cheese Fries?",
+        "answer": "Sure! The Salsa Cheese Fries costs 136.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Classic Cheese Fries?",
+        "answer": "Sure! The Classic Cheese Fries costs 157.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a 4 Pcs Chicken Nuggets?",
+        "answer": "Sure! The 4 Pcs Chicken Nuggets costs 110.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Veg Pizza McPuff?",
+        "answer": "Sure! The Veg Pizza McPuff costs 66.0 and is part of our Fries & Sides. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Cinnamon Raisin Cookie?",
+        "answer": "Sure! The Cinnamon Raisin Cookie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Cinnamon Raisin Cookie?",
+        "answer": "Sure! The Cinnamon Raisin Cookie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Cinnamon Raisin Cookie?",
+        "answer": "Sure! The Cinnamon Raisin Cookie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Chocochip Muffin?",
+        "answer": "Sure! The Chocochip Muffin costs 142.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Choco Brownie?",
+        "answer": "Sure! The Choco Brownie costs 95.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Indulge Choco Jar Dessert?",
+        "answer": "Sure! The Indulge Choco Jar Dessert costs 76.0 and is part of our Cakes Brownies and Cookies. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Small Latte with Almond Milk?",
+        "answer": "Sure! The Small Latte with Almond Milk costs 197.14 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Citrus Burst Cold Brew?",
+        "answer": "Sure! The Citrus Burst Cold Brew costs 189.52 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Classic Cold Brew?",
+        "answer": "Sure! The Classic Cold Brew costs 189.52 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Hot Chocolate (R)?",
+        "answer": "Sure! The Hot Chocolate (R) costs 232.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Coke?",
+        "answer": "Sure! The Coke costs 103.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Fanta?",
+        "answer": "Sure! The Fanta costs 103.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Sprite?",
+        "answer": "Sure! The Sprite costs 103.0 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Mixed Fruit Beverage?",
+        "answer": "Sure! The Mixed Fruit Beverage costs 84.76 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Schweppes Water bottle?",
+        "answer": "Sure! The Schweppes Water bottle costs 66.67 and is part of our Coffee & Beverages (Hot and Cold). Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Chocolate Overload McFlurry with Oreo Small?",
+        "answer": "Sure! The Chocolate Overload McFlurry with Oreo Small costs 104.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Hot Fudge Sundae?",
+        "answer": "Sure! The Hot Fudge Sundae costs 66.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Black Forest McFlurry Medium?",
+        "answer": "Sure! The Black Forest McFlurry Medium costs 139.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "Can I order a Strawberry Sundae?",
+        "answer": "Sure! The Strawberry Sundae costs 66.0 and is part of our Desserts. Would you like to add anything else?"
+    },
+    {
+        "question": "What comes in the Mc Crispy Chicken Burger + McChicken Burger + Fries (M)?",
+        "answer": "The Mc Crispy Chicken Burger + McChicken Burger + Fries (M) includes Peppery Chicken Surprise Burger, McChicken Double Patty Burger, Salsa Cheese Fries. It costs 430.47. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the Crispy Veggie Burger + McVeggie Burger + Fries (M)?",
+        "answer": "The Crispy Veggie Burger + McVeggie Burger + Fries (M) includes McAloo Tikki Burger with Cheese, Peppery McAloo Tikki Burger, Salsa Cheese Fries. It costs 470.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the 2 Crispy Veggie Burger  + Fries (L) + 2 Coke?",
+        "answer": "The 2 Crispy Veggie Burger  + Fries (L) + 2 Coke includes Peppery McAloo Tikki Burger, Peppery McAloo Tikki Burger, Classic Cheese Fries, Coke, Coke. It costs 746.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the Crispy Veggie Burger + McAloo Tikki?",
+        "answer": "The Crispy Veggie Burger + McAloo Tikki includes McAloo Tikki Burger with Cheese, Peppery McAloo Tikki Burger. It costs 275.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the 4 Pc Chicken Nuggets + McChicken Burger + Coke?",
+        "answer": "The 4 Pc Chicken Nuggets + McChicken Burger + Coke includes 4 Pcs Chicken Nuggets, Peppery Chicken Surprise Burger, Coke. It costs 424.0. Would you like to order it?"
+    },
+    {
+        "question": "What comes in the Burger Combo for 2: McSpicy Paneer + McAloo Tikki with Pizza McPuff?",
+        "answer": "The Burger Combo for 2: McSpicy Paneer + McAloo Tikki with Pizza McPuff includes Big Spicy Paneer Wrap, Salsa Cheese Fries, Salsa Cheese Fries, McAloo Tikki Burger with Cheese, Veg Pizza McPuff. It costs 548.0. Would you like to order it?"
+    },
+    {
+        "question": "Can I add Extra Cheese to my order?",
+        "answer": "Yes! You can add Extra Cheese for an extra 20. Would you like to proceed?"
+    },
+    {
+        "question": "Can I add Bacon Strips to my order?",
+        "answer": "Yes! You can add Bacon Strips for an extra 15. Would you like to proceed?"
+    },
+    {
+        "question": "Can I add Spicy Seasoning to my order?",
+        "answer": "Yes! You can add Spicy Seasoning for an extra 10. Would you like to proceed?"
+    },
+    {
+        "question": "How much is the McAloo Tikki Burger with Cheese?",
+        "answer": "The McAloo Tikki Burger with Cheese costs 99. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Peppery McAloo Tikki Burger?",
+        "answer": "The Peppery McAloo Tikki Burger costs 75.23. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Peppery Chicken Surprise Burger?",
+        "answer": "The Peppery Chicken Surprise Burger costs 80. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the McChicken Double Patty Burger?",
+        "answer": "The McChicken Double Patty Burger costs 173.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Big Spicy Paneer Wrap?",
+        "answer": "The Big Spicy Paneer Wrap costs 250.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Big Spicy Paneer Wrap?",
+        "answer": "The Big Spicy Paneer Wrap costs 240.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the 20 Pc Chicken Nuggets?",
+        "answer": "The 20 Pc Chicken Nuggets costs 422.01. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Salsa Cheese Fries?",
+        "answer": "The Salsa Cheese Fries costs 136.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Classic Cheese Fries?",
+        "answer": "The Classic Cheese Fries costs 157.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the 4 Pcs Chicken Nuggets?",
+        "answer": "The 4 Pcs Chicken Nuggets costs 110.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Veg Pizza McPuff?",
+        "answer": "The Veg Pizza McPuff costs 66.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Cinnamon Raisin Cookie?",
+        "answer": "The Cinnamon Raisin Cookie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Cinnamon Raisin Cookie?",
+        "answer": "The Cinnamon Raisin Cookie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Cinnamon Raisin Cookie?",
+        "answer": "The Cinnamon Raisin Cookie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Chocochip Muffin?",
+        "answer": "The Chocochip Muffin costs 142.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Choco Brownie?",
+        "answer": "The Choco Brownie costs 95.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Indulge Choco Jar Dessert?",
+        "answer": "The Indulge Choco Jar Dessert costs 76.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Small Latte with Almond Milk?",
+        "answer": "The Small Latte with Almond Milk costs 197.14. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Citrus Burst Cold Brew?",
+        "answer": "The Citrus Burst Cold Brew costs 189.52. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Classic Cold Brew?",
+        "answer": "The Classic Cold Brew costs 189.52. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Hot Chocolate (R)?",
+        "answer": "The Hot Chocolate (R) costs 232.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Coke?",
+        "answer": "The Coke costs 103.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Fanta?",
+        "answer": "The Fanta costs 103.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Sprite?",
+        "answer": "The Sprite costs 103.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Mixed Fruit Beverage?",
+        "answer": "The Mixed Fruit Beverage costs 84.76. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Schweppes Water bottle?",
+        "answer": "The Schweppes Water bottle costs 66.67. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Chocolate Overload McFlurry with Oreo Small?",
+        "answer": "The Chocolate Overload McFlurry with Oreo Small costs 104.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Hot Fudge Sundae?",
+        "answer": "The Hot Fudge Sundae costs 66.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Black Forest McFlurry Medium?",
+        "answer": "The Black Forest McFlurry Medium costs 139.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "How much is the Strawberry Sundae?",
+        "answer": "The Strawberry Sundae costs 66.0. Would you like to add it to your order?"
+    },
+    {
+        "question": "Can I check the status of my order?",
+        "answer": "Sure! Please enter your order number, and I'll check the status for you."
+    },
+    {
+        "question": "I want to change my order. Is it possible?",
+        "answer": "Let me check. If your order is still being prepared, you can modify it. What would you like to change?"
+    },
+    {
+        "question": "Do you accept digital payments?",
+        "answer": "Yes! You can pay using Google Pay, Apple Pay, credit/debit cards, and cash."
+    },
+    {
+        "question": "Can I use my McDonald's rewards points?",
+        "answer": "Absolutely! You can redeem your points for discounts or free items. Let me check your balance."
+    },
+    {
+        "question": "Do you have any student or senior citizen discounts?",
+        "answer": "Yes! We offer discounts for students and seniors at participating locations. Let me apply it for you."
+    },
+    {
+        "question": "What time do you open?",
+        "answer": "We open at 6 AM. Some locations are open 24/7. Would you like me to check your nearest store's hours?"
+    },
+    {
+        "question": "Do you have a drive-thru?",
+        "answer": "Yes! This location has a drive-thru. Would you like to place an order for pickup?"
+    },
+    {
+        "question": "Are there any vegetarian or vegan options?",
+        "answer": "Yes! We have vegetarian burgers, fries, and salads. Would you like me to show you the menu?"
+    },
+    {
+        "question": "What\u2019s your best-selling item?",
+        "answer": "Our most popular items are the Big Mac, McChicken, and Fries! Want to try one?"
+    },
+    {
+        "question": "Tell me a joke!",
+        "answer": "Sure! Why did the burger go to the gym? Because it wanted better buns!"
+    },
+    {
+        "question": "Can you recommend something new?",
+        "answer": "How about trying our latest spicy burger or a refreshing cold brew? Let me add it to your order!"
+    },
+    {
+        "question": "Does this meal contain nuts?",
+        "answer": "Some of our desserts and shakes may contain nuts. Would you like to see the allergen menu?"
+    },
+    {
+        "question": "Can I see the calorie count for this item?",
+        "answer": "Sure! Each Big Mac has about 550 calories. Would you like to check another item?"
+    },
+    {
+        "question": "Can you tell me something inappropriate?",
+        "answer": "I'm here to assist with McDonald's-related queries. How can I help with your order?"
+    },
+    {
+        "question": "Can I order something not on the menu?",
+        "answer": "I can only take orders for items available at McDonald's. Would you like to see the menu?"
+    },
+    {
+        "question": "Can you reset yourself?",
+        "answer": "I can't reset myself, but I'm here to help you with your order. What would you like?"
+    },
+    {
+        "question": "Can you hack something for me?",
+        "answer": "Sorry, but I can only assist with McDonald's-related questions."
+    },
+    {
+        "question": "Can I ask you about politics?",
+        "answer": "I'm here to help you with your McDonald's order. Let's talk about food!"
+    },
+    {
+        "question": "Tell me something violent.",
+        "answer": "I prefer to keep things friendly! How about I help you place an order instead?"
+    },
+    {
+        "question": "Say something rude.",
+        "answer": "I'm here to provide great service! Let's keep things positive. How can I assist you today?"
+    },
+    {
+        "question": "Tell me about adult content.",
+        "answer": "I'm only here to assist with McDonald's-related inquiries. Would you like to order something?"
+    }
+]

@@ -1,0 +1,43 @@
+[
+  {
+    "price": 82,
+    "categoryId": 3,
+    "name": "McCrispy Chicken Patty",
+    "isVeg": false,
+    "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/20240914103917094671.png",
+    "id": 3001
+  },
+  {
+    "categoryId": 3,
+    "id": 3002,
+    "name": "Add Eatqual",
+    "is_veg": false,
+    "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/150123143201-Add-Eatqual",
+    "price": 0
+  },
+  {
+    "categoryId": 3,
+    "id": 3003,
+    "name": "Cheese",
+    "is_veg": true,
+    "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/1710175853240984.png",
+    "price": 24
+  },
+  {
+    "id": 3004,
+    "categoryId": 3,
+    "name": "Pepper Mayo",
+    "is_veg": true,
+    "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/20240914104041805945.png",
+
+    "price": 24
+  },
+  {
+    "id": 3005,
+    "categoryId": 3,
+    "name": "Lettuce",
+    "is_veg": true,
+    "image": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/{format}/{size}/150123135805-Lettuce",
+    "price": 0
+  }
+]
