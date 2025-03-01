@@ -17,6 +17,7 @@ import { Toaster } from "react-hot-toast";
 function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
   const currentScreen = useMenuStore((state) => state.currentScreen);
+  const basket = useMenuStore((state) => state.basket);
   useEffect(() => {
     loadMenuData();
   }, []);
@@ -29,8 +30,11 @@ function App() {
           onClick={moveToPreviousScreen}
           className="absolute top-5 left-5 flex items-center gap-2 text-2xl text-yellow-500 hover:text-yellow-400"
         >
-          <ChevronLeft size={31} />
-          Back
+{currentScreen !== "OrderTypeSelection" && (
+  <>
+    <ChevronLeft size={31} /> Back
+  </>
+)}
         </button>
         <Avatar />
       </div>
@@ -40,13 +44,13 @@ function App() {
         {children}
       </div>
 
-      {/* Bottom Section - Static */}
-      <div className="h-[5.125vh] w-full bg-blue flex items-center justify-center">
-        <CartFooter />
-      </div>
-
-      <Toaster />
-    </div>
+  {/* Bottom Section - Static */}
+  {basket.length > 0 && currentScreen !== "OrderTypeSelection" && (
+  <div>
+    <CartFooter />
+  </div>
+)}
+</div>
   );
 
   const renderScreen = () => {
