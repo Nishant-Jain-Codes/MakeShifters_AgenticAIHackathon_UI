@@ -1,20 +1,24 @@
 import { CreditCard, QrCode, Wallet } from "lucide-react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import useMenuStore from "../store/useMenuStore";
+import { moveToNextScreen } from "../utils/functions";
 
 export default function PaymentScreen() {
-  
-  
+  const { basket } = useMenuStore();
+
+  const totalPrice = basket.reduce(
+    (total, item) => total + item.price * item.qty,
+    0
+  );
 
   const checkoutHandler = async () => {
-   
-
     try {
       const key = import.meta.env.VITE_RAZORPAY_API_KEY;
       // create order
       const { data: payment } = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/payment/checkout`,
-        { amount: 152 },
+        { amount: totalPrice },
         { withCredentials: true }
       );
 
@@ -24,8 +28,7 @@ export default function PaymentScreen() {
         currency: "INR",
         name: "McDonald's",
         description: "Payment using RazorPay",
-        image:
-          "/assets/mcd-logo-filled.svg",
+        image: "/assets/mcd-logo-filled.svg",
         order_id: payment.order.id,
         callback_url: `${
           import.meta.env.VITE_BACKEND_URL
@@ -36,10 +39,11 @@ export default function PaymentScreen() {
         theme: {
           color: "#1e3a8a",
         },
-        handler:  () => {
+        handler: () => {
           toast.success("Payment successful!");
-        }
-      }
+          moveToNextScreen();
+        },
+      };
 
       const razorpay = new (window as any).Razorpay(options);
 

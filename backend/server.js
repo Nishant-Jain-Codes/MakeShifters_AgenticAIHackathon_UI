@@ -1,5 +1,4 @@
 import express from "express";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import orderRoute from "./routes/order.route.js";
@@ -33,14 +32,6 @@ app.use(
   })
 );
 
-// const connect = async () => {
-//   try {
-//     await mongoose.connect(`${process.env.MONGODB_URI}`);
-//     console.log("Connected to MongoDB");
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 app.use("/api/orders", orderRoute);
 app.use("/payment", paymentRoute);
