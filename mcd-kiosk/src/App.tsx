@@ -34,8 +34,6 @@ function App() {
     <ChevronLeft size={31} /> Back
   </>
 )}
-
-
         </button>
         <Avatar />
       </div>
@@ -46,12 +44,12 @@ function App() {
       </div>
 
   {/* Bottom Section - Static */}
-  {basket.length > 0 && ( 
-    <div>
-          <CartFooter />
-        </div>
-      )}
-    </div>
+  {basket.length > 0 && currentScreen !== "OrderTypeSelection" && (
+  <div>
+    <CartFooter />
+  </div>
+)}
+</div>
   );
 
   const renderScreen = () => {
