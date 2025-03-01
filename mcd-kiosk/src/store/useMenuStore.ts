@@ -29,9 +29,12 @@ export interface MenuStoreState {
   currentSelectedItemSubType: number | null;
   currentSelectedItem: number | null;
   currentScreen: string;
+  screenStack: string[];
   language: string;
   menu: string[];
   customerAgeClass: CustomerAgeClass | null;
+
+ 
 
   // Actions
   setMenu: (menu: MenuItem[]) => void;
@@ -48,6 +51,7 @@ export interface MenuStoreState {
   setCurrentSelectedItemSubType: (subType: number) => void;
   setCurrentSelectedItem: (itemId: number) => void;
   setCurrentScreen: (screen: string) => void;
+  setScreenStack: (stack: string[]) => void;
   setLanguage: (language: string) => void;
   confirmOrder: () => void;
   resetOrder: () => void;
@@ -67,6 +71,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   currentSelectedItemSubType: null,
   currentSelectedItem: null,
   currentScreen: "OrderTypeSelection",
+  screenStack: [],
   language: "English",
   menu: [],
   customerAgeClass: null,
@@ -151,6 +156,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
     set({ currentSelectedItemSubType: subType }),
   setCurrentSelectedItem: (itemId) => set({ currentSelectedItem: itemId }),
   setCurrentScreen: (screen) => set({ currentScreen: screen }),
+  setScreenStack: (stack) => set({ screenStack: stack }),
   setLanguage: (language) => set({ language }),
 
   confirmOrder: () =>

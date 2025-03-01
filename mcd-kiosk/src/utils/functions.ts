@@ -81,6 +81,7 @@ export const loadMenuData = async () => {
     setIsLoading(false);
   }
 };
+
 const flow = [
   "OrderTypeSelection",
   "Menu",
@@ -91,34 +92,34 @@ const flow = [
 ];
 
 export const moveToNextScreen = () => {
-  const { currentScreen, setCurrentScreen } = useMenuStore.getState();
+  const { currentScreen, setCurrentScreen, screenStack, setScreenStack } =
+    useMenuStore.getState();
   const currentIndex = flow.indexOf(currentScreen);
 
-  if (currentIndex === -1 || currentIndex === flow.length - 1) {
-    return; // Do nothing if not found or at the last screen
-  }
+  if (currentIndex === -1 || currentIndex === flow.length - 1) return; // Do nothing if at the last screen
 
-  setCurrentScreen(flow[currentIndex + 1]);
+  const nextScreen = flow[currentIndex + 1];
+
+  setScreenStack([...screenStack, currentScreen]); // Push current screen to stack
+  setCurrentScreen(nextScreen);
 };
 
 export const moveToPreviousScreen = () => {
-  const { currentScreen, setCurrentScreen } = useMenuStore.getState();
-  const currentIndex = flow.indexOf(currentScreen);
+  const { screenStack, setCurrentScreen, setScreenStack } =
+    useMenuStore.getState();
 
-  if (currentIndex === -1 || currentIndex === 0) {
-    return; // Do nothing if not found or at the first screen
-  }
+  if (screenStack.length === 0) return; // No previous screen to go back to
 
-  setCurrentScreen(flow[currentIndex - 1]);
+  const previousScreen = screenStack[screenStack.length - 1]; // Get last screen
+  setScreenStack(screenStack.slice(0, -1)); // Remove last screen from stack
+  setCurrentScreen(previousScreen);
 };
 
 export const moveToSpecificScreen = (screenName: string) => {
-  const { setCurrentScreen } = useMenuStore.getState();
-  const currentIndex = flow.indexOf(screenName);
+  const { setCurrentScreen, screenStack, setScreenStack, currentScreen } =
+    useMenuStore.getState();
+  if (!flow.includes(screenName)) return; // Do nothing if screen not in flow
 
-  if (currentIndex === -1 || currentIndex === 0) {
-    return; // Do nothing if not found or at the first screen
-  }
-
-  setCurrentScreen(flow[currentIndex]);
+  setScreenStack([...screenStack, currentScreen]); // Store previous screen before moving
+  setCurrentScreen(screenName);
 };
