@@ -13,7 +13,7 @@ const CartFooter = () => {
   return (
     <footer
       onClick={() => moveToSpecificScreen("OrderSummary")}
-      className="w-full h-full border-t p-4 bg-primaryYellow shadow-md flex gap-5  items-center"
+      className="w-full h-full border-t p-4 bg-primaryYellow rounded-t-2xl shadow-xl flex gap-5  items-center"
     >
       <img src="/assets/cart-outline.svg" alt="" />
       <span className="flex gap-4 font-medium">

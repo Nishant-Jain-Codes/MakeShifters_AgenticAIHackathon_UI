@@ -28,7 +28,7 @@ const ItemViewScreen = () => {
   }
 
   return (
-    <div className="rounded-xl shadow-md p-4 flex gap-8 flex-col bg-white h-full  my-20 mx-auto">
+    <div className="rounded-xl p-4 flex gap-8 flex-col bg-white h-full w-[60%] my-20 mx-auto">
       <div className="flex flex-col items-center gap-8 justify-center">
         <img
           src={imgSrc}
