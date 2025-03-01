@@ -120,5 +120,5 @@ export const moveToSpecificScreen = (screenName: string) => {
     return; // Do nothing if not found or at the first screen
   }
 
-  setCurrentScreen(flow[currentIndex - 1]);
+  setCurrentScreen(flow[currentIndex]);
 };

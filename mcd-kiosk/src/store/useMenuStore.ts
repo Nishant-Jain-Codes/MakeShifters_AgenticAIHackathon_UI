@@ -127,7 +127,6 @@ const useMenuStore = create<MenuStoreState>((set) => ({
 
   removeItemFromBasket: (itemId: number, customizations: string[] = []) =>
     set((state) => {
-      debugger;
       const existingItemIndex = state.basket.findIndex(
         (item) =>
           item.id === itemId &&

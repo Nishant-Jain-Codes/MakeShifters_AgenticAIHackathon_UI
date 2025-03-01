@@ -44,41 +44,47 @@ const ItemViewScreen = () => {
           </span>
         </p>
 
-        {quantity > 0 ? (
-          <div className="flex items-center gap-3 justify-center mt-3 space-x-3">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                removeItemFromBasket(item.id);
-              }}
-              className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 cursor-pointer"
-            >
-              <Minus size={20} />
-            </button>
+        <div className="flex items-center mt-5 justify-center">
+          {quantity > 0 ? (
+            <div className="flex items-center gap-3 justify-center mt-3 space-x-3">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeItemFromBasket(item.id);
+                }}
+                className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 cursor-pointer"
+              >
+                <Minus size={20} />
+              </button>
 
-            <span className="text-lg font-semibold">{quantity}</span>
+              <span className="text-lg font-semibold">{quantity}</span>
 
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addItemToBasket(item.id);
+                }}
+                className="bg-primaryYellow p-2 rounded-full hover:bg-yellow-400  cursor-pointer"
+              >
+                <Plus size={20} />
+              </button>
+            </div>
+          ) : (
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 addItemToBasket(item.id);
               }}
-              className="bg-primaryYellow p-2 rounded-full hover:bg-yellow-400 cursor-pointer"
+              className="bg-primaryYellow py-2 px-4 rounded-lg hover:bg-yellow-400 cursor-pointer flex gap-2 items-center"
             >
-              <Plus size={20} />
+              Add
+              <span>
+                {" "}
+                <Plus size={20} />
+              </span>
             </button>
-          </div>
-        ) : (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              addItemToBasket(item.id);
-            }}
-            className="bg-primaryYellow p-2 rounded-full hover:bg-yellow-400 cursor-pointer"
-          >
-            Add to Cart
-          </button>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
