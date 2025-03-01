@@ -30,11 +30,11 @@ function App() {
           onClick={moveToPreviousScreen}
           className="absolute top-5 left-5 flex items-center gap-2 text-2xl text-yellow-500 hover:text-yellow-400"
         >
-{currentScreen !== "OrderTypeSelection" && (
-  <>
-    <ChevronLeft size={31} /> Back
-  </>
-)}
+          {currentScreen !== "OrderTypeSelection" && (
+            <>
+              <ChevronLeft size={31} /> Back
+            </>
+          )}
         </button>
         <Avatar />
       </div>
@@ -44,13 +44,13 @@ function App() {
         {children}
       </div>
 
-  {/* Bottom Section - Static */}
-  {basket.length > 0 && currentScreen !== "OrderTypeSelection" && (
-  <div>
-    <CartFooter />
-  </div>
-)}
-</div>
+      {/* Bottom Section - Static */}
+      {basket.length > 0 && currentScreen !== "OrderTypeSelection" && (
+        <div>
+          <CartFooter />
+        </div>
+      )}
+    </div>
   );
 
   const renderScreen = () => {
