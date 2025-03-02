@@ -13,7 +13,6 @@ const CartFooter = () => {
     (total, item) => total + item.qty * (item.price || 0),
     0
   );
-  console.log("CartFooter -> totalPrice", totalPrice);
 
   return basket.length > 0 &&
     ["Menu", "ItemView", "OrderSummary"].includes(currentScreen) ?

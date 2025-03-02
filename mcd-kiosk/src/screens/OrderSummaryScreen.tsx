@@ -5,8 +5,6 @@ import useMenuStore from "../store/useMenuStore";
 export default function OrderSummaryScreen() {
   const basket = useMenuStore((state) => state.basket);
 
-
-
   const totalPrice = basket.reduce(
     (total, item) => total + item.price * item.qty,
     0

@@ -45,7 +45,6 @@ export default function PaymentScreen() {
       const razorpay = new (window as any).Razorpay(options);
       razorpay.open();
     } catch (error: any) {
-      debugger;
       toast.error("Payment failed. Please try again.", error);
     } finally {
       setLoading(false);
