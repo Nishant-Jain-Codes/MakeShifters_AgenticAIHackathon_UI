@@ -5,14 +5,12 @@ import { MenuItem } from "./../types";
 import MenuItemCard from "./MenuItemCard";
 
 export default function Menu() {
-  const {
-    currentSelectedItem,
-    currentSelectedItemType,
-    menuList,
-    setCurrentSelectedItem,
-  } = useMenuStore();
-  // const navigate = useNavigate();
+  const currentSelectedItem = useMenuStore((state) => state.currentSelectedItem);
+  const menuList = useMenuStore((state) => state.menuList);
+  const setCurrentSelectedItem = useMenuStore((state) => state.setCurrentSelectedItem);
+  const currentSelectedItemType = useMenuStore((state) => state.currentSelectedItemType);
 
+  
   // Filter menu based on selected category
   const filteredMenu: MenuItem[] = menuList.filter(
     (item: MenuItem) => item.categoryId === currentSelectedItemType

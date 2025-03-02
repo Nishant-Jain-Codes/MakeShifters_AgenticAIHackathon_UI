@@ -4,14 +4,11 @@ import CustomizationOption from "../components/CustomisationOption";
 import toast from "react-hot-toast";
 
 const ItemViewScreen = () => {
-  const {
-    basket,
-    menuList,
-    addItemToBasket,
-    removeItemFromBasket,
-    currentSelectedItem,
-    customizationOptions,
-  } = useMenuStore();
+  const basket = useMenuStore((state) => state.basket);
+  const menuList = useMenuStore((state) => state.menuList);
+  const addItemToBasket = useMenuStore((state) => state.addItemToBasket);
+  const removeItemFromBasket = useMenuStore((state) => state.removeItemFromBasket);
+  const currentSelectedItem = useMenuStore((state) => state.currentSelectedItem);
 
   const id = currentSelectedItem;
   const item = menuList.find((menuItem) => menuItem.id === id);

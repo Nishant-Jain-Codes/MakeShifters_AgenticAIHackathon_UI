@@ -9,7 +9,10 @@ interface ItemCategory {
 }
 
 export default function MenuItemCategory({ id, imageUrl, name }: ItemCategory) {
-  const { currentSelectedItemType, setCurrentSelectedItemType } = useMenuStore();
+  const currentSelectedItemType = useMenuStore((state) => state.currentSelectedItemType);
+  const setCurrentSelectedItemType = useMenuStore((state) => state.setCurrentSelectedItemType);
+
+
 
   const isSelected = currentSelectedItemType === id;
 

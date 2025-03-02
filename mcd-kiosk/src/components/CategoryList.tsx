@@ -2,7 +2,8 @@ import useMenuStore from '../store/useMenuStore';
 import MenuItemCategory from './MenuItemCategory';
 
 export default function CategoryList() {
-  const { itemCategories } = useMenuStore();
+  const itemCategories = useMenuStore((state) => state.itemCategories);
+
 
   return (
     <div className="flex flex-col gap-4 p-2 h-[80vh] overflow-y-auto scrollbar-hidden">

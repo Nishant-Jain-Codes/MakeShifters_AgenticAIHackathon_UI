@@ -40,16 +40,19 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 
   render() {
-    // const { orderStarted,setOrderStarted } = useMenuStore();
     if (this.state.hasError) {
       return (
         <div className="flex flex-col items-center justify-center h-screen bg-gray-100 text-center px-6">
           <div className="bg-white shadow-xl rounded-2xl p-10 flex flex-col items-center">
             <TriangleAlert className="w-20 h-20 text-red-500 mb-4" />
-            <h1 className="text-3xl font-bold text-red-600">Something Went Wrong</h1>
-            <p className="text-gray-600 mt-2">An unexpected error has occurred. Please try again.</p>
+            <h1 className="text-3xl font-bold text-red-600">
+              Something Went Wrong
+            </h1>
+            <p className="text-gray-600 mt-2">
+              An unexpected error has occurred. Please try again.
+            </p>
             <button
-               onClick={() => this.props.setOrderStarted(false)}
+              onClick={() => this.props.setOrderStarted(false)}
               className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
             >
               Go to Home
@@ -65,8 +68,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
   const currentScreen = useMenuStore((state) => state.currentScreen);
-  const basket = useMenuStore((state) => state.basket);
-  const { orderStarted } = useMenuStore();
+  const orderStarted = useMenuStore((state) => state.orderStarted);
   const [kiosk, setKiosk] = useState(true);
   useEffect(() => {
     loadMenuData();
@@ -123,12 +125,10 @@ function App() {
             <div className="h-full w-full overflow-y-auto">{children}</div>
 
             {/* Bottom Section - Static */}
-            {basket.length > 0 &&
-              ["Menu", "ItemView", "OrderSummary"].includes(currentScreen) && (
-                <div>
-                  <CartFooter />
-                </div>
-              )}
+
+            <div>
+              <CartFooter />
+            </div>
           </>
         )}
       </div>
@@ -156,7 +156,7 @@ function App() {
   };
 
   return (
-    <ErrorBoundary setOrderStarted={useMenuStore.getState().setOrderStarted}> 
+    <ErrorBoundary setOrderStarted={useMenuStore.getState().setOrderStarted}>
       {isLoading ? <Loader /> : <Layout>{renderScreen()}</Layout>}
     </ErrorBoundary>
   );

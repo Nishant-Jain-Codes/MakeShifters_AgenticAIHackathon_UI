@@ -2,9 +2,9 @@ import React from "react";
 import Avatar from "../components/Avatar";
 import useMenuStore from "../store/useMenuStore";
 
-const AvatarWelcome= () => {
-    const {setOrderStarted} = useMenuStore();
-    
+const AvatarWelcome = () => {
+  const setOrderStarted = useMenuStore((state) => state.setOrderStarted);
+
   return (
     <div className="relative h-screen bg-gradient-to-br from-red-900 via-yellow-700 to-orange-500 overflow-hidden">
       {/* Animated background elements */}
@@ -39,9 +39,9 @@ const AvatarWelcome= () => {
           </h2>
 
           <p className="text-lg opacity-80 max-w-md">
-            Experience seamless interaction with our 
+            Experience seamless interaction with our
             <p className="font-bold text-3xl bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-amber-500 to-amber-300">
-              {' AI Avatar Powered Kiosk  '}
+              {" AI Avatar Powered Kiosk  "}
             </p>
             Personalized recommendations, instant service, zero wait time.
           </p>

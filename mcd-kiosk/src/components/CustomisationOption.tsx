@@ -4,7 +4,8 @@ import { MenuItem } from "../types";
 import customisationOptions from "../utils/mcdMenuCustomisations.json";
 
 export default function CustomisationOption(props: { cust: MenuItem }) {
-  const { menuList } = useMenuStore();
+  const menuList = useMenuStore((state) => state.menuList);
+
   const [customizations, setCustomizations] = useState<MenuItem[]>([]);
 
   useEffect(() => {

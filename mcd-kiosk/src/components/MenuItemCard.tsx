@@ -17,7 +17,12 @@ const MenuItemCard = memo(function MenuItemCard({
   isSelected,
   onSelect,
 }: MenuItemCardProps) {
-  const { basket, addItemToBasket, removeItemFromBasket } = useMenuStore();
+  const addItemToBasket = useMenuStore((state) => state.addItemToBasket);
+  const basket = useMenuStore((state) => state.basket);
+  const removeItemFromBasket = useMenuStore(
+    (state) => state.removeItemFromBasket
+  );
+
   const basketItem = basket.find((b) => b.id === item.id);
   const quantity = basketItem ? basketItem.qty : 0;
 
@@ -34,7 +39,9 @@ const MenuItemCard = memo(function MenuItemCard({
     }, 0);
   };
 
-  const imgSrc = item.imageUrl.replace("{format}", "png").replace("{size}", "128");
+  const imgSrc = item.imageUrl
+    .replace("{format}", "png")
+    .replace("{size}", "128");
 
   return (
     <motion.div
@@ -57,7 +64,11 @@ const MenuItemCard = memo(function MenuItemCard({
         )}
       </div>
 
-      <img src={imgSrc} alt={item.name} className="w-16 h-16 object-contain mx-auto" />
+      <img
+        src={imgSrc}
+        alt={item.name}
+        className="w-16 h-16 object-contain mx-auto"
+      />
       <p className="mt-2 text-center font-semibold">{item.name}</p>
 
       {/* Price on Left & Add Button on Right */}
@@ -96,7 +107,6 @@ const MenuItemCard = memo(function MenuItemCard({
               e.stopPropagation();
               handleAddToCart(item.id);
               toast.success("Item added to cart");
-
             }}
             className="bg-primaryYellow py-1 px-3 rounded-lg hover:bg-yellow-400 cursor-pointer flex gap-2 items-center"
           >
