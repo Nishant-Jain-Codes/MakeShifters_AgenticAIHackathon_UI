@@ -48,7 +48,7 @@ const AvatarWelcome: React.FC<AvatarWelcomeProps> = ({ setOrderStarted }) => {
           </p>
 
           <button
-            className="group relative overflow-hidden rounded-full bg-white px-8 py-4 text-xl font-bold text-red-900 shadow-lg transition-all duration-300 hover:shadow-yellow-500/50 hover:scale-105 focus:outline-none"
+            className="group relative overflow-hidden rounded-full bg-white px-8 py-4 text-xl font-bold text-red-900 shadow-lg transition-all duration-300 hover:shadow-yellow-500/50 hover:scale-105 focus:outline-none z-100 cursor-pointer"
             onClick={() => setOrderStarted(true)}
           >
             <span className="relative z-100">Start Ordering</span>
