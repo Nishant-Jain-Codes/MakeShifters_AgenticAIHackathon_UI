@@ -18,7 +18,6 @@ export type MealItem = {
   description: string;
   name: string;
   categoryId: number;
-
 };
 export type MenuItem = {
   price: number;

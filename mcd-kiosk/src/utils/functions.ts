@@ -108,7 +108,7 @@ export const moveToPreviousScreen = () => {
   const { screenStack, setCurrentScreen, setScreenStack } =
     useMenuStore.getState();
 
-  if (screenStack.length === 0) return; // No previous screen to go back to
+  if (screenStack.length === 0) setCurrentScreen("OrderTypeSelection"); // No previous screen to go back to
 
   const previousScreen = screenStack[screenStack.length - 1]; // Get last screen
   setScreenStack(screenStack.slice(0, -1)); // Remove last screen from stack
