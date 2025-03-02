@@ -41,6 +41,8 @@ export const loadMenuData = async () => {
       name: item["name"],
       description: item["description"],
       imageUrl: item["imageUrl"],
+      is_customisable: item["is_customisable"],
+      items: item["items"],
     }));
 
     // Map meal items

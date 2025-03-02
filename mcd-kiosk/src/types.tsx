@@ -27,6 +27,7 @@ export type MenuItem = {
   imageUrl: string;
   id: number;
   description: string;
+  items?: number[];
 };
 
 export type CustomizationOption = {

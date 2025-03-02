@@ -1,5 +1,7 @@
 import useMenuStore from "../store/useMenuStore";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, ShoppingBag } from "lucide-react";
+import CustomizationOption from "../components/CustomisationOption";
+import toast from "react-hot-toast";
 
 const ItemViewScreen = () => {
   const {
@@ -8,7 +10,7 @@ const ItemViewScreen = () => {
     addItemToBasket,
     removeItemFromBasket,
     currentSelectedItem,
-    customizationOptions
+    customizationOptions,
   } = useMenuStore();
 
   const id = currentSelectedItem;
@@ -27,88 +29,81 @@ const ItemViewScreen = () => {
   }
 
   return (
-    <div className="rounded-xl p-4 flex gap-8 flex-col bg-white h-full w-[70%] my-20 mx-auto">
-      <div className="flex flex-col items-center gap-8 justify-center">
-        <img
-          src={imgSrc}
-          alt={item.name}
-          className="w-64 h-64 border border-gray-100 object-cover rounded-xl my-4"
-        />
-        <h2 className="text-lg font-bold">{item.name}</h2>
-        <p className="text-gray-700">{item.description}</p>
-        <p className="text-center text-gray-700 mt-1 font-medium  text-4xl">
-          <span className="text-gray-500">
-            {"₹"}
-            {item.price}
-          </span>
-        </p>
-
-        <div className="flex items-center mt-5 justify-center">
-          {quantity > 0 ? (
-            <div className="flex items-center gap-3 justify-center mt-3 space-x-3">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  removeItemFromBasket(item.id);
-                }}
-                className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 cursor-pointer"
-              >
-                <Minus size={20} />
-              </button>
-
-              <span className="text-lg font-semibold">{quantity}</span>
-
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  addItemToBasket(item.id);
-                }}
-                className="bg-primaryYellow p-2 rounded-full hover:bg-yellow-400  cursor-pointer"
-              >
-                <Plus size={20} />
-              </button>
+    <div className="flex flex-col bg-white min-h-screen">
+      {/* Main Content */}
+      <div className="max-w-3xl mx-auto w-full py-6 px-4 flex flex-col">
+        {/* Product Image & Details Card */}
+        <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-8">
+          <div className="bg-gradient-to-b from-red-600 to-red-700 pt-6 pb-10 relative">
+            <div className="absolute -bottom-30 left-1/2 transform -translate-x-1/2">
+              <img
+                src={imgSrc}
+                alt={item.name}
+                className="w-52 h-52 object-contain "
+              />
             </div>
-          ) : (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                addItemToBasket(item.id);
-              }}
-              className="bg-primaryYellow py-2 px-4 rounded-lg hover:bg-yellow-400 cursor-pointer flex gap-2 items-center"
-            >
-              Add
-              <span>
-                {" "}
-                <Plus size={20} />
+          </div>
+
+          <div className="pt-28 pb-6 px-6 text-center">
+            <h2 className="text-2xl font-bold text-gray-800">{item.name}</h2>
+            <p className="text-gray-600 mt-2 mb-4">{item.description}</p>
+            <div className="flex justify-center items-center gap-2 mb-4"></div>
+
+            <div className="mt-4 flex justify-between items-center px-10">
+              <span className="text-3xl font-bold text-red-600">
+                ₹{item.price}
               </span>
-            </button>
-          )}
-        </div>
+              {quantity > 0 ? (
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeItemFromBasket(item.id);
+                    }}
+                    className="bg-gray-200 p-1 rounded-full hover:bg-gray-300 cursor-pointer"
+                  >
+                    <Minus size={20} />
+                  </button>
 
+                  <span className="text-lg font-semibold">{quantity}</span>
 
-       
-        
-      </div>
-
-      <div>
-          <p className="text-2xl font-bold">Customizations</p>
-
-          {customizationOptions.map((option) => (
-            <div key={option.id} className="flex items-center gap-3 mt-4">
-              <img src={option.imageUrl} alt="" className="w-40 h-40" />
-              <div>
-                {option.name}
-                <p className="text-gray-500">₹{option.extraPrice}</p>
-              </div>
-
-
-              
-              
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      addItemToBasket(item.id);
+                    }}
+                    className="bg-primaryYellow p-1 rounded-full hover:bg-yellow-400 cursor-pointer"
+                  >
+                    <Plus size={20} />
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    addItemToBasket(item.id);
+                    toast.success("Item added to cart");
+                  }}
+                  className="bg-primaryYellow py-1 px-3 rounded-lg hover:bg-yellow-400 cursor-pointer flex gap-2 items-center"
+                >
+                  Add
+                  <span>
+                    <Plus size={20} />
+                  </span>
+                </button>
+              )}
             </div>
-          ))}
-
-
+          </div>
         </div>
+
+        {/* Customization Options */}
+        <div className="">
+         
+          <CustomizationOption cust={item} />
+        </div>
+      </div>
     </div>
   );
 };

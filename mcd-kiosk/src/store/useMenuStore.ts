@@ -68,7 +68,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   orderType: null,
   paymentDetails: null,
   basket: [],
-  currentSelectedItemType: 7,
+  currentSelectedItemType: 1,
   currentSelectedItemSubType: null,
   currentSelectedItem: null,
   currentScreen: "OrderTypeSelection",
