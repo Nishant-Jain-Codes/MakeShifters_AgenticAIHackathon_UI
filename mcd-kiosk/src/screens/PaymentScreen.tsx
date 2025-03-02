@@ -54,14 +54,14 @@ export default function PaymentScreen() {
 
   return (
     <div className="flex flex-col items-center h-full bg-gradient-to-br p-6">
-      <div className=" bg-opacity-20 backdrop-blur-lg rounded-2xl p-8 flex flex-col gap-5 items-center w-[90%] bg-yellow-50 shadow-2xl transition-all duration-300 hover:scale-105 border border-white/30">
+      <div className=" bg-opacity-20 backdrop-blur-lg rounded-2xl p-8 flex flex-col gap-5 items-center w-[90%] bg-yellow-50 shadow-2xl transition-all duration-300 hover:scale-102 border border-white/30">
         <h1 className="text-2xl  font-bold text-center mb-6">
           Select Payment Method
         </h1>
 
         <button
           onClick={checkoutHandler}
-          className="flex items-center justify-center gap-3 bg-[#FFC72C] hover:bg-yellow-500 transition-all cursor-pointer text-black font-semibold py-4 rounded-lg w-full shadow-lg text-lg transform hover:scale-105"
+          className="flex items-center justify-center gap-3 bg-[#FFC72C] hover:bg-yellow-500 transition-all cursor-pointer text-black font-semibold py-4 rounded-lg w-full shadow-lg text-lg transform hover:scale-102"
           disabled={loading}
         >
           <CreditCard size={24} />
@@ -69,7 +69,7 @@ export default function PaymentScreen() {
         </button>
 
         <button
-          className="flex cursor-pointer items-center justify-center gap-3 bg-[#D52B1E] hover:bg-red-600 transition-all text-white font-semibold py-4 rounded-lg w-full shadow-lg text-lg mt-4 transform hover:scale-105"
+          className="flex cursor-pointer items-center justify-center gap-3 bg-[#D52B1E] hover:bg-red-600 transition-all text-white font-semibold py-4 rounded-lg w-full shadow-lg text-lg mt-4 transform hover:scale-102"
           onClick={moveToNextScreen}
         >
           <Wallet size={24} />
@@ -77,7 +77,7 @@ export default function PaymentScreen() {
         </button>
 
         <button
-          className="mt-6 cursor-pointer border py-3 px-6 rounded-lg hover:bg-white hover:text-black transition-all w-[60%] text-lg transform hover:scale-105"
+          className="mt-6 cursor-pointer border py-3 px-6 rounded-lg hover:bg-white hover:text-black transition-all w-[60%] text-lg transform hover:scale-102"
           onClick={() => moveToPreviousScreen()}
         >
           Back

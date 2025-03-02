@@ -33,6 +33,7 @@ export interface MenuStoreState {
   language: string;
   menu: string[];
   customerAgeClass: CustomerAgeClass | null;
+  orderStarted : boolean;
 
   // Actions
   setMenu: (menu: MenuItem[]) => void;
@@ -54,6 +55,8 @@ export interface MenuStoreState {
   confirmOrder: () => void;
   resetOrder: () => void;
   setCustomerAgeClass: (ageClass: CustomerAgeClass) => void;
+  setOrderStarted: (value: boolean) => void;
+  emptyBasket: () => void;
 }
 const useMenuStore = create<MenuStoreState>((set) => ({
   menuList: [],
@@ -73,6 +76,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   language: "English",
   menu: [],
   customerAgeClass: null,
+  orderStarted : false,
 
   // ✅ Setters for newly added state
   setMenu: (menu: MenuItem[]) => set({ menuList: menu }),
@@ -149,6 +153,8 @@ const useMenuStore = create<MenuStoreState>((set) => ({
       return { basket: updatedBasket };
     }),
 
+    emptyBasket: () => set({ basket: [] }),
+
   setCurrentSelectedItemType: (type) => set({ currentSelectedItemType: type }),
   setCurrentSelectedItemSubType: (subType) =>
     set({ currentSelectedItemSubType: subType }),
@@ -156,6 +162,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   setCurrentScreen: (screen) => set({ currentScreen: screen }),
   setScreenStack: (stack) => set({ screenStack: stack }),
   setLanguage: (language) => set({ language }),
+  setOrderStarted: (value) => set({ orderStarted: value }),
 
   confirmOrder: () =>
     console.log("✅ Order confirmed!", useMenuStore.getState()),

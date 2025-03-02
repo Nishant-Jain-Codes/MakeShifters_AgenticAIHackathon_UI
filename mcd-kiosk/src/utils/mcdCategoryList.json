@@ -1,5 +1,15 @@
 [
   {
+    "name": "Special for you",
+    "id": 1,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20240918043600447449.png"
+  },
+  {
+    "name": "Meal of the day",
+    "id": 2,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551887533338.png"
+  },
+  {
     "name": "Desserts",
     "id": 7,
     "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551788552933.png"
@@ -19,16 +29,7 @@
     "id": 3,
     "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_170955171681248.png"
   },
-  {
-    "name": "Special for you",
-    "id": 1,
-    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_20240918043600447449.png"
-  },
-  {
-    "name": "Meal of the day",
-    "id": 2,
-    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551887533338.png"
-  },
+  
   {
     "name": "Fries & Sides",
     "id": 4,

@@ -314,7 +314,7 @@
       "description": "Feel the crunch with McCrispy Chicken Burger+ McChicken + Fries (M)",
       "imageUrl": "https://c38blhej2h.execute-api.ap-south-1.amazonaws.com/dev/png/200/20241205182430611626.png",
       "isVeg": false,
-      "discount_price": 430.47,
+      "price": 430.47,
       "items": [303, 304, 402]
     },
     {

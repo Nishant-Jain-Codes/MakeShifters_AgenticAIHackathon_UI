@@ -1,11 +1,10 @@
 import React from "react";
 import Avatar from "../components/Avatar";
+import useMenuStore from "../store/useMenuStore";
 
-interface AvatarWelcomeProps {
-  setOrderStarted: (value: boolean) => void;
-}
-
-const AvatarWelcome: React.FC<AvatarWelcomeProps> = ({ setOrderStarted }) => {
+const AvatarWelcome= () => {
+    const {setOrderStarted} = useMenuStore();
+    
   return (
     <div className="relative h-screen bg-gradient-to-br from-red-900 via-yellow-700 to-orange-500 overflow-hidden">
       {/* Animated background elements */}
