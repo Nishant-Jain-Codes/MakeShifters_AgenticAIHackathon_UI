@@ -14,7 +14,7 @@ export default function OrderCompletionScreen() {
 
   // Countdown timer state
   const [timeLeft, setTimeLeft] = useState(5);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null); 
 
   useEffect(() => {
     if (orderType === "dine in" && !tableNumber) {
