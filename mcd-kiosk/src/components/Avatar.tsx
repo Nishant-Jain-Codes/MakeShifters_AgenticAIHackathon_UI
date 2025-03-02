@@ -1,3 +1,15 @@
+import { use, useEffect } from "react";
+
+declare global {
+  interface Window {
+    initAvatarInDiv: (divId: string) => void;
+  }
+}
+
 export default function Avatar() {
-    return <div><h1>Avatar niche h</h1></div>;
+  useEffect(() => {
+    window.initAvatarInDiv("av");
+  }, []);
+
+  return <div id="av" className="h-full w-[300px]"></div>;
 }

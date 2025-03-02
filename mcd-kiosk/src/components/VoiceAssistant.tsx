@@ -62,8 +62,8 @@ const VoiceAssistant: React.FC = () => {
     };
 
     return (
-        <div className="voice-assistant">
-            <h2>Voice Assistant</h2>
+        <div className="voice-assistant text-white font-bold z-50">
+         
             <button onClick={isRecording ? stopRecording : startRecording}>
                 {isRecording ? "Stop Recording" : "Start Recording"}
             </button>

@@ -1,4 +1,4 @@
-import { useEffect, Component, ReactNode } from "react";
+import { useEffect, Component, ReactNode, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import OrderTypeSelectionScreen from "./screens/OrderTypeSelectionScreen";
 import MenuScreen from "./screens/MenuScreen";
@@ -14,6 +14,7 @@ import CartFooter from "./components/CartFooter";
 import { ChevronLeft } from "lucide-react";
 import Avatar from "./components/Avatar";
 import VoiceAssistant from "./components/VoiceAssistant";
+import AvatarWelcome from "./screens/AvatarWelcome";
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -53,40 +54,47 @@ function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
   const currentScreen = useMenuStore((state) => state.currentScreen);
   const basket = useMenuStore((state) => state.basket);
+  const [orderStarted, setOrderStarted] = useState(false);
   useEffect(() => {
     loadMenuData();
   }, []);
 
   const Layout = ({ children }: { children: ReactNode }) => (
     <div className="max-h-[100vh]">
-
       <div className="flex flex-col mx-auto w-[600px] h-[95.5vh] border-28 rounded-xl border-b-40 ">
-      <Toaster position="top-center" reverseOrder={false} />
-        {/* Top Section - Static */}
-        <div className="relative h-[27vh] w-full bg-red-50 flex items-center border justify-center">
-          {/* Back Button - Positioned at the top-left */}
-          {currentScreen !== "OrderTypeSelection" && (
-            <button
-              onClick={moveToPreviousScreen}
-              className="absolute top-5 left-5 flex items-center gap-2 text-2xl text-yellow-500 hover:text-yellow-400"
-            >
-              <>
-                <ChevronLeft size={31} /> Back
-              </>
-            </button>
-          )}
-          <VoiceAssistant />
-          <Avatar />
-        </div>
+        {!orderStarted ? (
+          <AvatarWelcome setOrderStarted={setOrderStarted} />
+        ) : (
+          <>
+            <Toaster position="top-center" reverseOrder={false} />
+            {/* Top Section - Static */}
+            <div className="relative h-[27vh] w-full bg-red-50 flex items-center border justify-center">
+              {/* Back Button - Positioned at the top-left */}
+              {currentScreen !== "OrderTypeSelection" && (
+                <button
+                  onClick={moveToPreviousScreen}
+                  className="absolute top-5 left-5 flex items-center gap-2 text-2xl text-yellow-500 hover:text-yellow-400"
+                >
+                  <>
+                    <ChevronLeft size={31} /> Back
+                  </>
+                </button>
+              )}
+              <VoiceAssistant />
+              <Avatar />
+              {/* <img className="absolute object-cover border-4 w-full h-full z-10" src="https://image.lexica.art/full_webp/0ca5b78e-8c1f-4d56-84ab-3c30db53f9fd" alt="" /> */}
+            </div>
 
-        {/* Middle Section - Scrollable */}
-        <div className="h-full w-full overflow-y-auto">{children}</div>
+            {/* Middle Section - Scrollable */}
+            <div className="h-full w-full overflow-y-auto">{children}</div>
 
-        {/* Bottom Section - Static */}
-        {basket.length > 0 && currentScreen !== "OrderTypeSelection" && (
-          <div>
-            <CartFooter />
-          </div>
+            {/* Bottom Section - Static */}
+            {basket.length > 0 && currentScreen !== "OrderTypeSelection" && (
+              <div>
+                <CartFooter />
+              </div>
+            )}
+          </>
         )}
       </div>
       <div className="w-[200px] h-10 bg-black mx-auto"></div>
