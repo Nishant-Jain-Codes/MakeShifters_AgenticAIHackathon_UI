@@ -1,3 +1,3 @@
 export default function Avatar() {
-    return <div></div>;
+    return <div><h1>Avatar niche h</h1></div>;
 }
