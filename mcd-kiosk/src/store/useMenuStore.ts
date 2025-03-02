@@ -56,6 +56,7 @@ export interface MenuStoreState {
   resetOrder: () => void;
   setCustomerAgeClass: (ageClass: CustomerAgeClass) => void;
   setOrderStarted: (value: boolean) => void;
+  emptyBasket: () => void;
 }
 const useMenuStore = create<MenuStoreState>((set) => ({
   menuList: [],
@@ -151,6 +152,8 @@ const useMenuStore = create<MenuStoreState>((set) => ({
 
       return { basket: updatedBasket };
     }),
+
+    emptyBasket: () => set({ basket: [] }),
 
   setCurrentSelectedItemType: (type) => set({ currentSelectedItemType: type }),
   setCurrentSelectedItemSubType: (subType) =>

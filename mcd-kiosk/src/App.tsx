@@ -11,13 +11,14 @@ import useMenuStore from "./store/useMenuStore";
 import Loader from "./components/Loader";
 import { loadMenuData, moveToPreviousScreen } from "./utils/functions";
 import CartFooter from "./components/CartFooter";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, TriangleAlert } from "lucide-react";
 import Avatar from "./components/Avatar";
 import VoiceAssistant from "./components/VoiceAssistant";
 import AvatarWelcome from "./screens/AvatarWelcome";
 
 interface ErrorBoundaryProps {
   children: ReactNode;
+  setOrderStarted: (value: boolean) => void;
 }
 
 interface ErrorBoundaryState {
@@ -39,11 +40,22 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   }
 
   render() {
+    // const { orderStarted,setOrderStarted } = useMenuStore();
     if (this.state.hasError) {
       return (
-        <h2 className="text-center text-red-600 font-bold">
-          Something went wrong. Please refresh.
-        </h2>
+        <div className="flex flex-col items-center justify-center h-screen bg-gray-100 text-center px-6">
+          <div className="bg-white shadow-xl rounded-2xl p-10 flex flex-col items-center">
+            <TriangleAlert className="w-20 h-20 text-red-500 mb-4" />
+            <h1 className="text-3xl font-bold text-red-600">Something Went Wrong</h1>
+            <p className="text-gray-600 mt-2">An unexpected error has occurred. Please try again.</p>
+            <button
+               onClick={() => this.props.setOrderStarted(false)}
+              className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            >
+              Go to Home
+            </button>
+          </div>
+        </div>
       );
     }
     return this.props.children;
@@ -54,7 +66,7 @@ function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
   const currentScreen = useMenuStore((state) => state.currentScreen);
   const basket = useMenuStore((state) => state.basket);
-  const [orderStarted, setOrderStarted] = useState(false);
+  const { orderStarted } = useMenuStore();
   const [kiosk, setKiosk] = useState(true);
   useEffect(() => {
     loadMenuData();
@@ -78,7 +90,7 @@ function App() {
           {kiosk ? "Hide Kiosk" : "Show Kiosk"}
         </div>
         {!orderStarted ? (
-          <AvatarWelcome setOrderStarted={setOrderStarted} />
+          <AvatarWelcome />
         ) : (
           <>
             <Toaster position="top-center" reverseOrder={false} />
@@ -98,22 +110,25 @@ function App() {
               )}
               <VoiceAssistant />
               <Avatar />
+
               <img
-                className="absolute object-cover border-4 w-full h-full z-10"
-                src="https://image.lexica.art/full_webp/0ca5b78e-8c1f-4d56-84ab-3c30db53f9fd"
+                className="absolute object-cover blur-[3px] w-full h-full z-10"
+                src="/assets/avatar-bg.webp"
                 alt=""
               />
+              <div className="absolute inset-0 z-40 bg-gradient-to-r from-black to-transparent w-full h-full opacity-60"></div>
             </div>
 
             {/* Middle Section - Scrollable */}
             <div className="h-full w-full overflow-y-auto">{children}</div>
 
             {/* Bottom Section - Static */}
-            {basket.length > 0 && ["Menu", "ItemView", "OrderSummary"].includes(currentScreen) && (
-              <div>
-                <CartFooter />
-              </div>
-            )}
+            {basket.length > 0 &&
+              ["Menu", "ItemView", "OrderSummary"].includes(currentScreen) && (
+                <div>
+                  <CartFooter />
+                </div>
+              )}
           </>
         )}
       </div>
@@ -141,7 +156,7 @@ function App() {
   };
 
   return (
-    <ErrorBoundary>
+    <ErrorBoundary setOrderStarted={useMenuStore.getState().setOrderStarted}> 
       {isLoading ? <Loader /> : <Layout>{renderScreen()}</Layout>}
     </ErrorBoundary>
   );

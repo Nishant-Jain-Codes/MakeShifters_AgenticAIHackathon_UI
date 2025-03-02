@@ -8,6 +8,7 @@ interface FaceDetectionProps {
 const FaceDetection = ({ onFaceDetected }: FaceDetectionProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [modelsLoaded, setModelsLoaded] = useState(false);
+  const [detectionComplete, setDetectionComplete] = useState(false);
 
   useEffect(() => {
     const loadModels = async () => {
@@ -28,8 +29,9 @@ const FaceDetection = ({ onFaceDetected }: FaceDetectionProps) => {
   }, []);
 
   useEffect(() => {
-    if (!modelsLoaded) return;
+    if (!modelsLoaded || detectionComplete) return;
 
+    let timeout: NodeJS.Timeout;
     const startCamera = async () => {
       try {
         console.log("⏳ Requesting camera access...");
@@ -40,9 +42,17 @@ const FaceDetection = ({ onFaceDetected }: FaceDetectionProps) => {
           videoRef.current.onloadedmetadata = () => {
             videoRef.current?.play();
             console.log("✅ Camera is ready!");
-            detectFace(); // Start detection
+            detectFace();
           };
         }
+
+        // ✅ Even if no face is detected, complete after 3 seconds
+        timeout = setTimeout(() => {
+          console.log("⏳ No face detected, completing anyway...");
+          stopCamera();
+          setDetectionComplete(true);
+          onFaceDetected();
+        }, 3000);
       } catch (error) {
         console.error("❌ Error accessing webcam:", error);
       }
@@ -62,7 +72,9 @@ const FaceDetection = ({ onFaceDetected }: FaceDetectionProps) => {
         if (detections) {
           console.log(`🎉 Face detected! Age: ${Math.round(detections.age)}`);
           clearInterval(interval);
+          clearTimeout(timeout); // Prevent auto-completion if face is detected
           stopCamera();
+          setDetectionComplete(true);
           onFaceDetected(); // ✅ Redirect after detecting face
         }
       }, 500); // Check every 500ms
@@ -78,13 +90,14 @@ const FaceDetection = ({ onFaceDetected }: FaceDetectionProps) => {
 
     startCamera();
 
-    return () => stopCamera();
-  }, [modelsLoaded]);
+    return () => {
+      stopCamera();
+      clearTimeout(timeout);
+    };
+  }, [modelsLoaded, detectionComplete]);
 
   return (
-    <>
-      <video ref={videoRef} autoPlay playsInline muted className="hidden"></video>
-    </>
+    <video ref={videoRef} autoPlay playsInline muted className="hidden"></video>
   );
 };
 
