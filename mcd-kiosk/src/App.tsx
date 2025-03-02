@@ -73,7 +73,7 @@ function App() {
               {currentScreen !== "OrderTypeSelection" && (
                 <button
                   onClick={moveToPreviousScreen}
-                  className="absolute top-5 left-5 flex items-center gap-2 text-2xl text-yellow-500 hover:text-yellow-400"
+                  className="absolute z-50 top-5 left-5 flex items-center gap-2 text-2xl text-yellow-500 hover:text-yellow-400"
                 >
                   <>
                     <ChevronLeft size={31} /> Back
@@ -82,7 +82,7 @@ function App() {
               )}
               <VoiceAssistant />
               <Avatar />
-              {/* <img className="absolute object-cover border-4 w-full h-full z-10" src="https://image.lexica.art/full_webp/0ca5b78e-8c1f-4d56-84ab-3c30db53f9fd" alt="" /> */}
+              <img className="absolute object-cover border-4 w-full h-full z-10" src="https://image.lexica.art/full_webp/0ca5b78e-8c1f-4d56-84ab-3c30db53f9fd" alt="" />
             </div>
 
             {/* Middle Section - Scrollable */}

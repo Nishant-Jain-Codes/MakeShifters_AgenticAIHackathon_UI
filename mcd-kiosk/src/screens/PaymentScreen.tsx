@@ -1,6 +1,6 @@
 import { Wallet, CreditCard } from "lucide-react";
 import toast from "react-hot-toast";
-import axios, { AxiosDefaults, AxiosError } from "axios";
+import axios from "axios";
 import useMenuStore from "../store/useMenuStore";
 import { moveToNextScreen, moveToPreviousScreen } from "../utils/functions";
 import { useState } from "react";
