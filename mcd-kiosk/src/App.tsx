@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, Component, ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
 import OrderTypeSelectionScreen from "./screens/OrderTypeSelectionScreen";
 import MenuScreen from "./screens/MenuScreen";
 import ItemViewScreen from "./screens/ItemViewScreen";
@@ -14,6 +15,40 @@ import { ChevronLeft } from "lucide-react";
 import Avatar from "./components/Avatar";
 import VoiceAssistant from "./components/VoiceAssistant";
 
+interface ErrorBoundaryProps {
+  children: ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(): ErrorBoundaryState {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error("Error Boundary Caught:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <h2 className="text-center text-red-600 font-bold">
+          Something went wrong. Please refresh.
+        </h2>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
   const currentScreen = useMenuStore((state) => state.currentScreen);
@@ -21,9 +56,12 @@ function App() {
   useEffect(() => {
     loadMenuData();
   }, []);
-  const Layout = ({ children }: { children: React.ReactNode }) => (
+
+  const Layout = ({ children }: { children: ReactNode }) => (
     <div className="max-h-[100vh]">
+
       <div className="flex flex-col mx-auto w-[600px] h-[95.5vh] border-28 rounded-xl border-b-40 ">
+      <Toaster position="top-center" reverseOrder={false} />
         {/* Top Section - Static */}
         <div className="relative h-[27vh] w-full bg-red-50 flex items-center border justify-center">
           {/* Back Button - Positioned at the top-left */}
@@ -42,9 +80,7 @@ function App() {
         </div>
 
         {/* Middle Section - Scrollable */}
-        <div className="h-full w-full overflow-y-auto">
-          {children}
-        </div>
+        <div className="h-full w-full overflow-y-auto">{children}</div>
 
         {/* Bottom Section - Static */}
         {basket.length > 0 && currentScreen !== "OrderTypeSelection" && (
@@ -76,7 +112,11 @@ function App() {
     }
   };
 
-  return isLoading ? <Loader /> : <Layout>{renderScreen()}</Layout>;
+  return (
+    <ErrorBoundary>
+      {isLoading ? <Loader /> : <Layout>{renderScreen()}</Layout>}
+    </ErrorBoundary>
+  );
 }
 
 export default App;

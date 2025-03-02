@@ -4,6 +4,7 @@ import { MenuItem } from "./../types";
 import { Plus, Minus } from "lucide-react";
 import useMenuStore from "../store/useMenuStore";
 import { memo, useRef } from "react";
+import toast from "react-hot-toast";
 
 interface MenuItemCardProps {
   item: MenuItem;
@@ -94,6 +95,8 @@ const MenuItemCard = memo(function MenuItemCard({
               e.preventDefault();
               e.stopPropagation();
               handleAddToCart(item.id);
+              toast.success("Item added to cart");
+
             }}
             className="bg-primaryYellow py-1 px-3 rounded-lg hover:bg-yellow-400 cursor-pointer flex gap-2 items-center"
           >
