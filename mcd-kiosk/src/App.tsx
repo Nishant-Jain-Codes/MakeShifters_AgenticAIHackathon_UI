@@ -55,13 +55,28 @@ function App() {
   const currentScreen = useMenuStore((state) => state.currentScreen);
   const basket = useMenuStore((state) => state.basket);
   const [orderStarted, setOrderStarted] = useState(false);
+  const [kiosk, setKiosk] = useState(true);
   useEffect(() => {
     loadMenuData();
   }, []);
 
   const Layout = ({ children }: { children: ReactNode }) => (
     <div className="max-h-[100vh]">
-      <div className="flex flex-col mx-auto w-[600px] h-[95.5vh] border-28 rounded-xl border-b-40 ">
+      <div
+        className={`flex flex-col mx-auto w-[600px] h-[95.5vh] ${
+          !kiosk ? "border-0 border-b-0" : "border-28 rounded-xl border-b-40"
+        }`}
+      >
+        <div
+          className={`${
+            kiosk
+              ? "absolute top-0 right-0 w-[550px]  text-white "
+              : "relative text-right"
+          }  cursor-pointer`}
+          onClick={() => setKiosk((prev) => !prev)}
+        >
+          {kiosk ? "Hide Kiosk" : "Show Kiosk"}
+        </div>
         {!orderStarted ? (
           <AvatarWelcome setOrderStarted={setOrderStarted} />
         ) : (
@@ -94,7 +109,7 @@ function App() {
             <div className="h-full w-full overflow-y-auto">{children}</div>
 
             {/* Bottom Section - Static */}
-            {basket.length > 0 && currentScreen !== "OrderTypeSelection" && (
+            {basket.length > 0 && ["Menu", "ItemView", "OrderSummary"].includes(currentScreen) && (
               <div>
                 <CartFooter />
               </div>
@@ -102,7 +117,7 @@ function App() {
           </>
         )}
       </div>
-      <div className="w-[200px] h-10 bg-black mx-auto"></div>
+      {kiosk && <div className="w-[200px] h-10 bg-black mx-auto"></div>}
     </div>
   );
 
