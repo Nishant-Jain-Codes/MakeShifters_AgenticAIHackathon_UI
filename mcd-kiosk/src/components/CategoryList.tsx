@@ -6,7 +6,7 @@ export default function CategoryList() {
 
 
   return (
-    <div className="flex flex-col gap-4 p-2 h-[80vh] overflow-y-auto scrollbar-hidden">
+    <div className="flex flex-col gap-3 p-1 h-[80vh] overflow-y-auto scrollbar-hidden">
       {itemCategories?.map((item) => (
         <MenuItemCategory key={item.id} {...item} />
       ))}

@@ -18,7 +18,7 @@ export default function Menu() {
 
   return (
       <div className="h-[80vh] overflow-y-auto scrollbar-hidden">
-    <div className="flex flex-wrap gap-4 p-4 ">
+    <div className="flex flex-wrap gap-3 p-1 ">
       {filteredMenu.map((item: MenuItem) => (
           <MenuItemCard
             key={item.id}

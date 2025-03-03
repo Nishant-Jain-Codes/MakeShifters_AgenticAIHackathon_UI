@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import useMenuStore from "../store/useMenuStore";
 import { MenuItem } from "../types";
-import customisationOptions from "../utils/mcdMenuCustomisations.json";
 
 export default function CustomisationOption(props: { cust: MenuItem }) {
   const menuList = useMenuStore((state) => state.menuList);
+  const customizationOptions = useMenuStore(
+    (state) => state.customizationOptions
+  );
 
   const [customizations, setCustomizations] = useState<MenuItem[]>([]);
+
+  const filteredcust=customizationOptions
+        .filter((option) => option.categoryId === props.cust.categoryId)
 
   useEffect(() => {
     if (!props.cust.items) return;
@@ -24,7 +29,11 @@ export default function CustomisationOption(props: { cust: MenuItem }) {
   }, [props.cust, menuList]);
 
   return (
-    <div className={`bg-white rounded-2xl shadow-lg overflow-hidden p-6 ${customizations.length === 0 && 'hidden'}`}>
+    <div
+      className={`bg-white rounded-2xl shadow-lg overflow-hidden p-6 ${
+        customizations.length === 0 && filteredcust.length === 0  && "hidden"
+      }`}
+    >
       <h3 className="text-xl font-bold text-red-600 mb-4 border-b border-gray-100 pb-2">
         Customization Options
       </h3>
@@ -38,16 +47,21 @@ export default function CustomisationOption(props: { cust: MenuItem }) {
         </div>
       ))}
 
-      {/*     
-      {customisationOptions.map((option) => (
-        <div key={option.id} className="flex items-center gap-3 mt-4">
-          <img src={option.imageUrl} alt="" className="w-40 h-40" />
-          <div>
-            {option.name}
-            <p className="text-gray-500">₹{option.extraPrice}</p>
+      {filteredcust
+       
+        .map((option) => (
+          <div key={option.id} className="flex items-center gap-3 mt-4">
+            <img
+              src={option.imageUrl}
+              alt={option.name}
+              className="w-40 h-40"
+            />
+            <div>
+              {option.name}
+              <p className="text-gray-500">₹{option.extraPrice}</p>
+            </div>
           </div>
-        </div>
-      ))} */}
+        ))}
     </div>
   );
 }
