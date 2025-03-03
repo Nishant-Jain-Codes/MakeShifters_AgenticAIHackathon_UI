@@ -14,7 +14,7 @@ export default function Avatar() {
   return (
     <div
       id="av"
-      className="h-full pl-20 w-[300px]  z-50 select-none pointer-events-none"
+      className="h-full w-[180px]  z-50 select-none pointer-events-none"
     ></div>
   );
 }

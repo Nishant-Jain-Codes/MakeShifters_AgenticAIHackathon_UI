@@ -4,12 +4,12 @@ export const OrderTypes = [
     {
 id : "dine in",
 label : "Dine In",
-imgSrc : "/assets/eat-in.jpeg"
+imgSrc : "/assets/eat-in.png"
 },
     {
 id : "take away",
 label : "Take Away",
-imgSrc : "/assets/take-away.jpeg"
+imgSrc : "/assets/take-away.png"
 }
 
 ]

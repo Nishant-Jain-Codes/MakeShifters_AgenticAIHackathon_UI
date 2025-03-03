@@ -25,8 +25,8 @@ const AvatarWelcome = () => {
         {/* Left side - Text content */}
         <div className="w-full text-white space-y-8">
           <div className="space-y-4">
-            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 to-red-200">
-              AURA
+            <h1 className="text-5xl font-pica font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 to-red-200">
+              McBuddy
             </h1>
           </div>
 
