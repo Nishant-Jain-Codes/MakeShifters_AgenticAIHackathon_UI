@@ -102,14 +102,12 @@ function App() {
               {currentScreen !== "OrderTypeSelection" && (
                 <button
                   onClick={moveToPreviousScreen}
-                  className="absolute bg-white rounded-full py-1 px-3 z-50 top-5 left-5  border-2 flex items-center text-2xl text-yellow-500 hover:text-yellow-400"
+                  className="absolute bg-yellow-500 rounded-full p-1 z-50 top-5 left-5 border-2 border-yellow-600 hover:bg-yellow-400"
                 >
-                  <>
-                    <ChevronLeft size={30} className="-ml-3" />
-                    Back
-                  </>
+                  <ChevronLeft size={20} className="text-red-800" />
                 </button>
               )}
+
               <VoiceAssistant />
               <Avatar />
 
