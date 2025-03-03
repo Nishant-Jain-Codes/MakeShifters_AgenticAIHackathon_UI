@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import useMenuStore from "../store/useMenuStore";
 
 const VoiceAssistant: React.FC = () => {
     const [transcription, setTranscription] = useState("");
@@ -7,7 +8,7 @@ const VoiceAssistant: React.FC = () => {
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
     const audioChunksRef = useRef<Blob[]>([]);
     const [maleVoice, setMaleVoice] = useState<SpeechSynthesisVoice | null>(null);
-
+    const { setCurrentUserTranscription, setCurrentLLMResponse } = useMenuStore(); // ✅ Importing the newly added state and setters
     useEffect(() => {
         const synth = window.speechSynthesis;
 
@@ -58,6 +59,8 @@ const VoiceAssistant: React.FC = () => {
                     setTranscription(data.transcription);
                     setResponse(data.response);
                     speakResponse(data.response);
+                    setCurrentUserTranscription(data.transcription); // ✅ Store transcription in state
+                    setCurrentLLMResponse(data.response); // ✅ Store response in state
                 }
             };
         };

@@ -34,7 +34,8 @@ export interface MenuStoreState {
   menu: string[];
   customerAgeClass: CustomerAgeClass | null;
   orderStarted : boolean;
-
+  currentUserTranscription: string;
+  currentLLMResponse: string;
   // Actions
   setMenu: (menu: MenuItem[]) => void;
   setMealItems: (meals: MealItem[]) => void; // ✅ New action for meal items
@@ -57,6 +58,8 @@ export interface MenuStoreState {
   setCustomerAgeClass: (ageClass: CustomerAgeClass) => void;
   setOrderStarted: (value: boolean) => void;
   emptyBasket: () => void;
+  setCurrentUserTranscription: (transcription: string) => void;
+  setCurrentLLMResponse: (response: string) => void;
 }
 const useMenuStore = create<MenuStoreState>((set) => ({
   menuList: [],
@@ -77,8 +80,14 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   menu: [],
   customerAgeClass: null,
   orderStarted : false,
+  currentUserTranscription: "",
+  currentLLMResponse: "",
 
   // ✅ Setters for newly added state
+  setCurrentUserTranscription: (transcription: string) =>
+    set({ currentUserTranscription: transcription }),
+  setCurrentLLMResponse: (response: string) =>
+    set({ currentLLMResponse: response }),
   setMenu: (menu: MenuItem[]) => set({ menuList: menu }),
   setMealItems: (meals: MealItem[]) => set({ mealList: meals }), // ✅ New setter for meal items
   setCustomizationOptions: (options: CustomizationOption[]) =>

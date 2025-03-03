@@ -125,3 +125,92 @@ export const moveToSpecificScreen = (screenName: string) => {
   setScreenStack([...screenStack, currentScreen]); // Store previous screen before moving
   setCurrentScreen(screenName);
 };
+
+export const handleLLMTriggeredActions = () => {
+  debugger;
+  const { currentUserTranscription, currentLLMResponse } =
+    useMenuStore.getState();
+    const response = currentLLMResponse;
+    
+    //we can use this message to implement some front end logic 
+    const message = response?.message;
+  const setCustomScreen = (screen: string) => {
+    const inputScreen = screen.toLowerCase();
+    const llmResponseToScreenMapping: Record<string, string> = {
+      menu: "Menu",
+      payment: "Payment",
+      orderSummary: "OrderSummary",
+      OrderType: "OrderTypeSelection",
+      OrderCompletion: "OrderCompletion",
+    };
+    moveToSpecificScreen(
+      llmResponseToScreenMapping[inputScreen] || "OrderTypeSelection"
+    );
+    // Use inputScreen and llmResponseToScreenMapping as needed
+  };
+  const setCurrentlySelectedId = (id: string) => {
+    const { setCurrentSelectedItemType, itemCategories ,currentLLMResponse} =
+      useMenuStore.getState();
+    // Iterate over the itemCategories and if the provided id exists in the itemCategories then set the currentSelectedItemType to that id
+    const category = itemCategories.find((category) => category.id.toString() === id);
+    if (category) {
+      setCurrentSelectedItemType(parseInt(id));
+    }
+  };
+  const setCurrentlySelectedItemId = (id: string)=>{
+    const { setCurrentSelectedItem, menuList } = useMenuStore.getState();
+    const menuItem = menuList.find((item) => item.id.toString() === id);
+    if (menuItem) {
+      setCurrentSelectedItem(parseInt(id));
+    }
+  }
+  const setPaymentMode = (mode: string)=>{
+    // const { setPaymentDetails } = useMenuStore.getState();
+
+    // setPaymentDetails(mode);
+    // TODO : take update from karan regarding this function , how is he handling the payment type seleciton and tell him to update it 
+  }
+  const handlers = {
+    screen: setCustomScreen,
+    category: setCurrentlySelectedId,
+    itemId: setCurrentlySelectedItemId,
+    paymentmode: setPaymentMode,
+    nextScreen: moveToNextScreen,
+    previousScreen: moveToPreviousScreen,
+  };
+  const extractParameters = (response) => {
+    try {
+      const jsonResponse = JSON.parse(response);
+      return jsonResponse.parameters &&
+        Object.keys(jsonResponse.parameters).length > 0
+        ? jsonResponse.parameters
+        : null;
+    } catch (error) {
+      return null;
+    }
+  };
+  const handleParameters = (params, handlers) => {
+    Object.entries(params).forEach(([key, value]) => {
+      if (
+        handlers[key] &&
+        typeof handlers[key] === "function" &&
+        handlers[key].length > 0
+      ) {
+        handlers[key](value);
+      }
+    });
+  };
+
+  console.log("currentUserTranscription", currentUserTranscription);
+  console.log("currentLLMResponse", currentLLMResponse);
+
+  
+
+  const extractedParams = extractParameters(JSON.stringify(response));
+
+  if (extractedParams) {
+    handleParameters(extractedParams, handlers);
+  } else {
+    console.log("No parameters found");
+  }
+};

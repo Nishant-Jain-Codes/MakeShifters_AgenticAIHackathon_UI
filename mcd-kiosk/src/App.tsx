@@ -9,7 +9,7 @@ import OrderCompletionScreen from "./screens/OrderCompletionScreen";
 import "./App.css";
 import useMenuStore from "./store/useMenuStore";
 import Loader from "./components/Loader";
-import { loadMenuData, moveToPreviousScreen } from "./utils/functions";
+import { handleLLMTriggeredActions, loadMenuData, moveToPreviousScreen } from "./utils/functions";
 import CartFooter from "./components/CartFooter";
 import { ChevronLeft, TriangleAlert } from "lucide-react";
 import Avatar from "./components/Avatar";
@@ -69,11 +69,20 @@ function App() {
   const isLoading = useMenuStore((state) => state.isLoading);
   const currentScreen = useMenuStore((state) => state.currentScreen);
   const orderStarted = useMenuStore((state) => state.orderStarted);
+  // const currentUserTranscription = useMenuStore((state) => state.currentUserTranscription);
+  const currentLLMResponse = useMenuStore((state) => state.currentLLMResponse);
   const [kiosk, setKiosk] = useState(true);
   useEffect(() => {
     loadMenuData();
   }, []);
+  
 
+  
+  
+  useEffect(() => {
+    handleLLMTriggeredActions()
+  }, [currentLLMResponse]);
+  
   const Layout = ({ children }: { children: ReactNode }) => (
     <div className="max-h-[100vh]">
       <div
