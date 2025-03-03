@@ -186,12 +186,9 @@ const VoiceAssistant: React.FC = () => {
     };
 
     // Helper function to format time
-    const formatTime = (date: Date): string => {
-        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    };
-
+   
     return (
-        <div className="voice-assistant flex flex-col text-xs h-full w-[370px] bg-gradient-to-b from-red-700 to-red-800 text-white p-4 rounded-lg shadow-2xl z-60">
+        <div className="voice-assistant flex flex-col text-[0.6rem] h-full w-[370px] bg-gradient-to-b from-red-700 to-red-800 text-white p-4 rounded-lg shadow-2xl z-60">
             {/* Header */}
             <div className="flex items-center justify-between mb-4 pb- border-b border-yellow-500">
                 <h2 className="font-bold text-yellow-400 font-pica text-lg">McBuddy</h2>
@@ -231,16 +228,14 @@ const VoiceAssistant: React.FC = () => {
                             className={`flex ${message.type === "user" ? "justify-end" : "justify-start"}`}
                         >
                             <div 
-                                className={`max-w-3/4 p-3 px-4 shadow-md ${
+                                className={`max-w-3/4 p-1 px-4 shadow-md ${
                                     message.type === "user" 
                                         ? "bg-yellow-500 text-red-900 rounded-2xl rounded-tr-none" 
                                         : "bg-red-600 border border-yellow-500 rounded-2xl rounded-tl-none"
                                 }`}
                             >
                                 <p className="font-medium break-words">{message.text}</p>
-                                <p className={`text-xs mt-1 ${message.type === "user" ? "text-red-800" : "text-yellow-300"}`}>
-                                    {formatTime(message.timestamp)}
-                                </p>
+                               
                             </div>
                         </div>
                     ))
@@ -262,7 +257,7 @@ const VoiceAssistant: React.FC = () => {
                             </div>
                         ) : (
                             <div className="text-yellow-300">
-                                {transcript ? `"${transcript}"` : "Listening..."}
+                                {"Listening..."}
                             </div>
                         )}
                     </div>
