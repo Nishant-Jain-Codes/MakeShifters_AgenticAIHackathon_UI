@@ -98,15 +98,7 @@ function App() {
             <Toaster position="top-center" reverseOrder={false} />
             {/* Top Section - Static */}
             <div className="relative h-[27vh] w-full bg-red-50 flex items-center border justify-">
-              {/* Back Button - Positioned at the top-left */}
-              {currentScreen !== "OrderTypeSelection" && (
-                <button
-                  onClick={moveToPreviousScreen}
-                  className="absolute bg-yellow-500 rounded-full p-1 z-50 top-5 left-5 border-2 border-yellow-600 hover:bg-yellow-400"
-                >
-                  <ChevronLeft size={20} className="text-red-800" />
-                </button>
-              )}
+           
 
               <VoiceAssistant />
        

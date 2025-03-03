@@ -6,8 +6,6 @@ const CartFooter = () => {
   const currentScreen = useMenuStore((state) => state.currentScreen);
   const basket = useMenuStore((state) => state.basket);
 
-
-
   // Safely access `price` and ensure it is a valid number
   const totalPrice: number = basket.reduce(
     (total, item) => total + item.qty * (item.price || 0),
@@ -19,7 +17,7 @@ const CartFooter = () => {
     currentScreen === "OrderSummary" ? (
     <footer
       onClick={() => moveToSpecificScreen("Payment")}
-      className="w-full h-full border-t p-4 px-10 text-xl bg-primaryYellow rounded-t-2xl shadow-xl flex gap-5 justify-between items-center cursor-pointer"
+      className="w-full h-full border-t p-3 px-10 text-xl bg-primaryYellow rounded-t-2xl shadow-xl flex gap-5 justify-between items-center cursor-pointer"
     >
       <div className="flex gap-3 items-center">
         <img src="/assets/cart-outline.svg" alt="" />
@@ -46,7 +44,7 @@ const CartFooter = () => {
   ) : (
     <footer
       onClick={() => moveToSpecificScreen("OrderSummary")}
-      className="w-full h-full border-t p-4 px-10 text-xl bg-primaryYellow rounded-t-2xl shadow-xl flex gap-5 justify-between  cursor-pointer items-center"
+      className="w-full h-full border-t p-3 px-10 text-xl bg-primaryYellow rounded-t-2xl shadow-xl flex gap-5 justify-between  cursor-pointer items-center"
     >
       <div className="flex gap-5 items-center">
         <img src="/assets/cart-outline.svg" alt="" />
