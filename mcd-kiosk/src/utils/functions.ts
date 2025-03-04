@@ -184,7 +184,7 @@ export const handleLLMTriggeredActions = () => {
     }
   };
 
-  //TODO karan handle this
+  //TODO karan handle this 
   const setPaymentMode = (mode: string) => {
     // const { setPaymentDetails } = useMenuStore.getState();
     // setPaymentDetails(mode);
@@ -199,7 +199,7 @@ export const handleLLMTriggeredActions = () => {
       : null;
     if (value) setOrderType(value);
   };
-  //TODO : karan check this also
+  //TODO : karan check this also , is this correct i am looping over the quantity and adding the items to the cart
   const updateTheCartByAddingSelectedItemsByQuantity = (quantity: string) => {
     const { currentSelectedItem, addItemToBasket, menuList } =
       useMenuStore.getState();
