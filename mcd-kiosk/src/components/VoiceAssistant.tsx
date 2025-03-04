@@ -105,6 +105,7 @@ const VoiceAssistant: React.FC = () => {
               isFetchingResponse.current = false;
               startRecording();
             }, 2000);
+            return;
           }
 
           const data = await response.json();
@@ -159,7 +160,7 @@ const VoiceAssistant: React.FC = () => {
               setTimeout(() => {
                 isFetchingResponse.current = false;
                 startRecording();
-              }, 2000);
+              }, 5000);
             }
           }
         } catch (error) {
@@ -183,15 +184,12 @@ const VoiceAssistant: React.FC = () => {
   };
 
   const stopRecording = () => {
-    if (
-      mediaRecorderRef.current &&
-      mediaRecorderRef.current.state === "recording"
-    ) {
-      mediaRecorderRef.current.stop();
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+        mediaRecorderRef.current.stop();
     }
     mediaRecorderRef.current = null;
     isRecording.current = false;
-  };
+};
 
   const speakResponse = (text: string) => {
     stopRecording(); // Stop recording before speaking
