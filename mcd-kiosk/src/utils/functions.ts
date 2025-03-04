@@ -138,6 +138,7 @@ export const handleLLMTriggeredActions = () => {
     const llmResponseToScreenMapping: Record<string, string> = {
       menu: "Menu",
       paymentselection: "Payment",
+      payment: "Payment",
       orderSummary: "OrderSummary",
       ordertype: "OrderTypeSelection",
       ordercompletion: "OrderCompletion",
@@ -154,7 +155,7 @@ export const handleLLMTriggeredActions = () => {
 
     // Find the category whose name includes the given categoryName (case-insensitive)
     const category = itemCategories.find((category) =>
-      category.name.toLowerCase().includes(categoryName.toLowerCase())
+      category?.name?.toLowerCase()?.includes(categoryName?.toLowerCase())
     );
 
     // If a matching category is found, set the selected item type to its ID
@@ -174,7 +175,7 @@ export const handleLLMTriggeredActions = () => {
 
     // Find the menu item whose name includes the provided itemName (case-insensitive)
     const menuItem = menuList.find((item) =>
-      item.name.toLowerCase().includes(itemName.toLowerCase())
+      item.name?.toLowerCase()?.includes(itemName?.toLowerCase())
     );
 
     // If a matching item is found, set the selected item ID
@@ -189,19 +190,22 @@ export const handleLLMTriggeredActions = () => {
     // setPaymentDetails(mode);
     // TODO : take update from karan regarding this function , how is he handling the payment type seleciton and tell him to update it
   };
+
   const setTheOrderType = (orderType: string) => {
     const { setOrderType } = useMenuStore.getState();
-    const value = orderType?.toLowerCase().includes("dine")
+    if (!orderType) return;
+    const value = orderType?.toLowerCase()?.includes("dine")
       ? "dine in"
-      : orderType?.toLowerCase().includes("away")
+      : orderType?.toLowerCase()?.includes("away")
       ? "take away"
       : null;
     if (value) setOrderType(value);
   };
-  //TODO : karan check this also , is this correct i am looping over the quantity and adding the items to the cart
+
   const updateTheCartByAddingSelectedItemsByQuantity = (quantity: string) => {
     const { currentSelectedItem, addItemToBasket, menuList } =
       useMenuStore.getState();
+    if (!currentSelectedItem || !addItemToBasket || !menuList) return;
 
     // Find the selected menu item
     const menuItem = menuList.find((item) => item.id === currentSelectedItem);
@@ -220,6 +224,7 @@ export const handleLLMTriggeredActions = () => {
   const setTheCostFilterType = (under: boolean) => {
     const { menuList, setllmRecommendedItems, setCurrentSelectedItemType } =
       useMenuStore.getState();
+    if (!menuList || !setllmRecommendedItems || !setCurrentSelectedItemType) return;
 
     // Filter items based on price condition (assuming under means under a certain threshold)
     const threshold = 100; // Adjust this if needed
@@ -240,12 +245,13 @@ export const handleLLMTriggeredActions = () => {
   const setTheCostFilterValue = (priceRange: number) => {
     const { menuList, setllmRecommendedItems, setCurrentSelectedItemType } =
       useMenuStore.getState();
+    if (!menuList || !setllmRecommendedItems || !setCurrentSelectedItemType) return;
 
     // Filter items within the given price range
-    const filteredItems = menuList.filter((item) => item.price <= priceRange);
+    const filteredItems = menuList?.filter((item) => item.price <= priceRange);
 
     // Extract item IDs
-    const itemIds = filteredItems.map((item) => item.id);
+    const itemIds = filteredItems?.map((item) => item.id);
 
     // Update recommendations if items exist
     if (itemIds.length > 0) {
@@ -257,11 +263,12 @@ export const handleLLMTriggeredActions = () => {
   const setTheItemFilterType = (itemType: "veg" | "nonVeg" | "all") => {
     const { menuList, setllmRecommendedItems, setCurrentSelectedItemType } =
       useMenuStore.getState();
+    if (!menuList || !setllmRecommendedItems || !setCurrentSelectedItemType) return;
 
     // Filter based on item type
-    const filteredItems = menuList.filter((item) => {
-      if (itemType === "veg") return item.isVeg;
-      if (itemType === "nonVeg") return !item.isVeg;
+    const filteredItems = menuList?.filter((item) => {
+      if (itemType === "veg") return item?.isVeg;
+      if (itemType === "nonVeg") return !item?.isVeg;
       return true; // "all" returns everything
     });
 
@@ -274,10 +281,12 @@ export const handleLLMTriggeredActions = () => {
       setCurrentSelectedItemType(0);
     }
   };
+
   const handleLLMTriggeredMove = (move: string) => {
+    if (!move) return;
     if (move === "next") {
       moveToNextScreen();
-    } else if (move === "previous") {
+    } else if (move === "back" || move === "previous") {
       moveToPreviousScreen();
     }
   };
