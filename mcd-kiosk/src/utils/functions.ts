@@ -217,7 +217,6 @@ export const handleLLMTriggeredActions = () => {
       addItemToBasket(menuItem.id);
     }
   };
-  // "parameters": { "under": true, "priceRange": 100, "itemType": "all" } }
 
   const setTheCostFilterType = (under: boolean) => {
     const { menuList, setllmRecommendedItems, setCurrentSelectedItemType } =
@@ -276,10 +275,18 @@ export const handleLLMTriggeredActions = () => {
       setCurrentSelectedItemType(0);
     }
   };
-
+  const handleLLMTriggeredMove = (move: string) => {
+    if(move==="next"){
+      moveToNextScreen();
+    }
+    else if(move==="previous"){
+      moveToPreviousScreen();
+    }
+  }
   const handlers = {
     screen: setCustomScreen,
     category: setCurrentlySelectedId,
+    menuType: setCurrentlySelectedId,
     itemId: setCurrentlySelectedItemId,
     paymentmode: setPaymentMode,
     nextScreen: moveToNextScreen,
@@ -290,6 +297,7 @@ export const handleLLMTriggeredActions = () => {
     under: setTheCostFilterType,
     priceRange: setTheCostFilterValue,
     itemType: setTheItemFilterType,
+    move: handleLLMTriggeredMove,
   };
   const extractParameters = (response) => {
     try {

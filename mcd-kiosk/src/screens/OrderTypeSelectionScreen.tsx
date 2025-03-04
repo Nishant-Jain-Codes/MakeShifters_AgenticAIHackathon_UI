@@ -2,11 +2,18 @@ import { useState, useEffect } from "react";
 import { OrderTypes } from "../utils/constants";
 import { loadMenuData, moveToNextScreen } from "../utils/functions";
 import FaceDetection from "../components/FaceDetect";
+import useMenuStore from "../store/useMenuStore";
 
 export default function OrderTypeSelectionScreen() {
   const [selectedOrder, setSelectedOrder] = useState<string | null>("");
   const [isFaceDetected, setIsFaceDetected] = useState<boolean>(false);
+  const orderType = useMenuStore((state) => state.orderType);
 
+useEffect(() => {
+  if (orderType && !isFaceDetected) {
+    setSelectedOrder(orderType);
+  }
+}, [orderType, isFaceDetected]);
   useEffect(() => {
     const interval = setInterval(() => {
       const blob = document.getElementById("animatedBlob");

@@ -5,19 +5,19 @@ import useMenuStore from "../store/useMenuStore";
 import { ChevronLeft } from "lucide-react";
 
 const VoiceAssistant: React.FC = () => {
-  // const [transcription, setTranscription] = useState("");
-  // const [response, setResponse] = useState("");
+  const [transcription, setTranscription] = useState("");
+  const [response, setResponse] = useState("");
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
-  // const [transcript, setTranscript] = useState("");
+  const [transcript, setTranscript] = useState("");
   const [chatHistory, setChatHistory] = useState<
     { id: string; type: string; text: string; timestamp: Date }[]
   >([]);
-  const isRecording = useRef(false);
+  const {setCurrentUserTranscription,setCurrentLLMResponse} = useMenuStore.getState();
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const [maleVoice, setMaleVoice] = useState<SpeechSynthesisVoice | null>(null);
-  const { setCurrentUserTranscription, setCurrentLLMResponse } = useMenuStore(); // ✅ Importing the newly added state and setters  const isRecording = useRef(false);
+  const isRecording = useRef(false);
   const isFetchingResponse = useRef(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
@@ -108,9 +108,12 @@ const VoiceAssistant: React.FC = () => {
           }
 
           const data = await response.json();
-          if (data?.transcription)
-            setCurrentUserTranscription(data?.transcription); // ✅ Store transcription in state
-          if (data?.items) setCurrentLLMResponse(data?.items);
+          if(data?.transcription){
+            setCurrentUserTranscription(data?.transcription)
+          }
+          if(data?.items){
+            setCurrentLLMResponse(data?.items)
+          }
           console.log("📩 Response received:", data);
           setShowLoading(false);
 
@@ -125,10 +128,9 @@ const VoiceAssistant: React.FC = () => {
           }
 
           if (data.transcription) {
-            // setTranscription(data.transcription);
-            // setTranscript(data.transcription);
-            // setResponse(data.response);
-
+            setTranscription(data.transcription);
+            setTranscript(data.transcription);
+            setResponse(data.response);
             console.log("✅ AI Response:", data.response);
 
             // Add messages to chat history
