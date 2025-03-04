@@ -127,7 +127,6 @@ export const moveToSpecificScreen = (screenName: string) => {
 };
 
 export const handleLLMTriggeredActions = () => {
-  debugger;
   const { currentUserTranscription, currentLLMResponse } =
     useMenuStore.getState();
   const response = currentLLMResponse;
@@ -184,7 +183,7 @@ export const handleLLMTriggeredActions = () => {
     }
   };
 
-  //TODO karan handle this 
+  //TODO karan handle this
   const setPaymentMode = (mode: string) => {
     // const { setPaymentDetails } = useMenuStore.getState();
     // setPaymentDetails(mode);
@@ -192,9 +191,9 @@ export const handleLLMTriggeredActions = () => {
   };
   const setTheOrderType = (orderType: string) => {
     const { setOrderType } = useMenuStore.getState();
-    const value = orderType.toLowerCase().includes("dine")
+    const value = orderType?.toLowerCase().includes("dine")
       ? "dine in"
-      : orderType.toLowerCase().includes("away")
+      : orderType?.toLowerCase().includes("away")
       ? "take away"
       : null;
     if (value) setOrderType(value);
@@ -276,13 +275,12 @@ export const handleLLMTriggeredActions = () => {
     }
   };
   const handleLLMTriggeredMove = (move: string) => {
-    if(move==="next"){
+    if (move === "next") {
       moveToNextScreen();
-    }
-    else if(move==="previous"){
+    } else if (move === "previous") {
       moveToPreviousScreen();
     }
-  }
+  };
   const handlers = {
     screen: setCustomScreen,
     category: setCurrentlySelectedId,
