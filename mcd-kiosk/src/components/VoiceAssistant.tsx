@@ -54,8 +54,8 @@ const VoiceAssistant: React.FC = () => {
                     body: JSON.stringify({ audio_base64: base64Audio }),
                 });
 
-                const data = await response.json();
-                if (data.transcription) {
+                const data = await response?.json();
+                if (data?.transcription) {
                     setTranscription(data?.transcription);
                     setResponse(data?.response);
                     speakResponse(data?.response);
