@@ -130,46 +130,153 @@ export const handleLLMTriggeredActions = () => {
   debugger;
   const { currentUserTranscription, currentLLMResponse } =
     useMenuStore.getState();
-    const response = currentLLMResponse;
-    
-    //we can use this message to implement some front end logic 
-    const message = response?.message;
+  const response = currentLLMResponse;
+
+  //we can use this message to implement some front end logic
+  const message = response?.message;
   const setCustomScreen = (screen: string) => {
     const inputScreen = screen.toLowerCase();
     const llmResponseToScreenMapping: Record<string, string> = {
       menu: "Menu",
-      payment: "Payment",
+      paymentselection: "Payment",
       orderSummary: "OrderSummary",
-      OrderType: "OrderTypeSelection",
-      OrderCompletion: "OrderCompletion",
+      ordertype: "OrderTypeSelection",
+      ordercompletion: "OrderCompletion",
+      ordersummary: "OrderSummary",
     };
     moveToSpecificScreen(
       llmResponseToScreenMapping[inputScreen] || "OrderTypeSelection"
     );
     // Use inputScreen and llmResponseToScreenMapping as needed
   };
-  const setCurrentlySelectedId = (id: string) => {
-    const { setCurrentSelectedItemType, itemCategories ,currentLLMResponse} =
+  const setCurrentlySelectedId = (categoryName: string) => {
+    const { setCurrentSelectedItemType, itemCategories } =
       useMenuStore.getState();
-    // Iterate over the itemCategories and if the provided id exists in the itemCategories then set the currentSelectedItemType to that id
-    const category = itemCategories.find((category) => category.id.toString() === id);
+
+    // Find the category whose name includes the given categoryName (case-insensitive)
+    const category = itemCategories.find((category) =>
+      category.name.toLowerCase().includes(categoryName.toLowerCase())
+    );
+
+    // If a matching category is found, set the selected item type to its ID
     if (category) {
-      setCurrentSelectedItemType(parseInt(id));
+      setCurrentSelectedItemType(category.id);
     }
   };
-  const setCurrentlySelectedItemId = (id: string)=>{
+  const setCurrentlySelectedItemId = (id: string) => {
     const { setCurrentSelectedItem, menuList } = useMenuStore.getState();
     const menuItem = menuList.find((item) => item.id.toString() === id);
     if (menuItem) {
       setCurrentSelectedItem(parseInt(id));
     }
-  }
-  const setPaymentMode = (mode: string)=>{
-    // const { setPaymentDetails } = useMenuStore.getState();
+  };
+  const setCurrentlySelectedItemIdByName = (itemName: string) => {
+    const { setCurrentSelectedItem, menuList } = useMenuStore.getState();
 
+    // Find the menu item whose name includes the provided itemName (case-insensitive)
+    const menuItem = menuList.find((item) =>
+      item.name.toLowerCase().includes(itemName.toLowerCase())
+    );
+
+    // If a matching item is found, set the selected item ID
+    if (menuItem) {
+      setCurrentSelectedItem(menuItem.id);
+    }
+  };
+
+  //TODO karan handle this
+  const setPaymentMode = (mode: string) => {
+    // const { setPaymentDetails } = useMenuStore.getState();
     // setPaymentDetails(mode);
-    // TODO : take update from karan regarding this function , how is he handling the payment type seleciton and tell him to update it 
-  }
+    // TODO : take update from karan regarding this function , how is he handling the payment type seleciton and tell him to update it
+  };
+  const setTheOrderType = (orderType: string) => {
+    const { setOrderType } = useMenuStore.getState();
+    const value = orderType.toLowerCase().includes("dine")
+      ? "dine in"
+      : orderType.toLowerCase().includes("away")
+      ? "take away"
+      : null;
+    if (value) setOrderType(value);
+  };
+  //TODO : karan check this also
+  const updateTheCartByAddingSelectedItemsByQuantity = (quantity: string) => {
+    const { currentSelectedItem, addItemToBasket, menuList } =
+      useMenuStore.getState();
+
+    // Find the selected menu item
+    const menuItem = menuList.find((item) => item.id === currentSelectedItem);
+    if (!menuItem) return;
+
+    // Convert quantity to a number
+    const newQuantity = parseInt(quantity, 10);
+    if (isNaN(newQuantity) || newQuantity <= 0) return; // Ensure valid quantity
+
+    // Call the function to add the item to the basket
+    for (let i = 0; i < newQuantity; i++) {
+      addItemToBasket(menuItem.id);
+    }
+  };
+  // "parameters": { "under": true, "priceRange": 100, "itemType": "all" } }
+
+  const setTheCostFilterType = (under: boolean) => {
+    const { menuList, setllmRecommendedItems, setCurrentSelectedItemType } =
+      useMenuStore.getState();
+
+    // Filter items based on price condition (assuming under means under a certain threshold)
+    const threshold = 100; // Adjust this if needed
+    const filteredItems = menuList.filter((item) =>
+      under ? item.price < threshold : item.price >= threshold
+    );
+
+    // Extract item IDs
+    const itemIds = filteredItems.map((item) => item.id);
+
+    // Update recommendations if items exist
+    if (itemIds.length > 0) {
+      setllmRecommendedItems(itemIds);
+      setCurrentSelectedItemType(0);
+    }
+  };
+
+  const setTheCostFilterValue = (priceRange: number) => {
+    const { menuList, setllmRecommendedItems, setCurrentSelectedItemType } =
+      useMenuStore.getState();
+
+    // Filter items within the given price range
+    const filteredItems = menuList.filter((item) => item.price <= priceRange);
+
+    // Extract item IDs
+    const itemIds = filteredItems.map((item) => item.id);
+
+    // Update recommendations if items exist
+    if (itemIds.length > 0) {
+      setllmRecommendedItems(itemIds);
+      setCurrentSelectedItemType(0);
+    }
+  };
+
+  const setTheItemFilterType = (itemType: "veg" | "nonVeg" | "all") => {
+    const { menuList, setllmRecommendedItems, setCurrentSelectedItemType } =
+      useMenuStore.getState();
+
+    // Filter based on item type
+    const filteredItems = menuList.filter((item) => {
+      if (itemType === "veg") return item.isVeg;
+      if (itemType === "nonVeg") return !item.isVeg;
+      return true; // "all" returns everything
+    });
+
+    // Extract item IDs
+    const itemIds = filteredItems.map((item) => item.id);
+
+    // Update recommendations if items exist
+    if (itemIds.length > 0) {
+      setllmRecommendedItems(itemIds);
+      setCurrentSelectedItemType(0);
+    }
+  };
+
   const handlers = {
     screen: setCustomScreen,
     category: setCurrentlySelectedId,
@@ -177,20 +284,40 @@ export const handleLLMTriggeredActions = () => {
     paymentmode: setPaymentMode,
     nextScreen: moveToNextScreen,
     previousScreen: moveToPreviousScreen,
+    orderType: setTheOrderType,
+    itemName: setCurrentlySelectedItemIdByName,
+    quantity: updateTheCartByAddingSelectedItemsByQuantity,
+    under: setTheCostFilterType,
+    priceRange: setTheCostFilterValue,
+    itemType: setTheItemFilterType,
   };
   const extractParameters = (response) => {
     try {
-      const jsonResponse = JSON.parse(response);
-      return jsonResponse.parameters &&
-        Object.keys(jsonResponse.parameters).length > 0
-        ? jsonResponse.parameters
+      return response?.parameters &&
+        Object.keys(response?.parameters)?.length > 0
+        ? response?.parameters
         : null;
     } catch (error) {
       return null;
     }
   };
   const handleParameters = (params, handlers) => {
-    Object.entries(params).forEach(([key, value]) => {
+    const order = ["itemId", "itemName", "quantity"]; // Define desired order
+
+    // Sort entries based on predefined order, unknown keys come last alphabetically
+    const sortedEntries = Object.entries(params).sort(([keyA], [keyB]) => {
+      const indexA = order.indexOf(keyA);
+      const indexB = order.indexOf(keyB);
+
+      if (indexA === -1 && indexB === -1) {
+        return keyA.localeCompare(keyB); // Sort unknown keys alphabetically
+      }
+      if (indexA === -1) return 1; // Unknown keys go last
+      if (indexB === -1) return -1; // Known keys come first
+
+      return indexA - indexB; // Sort known keys based on predefined order
+    });
+    sortedEntries.forEach(([key, value]) => {
       if (
         handlers[key] &&
         typeof handlers[key] === "function" &&
@@ -204,9 +331,7 @@ export const handleLLMTriggeredActions = () => {
   console.log("currentUserTranscription", currentUserTranscription);
   console.log("currentLLMResponse", currentLLMResponse);
 
-  
-
-  const extractedParams = extractParameters(JSON.stringify(response));
+  const extractedParams = extractParameters(response);
 
   if (extractedParams) {
     handleParameters(extractedParams, handlers);

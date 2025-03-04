@@ -33,9 +33,11 @@ export interface MenuStoreState {
   language: string;
   menu: string[];
   customerAgeClass: CustomerAgeClass | null;
-  orderStarted : boolean;
+  orderStarted: boolean;
   currentUserTranscription: string;
   currentLLMResponse: string;
+  llmRecommendedItems: number[] | null; // ✅ Added llmRecommendedItems
+
   // Actions
   setMenu: (menu: MenuItem[]) => void;
   setMealItems: (meals: MealItem[]) => void; // ✅ New action for meal items
@@ -60,6 +62,7 @@ export interface MenuStoreState {
   emptyBasket: () => void;
   setCurrentUserTranscription: (transcription: string) => void;
   setCurrentLLMResponse: (response: string) => void;
+  setllmRecommendedItems: (items: number[]) => void; // ✅ New action for llmRecommendedItems
 }
 const useMenuStore = create<MenuStoreState>((set) => ({
   menuList: [],
@@ -82,6 +85,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   orderStarted : false,
   currentUserTranscription: "",
   currentLLMResponse: "",
+  llmRecommendedItems: null, // ✅ Added llmRecommendedItems
 
   // ✅ Setters for newly added state
   setCurrentUserTranscription: (transcription: string) =>
@@ -99,6 +103,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   setOrderType: (type) => set({ orderType: type }),
   setPaymentDetails: (details: string) => set({ paymentDetails: details }),
   setCustomerAgeClass: (ageClass) => set({ customerAgeClass: ageClass }),
+  setllmRecommendedItems: (items) => set({ llmRecommendedItems: items }), // ✅ New setter for llmRecommended
   addItemToBasket: (itemId: number, customizations: string[] = []) =>
     set((state) => {
       const menuItem = state.menuList.find((item) => item.id === itemId);

@@ -56,11 +56,11 @@ const VoiceAssistant: React.FC = () => {
 
                 const data = await response.json();
                 if (data.transcription) {
-                    setTranscription(data.transcription);
-                    setResponse(data.response);
-                    speakResponse(data.response);
-                    setCurrentUserTranscription(data.transcription); // ✅ Store transcription in state
-                    setCurrentLLMResponse(data.response); // ✅ Store response in state
+                    setTranscription(data?.transcription);
+                    setResponse(data?.response);
+                    speakResponse(data?.response);
+                    setCurrentUserTranscription(data?.transcription); // ✅ Store transcription in state
+                    setCurrentLLMResponse(data?.items); // ✅ Store response in state
                 }
             };
         };
