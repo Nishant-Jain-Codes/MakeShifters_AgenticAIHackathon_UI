@@ -13,6 +13,7 @@ const VoiceAssistant: React.FC = () => {
   const [chatHistory, setChatHistory] = useState<
     { id: string; type: string; text: string; timestamp: Date }[]
   >([]);
+  const [isListening , setIsListening] = useState(false);
   const {setCurrentUserTranscription,setCurrentLLMResponse} = useMenuStore.getState();
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
@@ -20,7 +21,7 @@ const VoiceAssistant: React.FC = () => {
   const isRecording = useRef(false);
   const isFetchingResponse = useRef(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
-
+  
   useEffect(() => {
     const synth = window.speechSynthesis;
 
@@ -103,7 +104,7 @@ const VoiceAssistant: React.FC = () => {
             setShowLoading(false);
             setTimeout(() => {
               isFetchingResponse.current = false;
-              startRecording();
+              // startRecording();
             }, 2000);
             return;
           }
@@ -124,7 +125,7 @@ const VoiceAssistant: React.FC = () => {
               "❌ No transcription detected, restarting listening..."
             );
             isFetchingResponse.current = false;
-            startRecording();
+            // startRecording();
             return;
           }
 
@@ -159,7 +160,7 @@ const VoiceAssistant: React.FC = () => {
 
               setTimeout(() => {
                 isFetchingResponse.current = false;
-                startRecording();
+                // startRecording();
               }, 5000);
             }
           }
@@ -169,7 +170,7 @@ const VoiceAssistant: React.FC = () => {
           setShowLoading(false);
           setTimeout(() => {
             isFetchingResponse.current = false;
-            startRecording();
+            // startRecording();
           }, 2000);
         }
       };
@@ -192,7 +193,7 @@ const VoiceAssistant: React.FC = () => {
 };
 
   const speakResponse = (text: string) => {
-    stopRecording(); // Stop recording before speaking
+    stopRecording(); // Stop record/ing before speaking
     setIsSpeaking(true);
     console.log("🗣️ Speaking:", text);
 
@@ -211,7 +212,7 @@ const VoiceAssistant: React.FC = () => {
       console.log("✅ Finished speaking, restarting listening...");
       setTimeout(() => {
         isFetchingResponse.current = false;
-        startRecording();
+        // startRecording();
       }, 1000);
     };
 
@@ -219,7 +220,13 @@ const VoiceAssistant: React.FC = () => {
   };
 
   const currentScreen = useMenuStore((state) => state.currentScreen);
-
+  useEffect(()=>{
+    if(!isListening){
+      stopRecording()
+    }else{
+      startRecording()
+    }
+  })
   return (
     <div className="voice-assistant flex flex-col text-[0.6rem] h-full w-[370px] bg-gradient-to-b from-red-700 to-red-800 text-white p-4 rounded-lg shadow-2xl z-60">
       {/* Header */}
@@ -367,7 +374,14 @@ const VoiceAssistant: React.FC = () => {
                 </div>
               </div>
             ) : (
-              <div className="text-yellow-300">{"Listening..."}</div>
+              // <div className="text-yellow-300">{"Listening..."}</div>
+                <div className="text-yellow-300">
+                {isFetchingResponse.current
+                  ? "Processing..."
+                  : isListening
+                  ? "Listening..."
+                  : "Tap To Speak..."}
+                </div>
             )}
           </div>
           <div className="relative">
@@ -375,6 +389,10 @@ const VoiceAssistant: React.FC = () => {
               className={`w-5 h-5 flex items-center justify-center rounded-full ${
                 isRecording.current ? "bg-green-500" : "bg-yellow-500"
               }`}
+              onClick={() => {
+                console.log("🛑 Toggling listening..." , `${isListening} -> ${!isListening}`);
+                setIsListening(!isListening);
+              }}
             >
               <svg
                 viewBox="0 0 24 24"
