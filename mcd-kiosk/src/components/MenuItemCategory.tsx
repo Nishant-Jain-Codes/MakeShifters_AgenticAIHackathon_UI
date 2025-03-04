@@ -12,8 +12,6 @@ export default function MenuItemCategory({ id, imageUrl, name }: ItemCategory) {
   const currentSelectedItemType = useMenuStore((state) => state.currentSelectedItemType);
   const setCurrentSelectedItemType = useMenuStore((state) => state.setCurrentSelectedItemType);
 
-
-
   const isSelected = currentSelectedItemType === id;
 
   // Replace {format} with "png" and {size} with "512x512"

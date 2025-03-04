@@ -1,4 +1,5 @@
 // import { useNavigate } from "react-router-dom";
+import McBuddyItems from "../screens/McBuddyItems";
 import useMenuStore from "../store/useMenuStore";
 import { moveToNextScreen } from "../utils/functions";
 import { MenuItem } from "./../types";
@@ -9,6 +10,8 @@ export default function Menu() {
   const menuList = useMenuStore((state) => state.menuList);
   const setCurrentSelectedItem = useMenuStore((state) => state.setCurrentSelectedItem);
   const currentSelectedItemType = useMenuStore((state) => state.currentSelectedItemType);
+  const llmRecommendedItems = useMenuStore((state) => state.llmRecommendedItems);
+
 
   
   // Filter menu based on selected category
@@ -19,6 +22,10 @@ export default function Menu() {
   return (
       <div className="h-[80vh] overflow-y-auto scrollbar-hidden">
     <div className="flex flex-wrap gap-3 p-1 ">
+
+      {currentSelectedItemType == 0 && (
+        <McBuddyItems itemIds ={llmRecommendedItems}/>
+      ) }
       {filteredMenu.map((item: MenuItem) => (
           <MenuItemCard
             key={item.id}

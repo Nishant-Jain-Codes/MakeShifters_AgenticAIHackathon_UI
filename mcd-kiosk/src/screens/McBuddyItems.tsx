@@ -3,7 +3,7 @@ import { moveToNextScreen } from "../utils/functions";
 import { MenuItem } from "../types";
 import MenuItemCard from "../components/MenuItemCard";
 
-export default function McBuddyItems({ itemIds }: { itemIds: number[] }) {
+export default function McBuddyItems({ itemIds }: { itemIds: number[] | null }) {
   const currentSelectedItem = useMenuStore(
     (state) => state.currentSelectedItem
   );
@@ -14,7 +14,7 @@ export default function McBuddyItems({ itemIds }: { itemIds: number[] }) {
 
   // Filter menu based on provided item IDs
   const filteredMenu: MenuItem[] = menuList.filter((item: MenuItem) =>
-    itemIds.includes(item.id)
+    itemIds?.includes(item.id)
   );
 
   return (
