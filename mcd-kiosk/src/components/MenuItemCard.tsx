@@ -47,7 +47,7 @@ const MenuItemCard = memo(function MenuItemCard({
     <motion.div
       onClick={onSelect}
       className={clsx(
-        "p-4 flex flex-col justify-between w-[180px] border border-gray-200 rounded-xl cursor-pointer transition-all shadow-md relative",
+        "p-2 flex flex-col text-xs justify-between w-[130px] border border-gray-200 rounded-xl cursor-pointer transition-all shadow-md relative",
         isSelected
           ? " text-primaryBlack shadow-lg"
           : "bg-white text-black hover:shadow-lg hover:scale-102"
@@ -67,13 +67,13 @@ const MenuItemCard = memo(function MenuItemCard({
       <img
         src={imgSrc}
         alt={item.name}
-        className="w-16 h-16 object-contain mx-auto"
+        className="w-12 h-12 object-contain mx-auto"
       />
-      <p className="mt-2 text-center font-semibold">{item.name}</p>
+      <p className="mt-2 text-center text-xs font-semibold">{item.name.length > 20 ? `${item.name.substring(0, 20)}...` : item.name.substring(0, 20)}</p>
 
       {/* Price on Left & Add Button on Right */}
-      <div className="flex items-center gap-1 justify-between mt-3 -ml-1">
-        <p className="text-amber-700 font-semibold text-lg">₹{item.price}</p>
+        <p className="text-amber-700 text-center font-semibold text-xs">₹{item.price}</p>
+      <div className="flex items-center gap-1 justify-center mt-3 -ml-1">
 
         {quantity > 0 ? (
           <div className="flex items-center gap-3">
@@ -87,7 +87,7 @@ const MenuItemCard = memo(function MenuItemCard({
               <Minus size={20} />
             </button>
 
-            <span className="text-lg font-semibold">{quantity}</span>
+            <span className="text-xs font-semibold">{quantity}</span>
 
             <button
               onClick={(e) => {

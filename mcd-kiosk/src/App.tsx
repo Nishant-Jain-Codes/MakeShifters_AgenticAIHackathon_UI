@@ -53,7 +53,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             </p>
             <button
               onClick={() => this.props.setOrderStarted(false)}
-              className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              className="mt-6 px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-blue-700 transition"
             >
               Go to Home
             </button>
@@ -106,21 +106,13 @@ function App() {
           <>
             <Toaster position="top-center" reverseOrder={false} />
             {/* Top Section - Static */}
-            <div className="relative h-[27vh] w-full bg-red-50 flex items-center border justify-center">
-              {/* Back Button - Positioned at the top-left */}
-              {currentScreen !== "OrderTypeSelection" && (
-                <button
-                  onClick={moveToPreviousScreen}
-                  className="absolute bg-white rounded-full py-1 px-3 z-50 top-5 left-5  border-2 flex items-center text-2xl text-yellow-500 hover:text-yellow-400"
-                >
-                  <>
-                    <ChevronLeft size={30} className="-ml-3" />
-                    Back
-                  </>
-                </button>
-              )}
+            <div className="relative h-[27vh] w-full bg-red-50 flex items-center border justify-">
+           
+
               <VoiceAssistant />
-              <Avatar />
+       
+                <Avatar />
+         
 
               <img
                 className="absolute object-cover blur-[3px] w-full h-full z-10"

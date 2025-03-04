@@ -9,6 +9,7 @@
     --font-poppins: "Poppins";
     --font-playwrite: "Playwrite NG Modern", cursive;
     --font-croissant: "Croissant One", serif;
+    --font-pica: "IM Fell DW Pica", serif;
   }
   body {
     box-sizing: border-box;

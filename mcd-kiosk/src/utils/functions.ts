@@ -120,7 +120,7 @@ export const moveToPreviousScreen = () => {
 export const moveToSpecificScreen = (screenName: string) => {
   const { setCurrentScreen, screenStack, setScreenStack, currentScreen } =
     useMenuStore.getState();
-  if (!flow.includes(screenName)) return; // Do nothing if screen not in flow
+  // if (!flow.includes(screenName)) return; // Do nothing if screen not in flow
 
   setScreenStack([...screenStack, currentScreen]); // Store previous screen before moving
   setCurrentScreen(screenName);

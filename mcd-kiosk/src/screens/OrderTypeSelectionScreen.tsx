@@ -60,7 +60,7 @@ export default function OrderTypeSelectionScreen() {
               <img
                 src={order.imgSrc}
                 alt={order.label}
-                className="w-20 h-20 object-contain drop-shadow-lg"
+                className="w-25 h-25 object-contain drop-shadow-lg"
               />
               <span className="font-semibold text-lg text-white">
                 {order.label}

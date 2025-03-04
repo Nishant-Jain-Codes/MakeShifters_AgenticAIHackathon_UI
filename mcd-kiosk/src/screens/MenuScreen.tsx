@@ -6,7 +6,7 @@ export default function MenuScreen() {
 
   return (
     <div className="flex w-full ">
-      <div className="w-1/4 overflow-y-auto">
+      <div className="w-1/5 overflow-y-auto">
         <CategoryList />
       </div>
       <div className="w-4/5 overflow-y-auto">

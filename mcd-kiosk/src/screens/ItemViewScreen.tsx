@@ -2,6 +2,7 @@ import useMenuStore from "../store/useMenuStore";
 import { Plus, Minus, ShoppingBag } from "lucide-react";
 import CustomizationOption from "../components/CustomisationOption";
 import toast from "react-hot-toast";
+import { moveToSpecificScreen } from "../utils/functions";
 
 const ItemViewScreen = () => {
   const basket = useMenuStore((state) => state.basket);
@@ -20,9 +21,8 @@ const ItemViewScreen = () => {
   const quantity = basketItem ? basketItem.qty : 0;
 
   if (!item) {
-    return (
-      <div className="text-center text-gray-500 mt-10">Item not found</div>
-    );
+    moveToSpecificScreen("Menu");
+    return
   }
 
   return (

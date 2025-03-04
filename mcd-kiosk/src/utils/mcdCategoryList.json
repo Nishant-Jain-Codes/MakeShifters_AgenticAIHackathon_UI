@@ -10,10 +10,16 @@
     "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551887533338.png"
   },
   {
-    "name": "Desserts",
-    "id": 7,
-    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551788552933.png"
+    "name": "Burgers & Wraps",
+    "id": 3,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_170955171681248.png"
   },
+  {
+    "name": "Fries & Sides",
+    "id": 4,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551827742126.png"
+  },
+ 
   {
     "name": "Cakes Brownies and Cookies",
     "id": 5,
@@ -25,14 +31,11 @@
     "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551762235584.png"
   },
   {
-    "name": "Burgers & Wraps",
-    "id": 3,
-    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_170955171681248.png"
-  },
-  
-  {
-    "name": "Fries & Sides",
-    "id": 4,
-    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551827742126.png"
+    "name": "Desserts",
+    "id": 7,
+    "imageUrl": "https://d37byfojjwz7vp.cloudfront.net/new_resize_512_1709551788552933.png"
   }
+  
+  
+ 
 ]
