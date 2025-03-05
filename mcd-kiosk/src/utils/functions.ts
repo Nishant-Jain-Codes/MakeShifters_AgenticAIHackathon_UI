@@ -134,8 +134,9 @@ export const handleLLMTriggeredActions = () => {
   //we can use this message to implement some front end logic
   const message = response?.message;
   const setCustomScreen = (screen: string) => {
-    const inputScreen = screen.toLowerCase();
+    const inputScreen = screen?.toLowerCase()?.split(" ")?.join("");
     const llmResponseToScreenMapping: Record<string, string> = {
+      "order summary": "OrderSummary",
       menu: "Menu",
       paymentselection: "Payment",
       payment: "Payment",
