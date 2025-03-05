@@ -18,13 +18,11 @@ function shutMouth() {
 }
 function listningHandler(){
   console.log("listening handler ran")
-  debugger;
   const targetNode = document.getElementById("av");
   console.log("targeNode", targetNode)
 if (targetNode) {
     // Create a MutationObserver instance
     const observer = new MutationObserver((mutationsList) => {
-      debugger;
         for (const mutation of mutationsList) {
             if (mutation.type === "attributes" && mutation.attributeName === "data-speaking") {
                 console.log("data-speaking changed to:", targetNode.getAttribute("data-speaking"));
