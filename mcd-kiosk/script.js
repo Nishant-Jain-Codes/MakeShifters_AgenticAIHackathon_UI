@@ -1,4 +1,56 @@
 // setup
+// import useMenuStore from "./src/store/useMenuStore"
+
+// const isRecording = useMenuStore((state)=>state.isRecording);
+// console.log(isRecording)
+// Select the target element
+// Select the target element
+let allowToTalk = false;
+function allowTalking() {
+  allowToTalk = true;
+  console.log("Talking allowed!");
+}
+
+// Function to shut mouth
+function shutMouth() {
+  allowToTalk = false;
+  console.log("Mouth shut!");
+}
+function listningHandler(){
+  console.log("listening handler ran")
+  debugger;
+  const targetNode = document.getElementById("av");
+  console.log("targeNode", targetNode)
+if (targetNode) {
+    // Create a MutationObserver instance
+    const observer = new MutationObserver((mutationsList) => {
+      debugger;
+        for (const mutation of mutationsList) {
+            if (mutation.type === "attributes" && mutation.attributeName === "data-speaking") {
+                console.log("data-speaking changed to:", targetNode.getAttribute("data-speaking"));
+                let curVal = targetNode.getAttribute("data-speaking") !== "true" ? true : false;
+                console.log("type of curVal" , typeof curVal)
+                if(curVal){
+                  console.log(curVal);
+                  allowTalking();
+                }
+                else{
+                  console.log("else case",curVal)
+                  shutMouth();
+                }
+            }
+        }
+    });
+
+    // Configure the observer to watch for attribute changes
+    observer.observe(targetNode, { attributes: true });
+
+    console.log("Listening for changes in data-speaking...");
+} else {
+    console.error("Element with id 'av' not found.");
+}
+}
+
 
   //expression setup
   var expressionyay = 0;
@@ -190,184 +242,69 @@
   
   // mic listener - get a value
   navigator.mediaDevices
-    .getUserMedia({
-      audio: true
-    })
-    .then(
-      function (stream) {
-        audioContext = new AudioContext();
-        analyser = audioContext.createAnalyser();
-        microphone = audioContext.createMediaStreamSource(stream);
-        javascriptNode = audioContext.createScriptProcessor(256, 1, 1);
-  
-        analyser.smoothingTimeConstant = 0.5;
-        analyser.fftSize = 1024;
-  
-        microphone.connect(analyser);
-        analyser.connect(javascriptNode);
-        javascriptNode.connect(audioContext.destination);
-  
-        javascriptNode.onaudioprocess = function () {
-          var array = new Uint8Array(analyser.frequencyBinCount);
-          analyser.getByteFrequencyData(array);
-          var values = 0;
-  
-          var length = array.length;
-          for (var i = 0; i < length; i++) {
-            values += array[i];
-          }
-  
-          // audio in expressed as one number
-          var average = values / length;
-          var inputvolume = average;
-          
-          // move the interface slider
-          const inputLevelElement = document.getElementById("inputlevel");
-          if (inputLevelElement) {
-            inputLevelElement.value = inputvolume;
-          }
-  
-          // mic based / endless animations (do stuff)
-          if (currentVrm != undefined) { //best to be sure
-            // talk
-            if (talktime == true) {
-              // todo: more vowelshapes
-              var voweldamp = 53;
-              var vowelmin = 12;
-              if (inputvolume > (mouththreshold * 2)) {
-                currentVrm.blendShapeProxy.setValue(
-                  THREE.VRMSchema.BlendShapePresetName.A,
-                  ((average - vowelmin) / voweldamp) * (mouthboost/10)
-                );
-              } else {
-                currentVrm.blendShapeProxy.setValue(
-                  THREE.VRMSchema.BlendShapePresetName.A, 0
-                );
-              }
-            }
-  
-            // move body
-            // todo: replace with ease-to-target behaviour 
-            var damping = 750/(bodymotion/10);
-            var springback = 1.001;
-  
-            if (average > (1 * bodythreshold)) {
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Head
-              ).rotation.x += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Head
-              ).rotation.x /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Head
-              ).rotation.y += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Head
-              ).rotation.y /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Head
-              ).rotation.z += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Head
-              ).rotation.z /= springback;
-  
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Neck
-              ).rotation.x += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Neck
-              ).rotation.x /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Neck
-              ).rotation.y += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Neck
-              ).rotation.y /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Neck
-              ).rotation.z += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.Neck
-              ).rotation.z /= springback;
-  
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.UpperChest
-              ).rotation.x += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.UpperChest
-              ).rotation.x /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.UpperChest
-              ).rotation.y += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.UpperChest
-              ).rotation.y /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.UpperChest
-              ).rotation.z += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.UpperChest
-              ).rotation.z /= springback;
-  
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.RightShoulder
-              ).rotation.x += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.RightShoulder
-              ).rotation.x /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.RightShoulder
-              ).rotation.y += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.RightShoulder
-              ).rotation.y /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.RightShoulder
-              ).rotation.z += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.RightShoulder
-              ).rotation.z /= springback;
-  
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.LeftShoulder
-              ).rotation.x += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.LeftShoulder
-              ).rotation.x /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.LeftShoulder
-              ).rotation.y += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.LeftShoulder
-              ).rotation.y /= springback;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.LeftShoulder
-              ).rotation.z += (Math.random() - 0.5) / damping;
-              currentVrm.humanoid.getBoneNode(
-                THREE.VRMSchema.HumanoidBoneName.LeftShoulder
-              ).rotation.z /= springback;
-            }
-  
-            // yay/oof expression drift
-            expressionyay += (Math.random() - 0.5) / expressionease;
-            if(expressionyay > expressionlimityay){expressionyay=expressionlimityay};
-            if(expressionyay < 0){expressionyay=0};
-            currentVrm.blendShapeProxy.setValue(THREE.VRMSchema.BlendShapePresetName.Fun, expressionyay);
-            expressionoof += (Math.random() - 0.5) / expressionease;
-            if(expressionoof > expressionlimitoof){expressionoof=expressionlimitoof};
-            if(expressionoof < 0){expressionoof=0};
-            currentVrm.blendShapeProxy.setValue(THREE.VRMSchema.BlendShapePresetName.Angry, expressionoof);
-          }
-  
-          //look at camera is more efficient on blink
-          lookAtTarget.position.x = camera.position.x;
-          lookAtTarget.position.y = ((camera.position.y-camera.position.y-camera.position.y)/2)+0.5;
-        }; // end fn stream
-      },
-      function (err) {
-        console.log("The following error occured: " + err.name);
+  .getUserMedia({ audio: true })
+  .then(function (stream) {
+    audioContext = new AudioContext();
+    analyser = audioContext.createAnalyser();
+    microphone = audioContext.createMediaStreamSource(stream);
+    javascriptNode = audioContext.createScriptProcessor(256, 1, 1);
+
+    analyser.smoothingTimeConstant = 0.5;
+    analyser.fftSize = 1024;
+
+    microphone.connect(analyser);
+    analyser.connect(javascriptNode);
+    javascriptNode.connect(audioContext.destination);
+
+    javascriptNode.onaudioprocess = function () {
+      var array = new Uint8Array(analyser.frequencyBinCount);
+      analyser.getByteFrequencyData(array);
+      var values = 0;
+
+      var length = array.length;
+      for (var i = 0; i < length; i++) {
+        values += array[i];
       }
-    );
+
+      var average = values / length;
+      var inputvolume = average;
+
+      // Move slider if exists
+      const inputLevelElement = document.getElementById("inputlevel");
+      if (inputLevelElement) {
+        inputLevelElement.value = inputvolume;
+      }
+
+      // Check if currentVrm exists
+      if (currentVrm) {
+        if (allowToTalk) {
+          // Allow talking only if allowToTalk is true
+          var voweldamp = 53;
+          var vowelmin = 12;
+          if (inputvolume > mouththreshold * 2) {
+            currentVrm.blendShapeProxy.setValue(
+              THREE.VRMSchema.BlendShapePresetName.A,
+              ((average - vowelmin) / voweldamp) * (mouthboost / 10)
+            );
+          } else {
+            currentVrm.blendShapeProxy.setValue(
+              THREE.VRMSchema.BlendShapePresetName.A,
+              0
+            );
+          }
+        } else {
+          // Force mouth to stay shut in "shut state"
+          currentVrm.blendShapeProxy.setValue(
+            THREE.VRMSchema.BlendShapePresetName.A,
+            0
+          );
+        }
+      }
+    };
+  })
+  .catch(function (err) {
+    console.log("Error: " + err.name);
+  });
   
   // blink
   function blink() {
@@ -541,7 +478,8 @@
     
     // Trigger resize to adjust rendering
     onWindowResize();
-  }
+    listningHandler();
+  } 
   
   // wait to trigger interface and load init values
   setTimeout(() => { interface(); }, 500);

@@ -18,6 +18,7 @@ const VoiceAssistant: React.FC = () => {
   const audioChunksRef = useRef<Blob[]>([]);
   const [maleVoice, setMaleVoice] = useState<SpeechSynthesisVoice | null>(null);
   const isRecording = useRef(false);
+  const {setIsRecording} = useMenuStore.getState();
   const isFetchingResponse = useRef(false);
   const canRestart = useRef(true);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -66,6 +67,7 @@ const VoiceAssistant: React.FC = () => {
     if (!canRestart.current || isSpeaking || isRecording.current) return;
 
     isRecording.current = true;
+    setIsRecording(true)
     canRestart.current = false;
 
     console.log("🎤 Listening...");
@@ -83,7 +85,7 @@ const VoiceAssistant: React.FC = () => {
 
       mediaRecorder.onstop = async () => {
         isRecording.current = false;
-
+        setIsRecording(false);
         if (isSpeaking || isFetchingResponse.current) return;
         isFetchingResponse.current = true;
         setShowLoading(true);
@@ -196,6 +198,7 @@ const VoiceAssistant: React.FC = () => {
     } catch (error) {
       console.error("Error starting recording:", error);
       isRecording.current = false;
+      setIsRecording(false);
       canRestart.current = true;
     }
   };
@@ -266,6 +269,7 @@ const VoiceAssistant: React.FC = () => {
     }
     mediaRecorderRef.current = null;
     isRecording.current = false;
+    setIsRecording(false);
   };
 
   const manualStartRecording = () => {
