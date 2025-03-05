@@ -37,9 +37,10 @@ export interface MenuStoreState {
   currentUserTranscription: string;
   currentLLMResponse: string;
   llmRecommendedItems: number[] | null; // ✅ Added llmRecommendedItems
-
+  sessionStarted: boolean;
   // Actions
   setMenu: (menu: MenuItem[]) => void;
+  setSessionStarted: (value: boolean) => void;
   setMealItems: (meals: MealItem[]) => void; // ✅ New action for meal items
   setCustomizationOptions: (options: CustomizationOption[]) => void; // ✅ New action for customization options
   setItemCategories: (itemCategories: ItemCategory[]) => void;
@@ -86,8 +87,10 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   currentUserTranscription: "",
   currentLLMResponse: "",
   llmRecommendedItems: null, // ✅ Added llmRecommendedItems
+  sessionStarted: false,
 
   // ✅ Setters for newly added state
+  setSessionStarted: (value: boolean) => set({ sessionStarted: value }),
   setCurrentUserTranscription: (transcription: string) =>
     set({ currentUserTranscription: transcription }),
   setCurrentLLMResponse: (response: string) =>
@@ -177,7 +180,6 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   setScreenStack: (stack) => set({ screenStack: stack }),
   setLanguage: (language) => set({ language }),
   setOrderStarted: (value) => set({ orderStarted: value }),
-
   confirmOrder: () =>
     console.log("✅ Order confirmed!", useMenuStore.getState()),
 
@@ -191,6 +193,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
       currentSelectedItemSubType: null,
       currentSelectedItem: null,
       currentScreen: "OrderTypeSelection",
+      sessionStarted: false,
     }),
 }));
 export default useMenuStore;

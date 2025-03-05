@@ -21,8 +21,12 @@ const VoiceAssistant: React.FC = () => {
   const isFetchingResponse = useRef(false);
   const canRestart = useRef(true);
   const chatContainerRef = useRef<HTMLDivElement>(null);
-
-
+  const sessionStarted = useMenuStore((state) => state.sessionStarted);
+  useEffect(()=>{
+    if(sessionStarted){
+      manualStartRecording();
+    }
+  },[sessionStarted])
 
   useEffect(() => {
     const synth = window.speechSynthesis;
@@ -268,6 +272,7 @@ const VoiceAssistant: React.FC = () => {
     canRestart.current = true;
     startRecording();
   };
+
   const currentScreen = useMenuStore((state) => state.currentScreen);
 
   return (
@@ -283,7 +288,7 @@ const VoiceAssistant: React.FC = () => {
               <ChevronLeft size={16} className="text-red-800" />
             </button>
           )}
-          <h2 className="font-bold text-yellow-400 font-pica text-lg" onClick={    manualStartRecording}>
+          <h2 className="font-bold text-yellow-400 font-pica text-lg" >
             McBuddy
           </h2>
         </div>

@@ -3,7 +3,7 @@ import useMenuStore from "../store/useMenuStore";
 
 const AvatarWelcome = () => {
   const setOrderStarted = useMenuStore((state) => state.setOrderStarted);
-
+  const { setSessionStarted } = useMenuStore.getState();
   return (
     <div className="relative h-screen bg-gradient-to-br from-red-900 via-yellow-700 to-orange-500 overflow-hidden">
       {/* Animated background elements */}
@@ -47,7 +47,11 @@ const AvatarWelcome = () => {
 
           <button
             className="group relative overflow-hidden rounded-full bg-white px-8 py-4 text-xl font-bold text-red-900 shadow-lg transition-all duration-300 hover:shadow-yellow-500/50 hover:scale-105 focus:outline-none z-100 cursor-pointer"
-            onClick={() => setOrderStarted(true)}
+            onClick={() => {
+              setOrderStarted(true);
+
+              setSessionStarted(true);
+            }}
           >
             <span className="relative z-100">Start Ordering</span>
             <span className="absolute inset-0 bg-gradient-to-r from-red-400 via-yellow-400 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
