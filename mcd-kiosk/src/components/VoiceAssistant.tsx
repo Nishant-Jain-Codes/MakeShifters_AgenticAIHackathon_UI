@@ -23,11 +23,11 @@ const VoiceAssistant: React.FC = () => {
   const canRestart = useRef(true);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const sessionStarted = useMenuStore((state) => state.sessionStarted);
-  useEffect(()=>{
-    if(sessionStarted){
-      manualStartRecording();
-    }
-  },[sessionStarted])
+  // useEffect(()=>{
+  //   if(sessionStarted){
+  //     manualStartRecording();
+  //   }
+  // },[sessionStarted])
 
   useEffect(() => {
     const synth = window.speechSynthesis;
@@ -292,7 +292,7 @@ const VoiceAssistant: React.FC = () => {
               <ChevronLeft size={16} className="text-red-800" />
             </button>
           )}
-          <h2 className="font-bold text-yellow-400 font-pica text-lg" >
+          <h2 className="font-bold text-yellow-400 font-pica text-lg" onClick={manualStartRecording}>
             McBuddy
           </h2>
         </div>
