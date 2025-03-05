@@ -35,6 +35,7 @@ export interface MenuStoreState {
   customerAgeClass: CustomerAgeClass | null;
   orderStarted: boolean;
   currentUserTranscription: string;
+  isRecording : boolean;
   currentLLMResponse: string;
   llmRecommendedItems: number[] | null; // ✅ Added llmRecommendedItems
 
@@ -63,6 +64,7 @@ export interface MenuStoreState {
   setCurrentUserTranscription: (transcription: string) => void;
   setCurrentLLMResponse: (response: string) => void;
   setllmRecommendedItems: (items: number[]) => void; // ✅ New action for llmRecommendedItems
+  setIsRecording: (isRecording : boolean) => void;
 }
 const useMenuStore = create<MenuStoreState>((set) => ({
   menuList: [],
@@ -86,7 +88,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   currentUserTranscription: "",
   currentLLMResponse: "",
   llmRecommendedItems: null, // ✅ Added llmRecommendedItems
-
+  isRecording: false,
   // ✅ Setters for newly added state
   setCurrentUserTranscription: (transcription: string) =>
     set({ currentUserTranscription: transcription }),
@@ -104,6 +106,7 @@ const useMenuStore = create<MenuStoreState>((set) => ({
   setPaymentDetails: (details: string) => set({ paymentDetails: details }),
   setCustomerAgeClass: (ageClass) => set({ customerAgeClass: ageClass }),
   setllmRecommendedItems: (items) => set({ llmRecommendedItems: items }), // ✅ New setter for llmRecommended
+  setIsRecording:(isRecording) => set({isRecording:isRecording}),
   addItemToBasket: (itemId: number, customizations: string[] = []) =>
     set((state) => {
       const menuItem = state.menuList.find((item) => item.id === itemId);

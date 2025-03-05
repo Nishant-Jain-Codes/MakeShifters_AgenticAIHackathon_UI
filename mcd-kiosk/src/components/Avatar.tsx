@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import useMenuStore from "../store/useMenuStore";
+
 
 declare global {
   interface Window {
@@ -7,6 +9,8 @@ declare global {
 }
 
 export default function Avatar() {
+  const isSpeaking = useMenuStore((state)=>state.isRecording);
+console.log("this is isSpeaking in the avatar => ",isSpeaking)
   useEffect(() => {
     window.initAvatarInDiv("av");
   }, []);
@@ -15,6 +19,7 @@ export default function Avatar() {
     <div
       id="av"
       className="h-full w-[180px]  z-50 select-none pointer-events-none"
+      data-speaking={isSpeaking}
     ></div>
   );
 }
