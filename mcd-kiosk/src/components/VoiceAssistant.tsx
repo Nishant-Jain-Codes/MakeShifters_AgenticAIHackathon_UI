@@ -158,7 +158,7 @@ const VoiceAssistant: React.FC = () => {
               ]);
 
               if (data.response) {
-                speakResponse(data.response);
+                speakResponse(data.response.substring(0,250));
               } else {
                 console.log("No valid response, restarting listening...");
                 toast.error("Server busy handling too many orders ");
