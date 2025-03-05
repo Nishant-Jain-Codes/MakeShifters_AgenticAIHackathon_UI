@@ -19,7 +19,10 @@ const VoiceAssistant: React.FC = () => {
   const [maleVoice, setMaleVoice] = useState<SpeechSynthesisVoice | null>(null);
   const isRecording = useRef(false);
   const isFetchingResponse = useRef(false);
+  const canRestart = useRef(true);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+
+
 
   useEffect(() => {
     const synth = window.speechSynthesis;
@@ -43,8 +46,6 @@ const VoiceAssistant: React.FC = () => {
         synth.onvoiceschanged = null;
       };
     }
-
-    startRecording(); // Start listening when component mounts
     return () => stopRecording(); // Cleanup on unmount
   }, []);
 
@@ -57,167 +58,216 @@ const VoiceAssistant: React.FC = () => {
   }, [chatHistory]);
 
   const startRecording = async () => {
-    if (isSpeaking || isRecording.current) return; // Prevent duplicate recordings
+    // Only start recording if canRestart is true and not already recording or speaking
+    if (!canRestart.current || isSpeaking || isRecording.current) return;
+
     isRecording.current = true;
+    canRestart.current = false;
 
     console.log("🎤 Listening...");
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const mediaRecorder = new MediaRecorder(stream);
-    mediaRecorderRef.current = mediaRecorder;
-    audioChunksRef.current = [];
-
-    mediaRecorder.ondataavailable = (event) => {
-      if (event.data.size > 0) {
-        audioChunksRef.current.push(event.data);
-      }
-    };
-
-    mediaRecorder.onstop = async () => {
-      isRecording.current = false;
-
-      if (isSpeaking || isFetchingResponse.current) return; // Prevent duplicate API calls
-      isFetchingResponse.current = true;
-      setShowLoading(true);
-
-      const audioBlob = new Blob(audioChunksRef.current, { type: "audio/wav" });
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mediaRecorder = new MediaRecorder(stream);
+      mediaRecorderRef.current = mediaRecorder;
       audioChunksRef.current = [];
 
-      const reader = new FileReader();
-      reader.readAsDataURL(audioBlob);
-      reader.onloadend = async () => {
-        const base64Audio = reader.result?.toString().split(",")[1];
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunksRef.current.push(event.data);
+        }
+      };
 
-        try {
-          console.log("📡 Sending audio...");
-          const response = await fetch(
-            "http://localhost:8000/voice-assistant/",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ audio_base64: base64Audio }),
+      mediaRecorder.onstop = async () => {
+        isRecording.current = false;
+
+        if (isSpeaking || isFetchingResponse.current) return;
+        isFetchingResponse.current = true;
+        setShowLoading(true);
+
+        const audioBlob = new Blob(audioChunksRef.current, { type: "audio/wav" });
+        audioChunksRef.current = [];
+
+        const reader = new FileReader();
+        reader.readAsDataURL(audioBlob);
+        reader.onloadend = async () => {
+          const base64Audio = reader.result?.toString().split(",")[1];
+
+          try {
+            console.log("📡 Sending audio...");
+            const response = await fetch(
+              "http://localhost:8000/voice-assistant/",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ audio_base64: base64Audio }),
+              }
+            );
+
+            if (response.status !== 200) {
+              toast.error("Server busy handling too many orders ");
+              setShowLoading(false);
+              setTimeout(() => {
+                isFetchingResponse.current = false;
+                canRestart.current = true;
+              }, 2000);
+              return;
             }
-          );
 
-          if (response.status !== 200) {
+            const data = await response.json();
+            if(data?.transcription){
+              setCurrentUserTranscription(data?.transcription)
+            }
+            if(data?.items){
+              setCurrentLLMResponse(data?.items)
+            }
+            console.log("📩 Response received:", data);
+            setShowLoading(false);
+
+            // 🛑 If no transcription, restart listening immediately
+            if (data.message === "No transcription detected") {
+              console.log(
+                "❌ No transcription detected, restarting listening..."
+              );
+              isFetchingResponse.current = false;
+              canRestart.current = true;
+              startRecording();
+              return;
+            }
+
+            if (data.transcription) {
+              setTranscription(data.transcription);
+              setTranscript(data.transcription);
+              setResponse(data.response);
+              console.log("✅ AI Response:", data.response);
+
+              // Add messages to chat history
+              setChatHistory((prev) => [
+                ...prev,
+                {
+                  id: `user-${Date.now()}`,
+                  type: "user",
+                  text: data.transcription,
+                  timestamp: new Date(),
+                },
+                {
+                  id: `assistant-${Date.now() + 1}`,
+                  type: "assistant",
+                  text: data.response,
+                  timestamp: new Date(),
+                },
+              ]);
+
+              if (data.response) {
+                speakResponse(data.response.substring(0,250));
+              } else {
+                console.log("No valid response, restarting listening...");
+                toast.error("Server busy handling too many orders ");
+
+                setTimeout(() => {
+                  isFetchingResponse.current = false;
+                  canRestart.current = true;
+                  startRecording();
+                }, 5000);
+              }
+            }
+          } catch (error) {
+            console.error("🚨 Error fetching response:", error);
             toast.error("Server busy handling too many orders ");
             setShowLoading(false);
             setTimeout(() => {
               isFetchingResponse.current = false;
+              canRestart.current = true;
               startRecording();
             }, 2000);
-            return;
           }
-
-          const data = await response.json();
-          if(data?.transcription){
-            setCurrentUserTranscription(data?.transcription)
-          }
-          if(data?.items){
-            setCurrentLLMResponse(data?.items)
-          }
-          console.log("📩 Response received:", data);
-          setShowLoading(false);
-
-          // 🛑 If no transcription, restart listening immediately
-          if (data.message === "No transcription detected") {
-            console.log(
-              "❌ No transcription detected, restarting listening..."
-            );
-            isFetchingResponse.current = false;
-            startRecording();
-            return;
-          }
-
-          if (data.transcription) {
-            setTranscription(data.transcription);
-            setTranscript(data.transcription);
-            setResponse(data.response);
-            console.log("✅ AI Response:", data.response);
-
-            // Add messages to chat history
-            setChatHistory((prev) => [
-              ...prev,
-              {
-                id: `user-${Date.now()}`,
-                type: "user",
-                text: data.transcription,
-                timestamp: new Date(),
-              },
-              {
-                id: `assistant-${Date.now() + 1}`,
-                type: "assistant",
-                text: data.response,
-                timestamp: new Date(),
-              },
-            ]);
-
-            if (data.response) {
-              speakResponse(data.response);
-            } else {
-              console.log("No valid response, restarting listening...");
-              toast.error("Server busy handling too many orders ");
-
-              setTimeout(() => {
-                isFetchingResponse.current = false;
-                startRecording();
-              }, 5000);
-            }
-          }
-        } catch (error) {
-          console.error("🚨 Error fetching response:", error);
-          toast.error("Server busy handling too many orders ");
-          setShowLoading(false);
-          setTimeout(() => {
-            isFetchingResponse.current = false;
-            startRecording();
-          }, 2000);
-        }
+        };
       };
-    };
 
-    mediaRecorder.start();
-    setTimeout(() => {
-      if (isRecording.current) {
-        mediaRecorder.stop();
-      }
-    }, 5000);
-  };
-
-  const stopRecording = () => {
-    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
-        mediaRecorderRef.current.stop();
+      mediaRecorder.start();
+      setTimeout(() => {
+        if (isRecording.current) {
+          mediaRecorder.stop();
+        }
+      }, 5000);
+    } catch (error) {
+      console.error("Error starting recording:", error);
+      isRecording.current = false;
+      canRestart.current = true;
     }
-    mediaRecorderRef.current = null;
-    isRecording.current = false;
-};
+  };
 
   const speakResponse = (text: string) => {
     stopRecording(); // Stop recording before speaking
     setIsSpeaking(true);
     console.log("🗣️ Speaking:", text);
-
+  
     const synth = window.speechSynthesis;
+    
+    // Cancel any ongoing speech
+    synth.cancel();
+  
     const utterance = new SpeechSynthesisUtterance(text);
-
+  
     if (maleVoice) {
       utterance.voice = maleVoice;
     }
-
+  
     utterance.pitch = 0.9;
     utterance.rate = 1.0;
-
-    utterance.onend = () => {
-      setIsSpeaking(false);
-      console.log("✅ Finished speaking, restarting listening...");
-      setTimeout(() => {
-        isFetchingResponse.current = false;
-        startRecording();
-      }, 1000);
+  
+    utterance.onstart = () => {
+      console.log("Speech started");
     };
-
+  
+    utterance.onend = () => {
+      console.log("✅ Speech completely finished");
+      
+      // Use a more robust method to ensure speech has stopped
+      const checkSpeechEnd = () => {
+        if (synth.speaking) {
+          // If still speaking, wait a bit more
+          setTimeout(checkSpeechEnd, 100);
+        } else {
+          // Speech truly finished
+          setIsSpeaking(false);
+          isFetchingResponse.current = false;
+          canRestart.current = true;
+          console.log("🎤 Ready to listen...");
+          
+          // Ensure we start recording after a short delay
+          setTimeout(manualStartRecording, 500);
+        }
+      };
+  
+      checkSpeechEnd();
+    };
+  
+    utterance.onerror = (event) => {
+      console.error("Speech synthesis error:", event);
+      
+      // Fallback error handling
+      setIsSpeaking(false);
+      isFetchingResponse.current = false;
+      canRestart.current = true;
+      setTimeout(manualStartRecording, 500);
+    };
+  
+    // Speak the utterance
     synth.speak(utterance);
   };
 
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+      mediaRecorderRef.current.stop();
+    }
+    mediaRecorderRef.current = null;
+    isRecording.current = false;
+  };
+
+  const manualStartRecording = () => {
+    canRestart.current = true;
+    startRecording();
+  };
   const currentScreen = useMenuStore((state) => state.currentScreen);
 
   return (
@@ -233,7 +283,7 @@ const VoiceAssistant: React.FC = () => {
               <ChevronLeft size={16} className="text-red-800" />
             </button>
           )}
-          <h2 className="font-bold text-yellow-400 font-pica text-lg">
+          <h2 className="font-bold text-yellow-400 font-pica text-lg" onClick={    manualStartRecording}>
             McBuddy
           </h2>
         </div>

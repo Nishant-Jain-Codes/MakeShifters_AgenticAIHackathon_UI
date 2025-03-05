@@ -332,15 +332,12 @@ export const handleLLMTriggeredActions = () => {
 
       return indexA - indexB; // Sort known keys based on predefined order
     });
-    sortedEntries.forEach(([key, value]) => {
-      if (
-        handlers[key] &&
-        typeof handlers[key] === "function" &&
-        handlers[key].length > 0
-      ) {
+    for (const [key, value] of sortedEntries) {
+      if (typeof handlers[key] === "function") {
         handlers[key](value);
       }
-    });
+      if (key === "orderType") break;
+    }
   };
 
   console.log("currentUserTranscription", currentUserTranscription);
