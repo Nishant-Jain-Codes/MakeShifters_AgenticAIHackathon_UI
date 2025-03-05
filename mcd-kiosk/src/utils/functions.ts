@@ -311,7 +311,9 @@ export const handleLLMTriggeredActions = () => {
     try {
       return response?.parameters &&
         Object.keys(response?.parameters)?.length > 0
-        ? response?.parameters
+        ? Array.isArray(response.parameters)
+            ? response.parameters
+            : [response.parameters]
         : null;
     } catch (error) {
       return null;
@@ -347,7 +349,8 @@ export const handleLLMTriggeredActions = () => {
   const extractedParams = extractParameters(response);
 
   if (extractedParams) {
-    handleParameters(extractedParams, handlers);
+    extractedParams.forEach((params) => handleParameters(params, handlers));
+    // handleParameters(extractedParams, handlers);
   } else {
     console.log("No parameters found");
   }
