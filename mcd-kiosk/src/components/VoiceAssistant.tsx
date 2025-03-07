@@ -13,25 +13,33 @@ const VoiceAssistant: React.FC = () => {
   const [chatHistory, setChatHistory] = useState<
     { id: string; type: string; text: string; timestamp: Date }[]
   >([]);
-  const {setCurrentUserTranscription,setCurrentLLMResponse} = useMenuStore.getState();
+  const { setCurrentUserTranscription, setCurrentLLMResponse } =
+    useMenuStore.getState();
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const [maleVoice, setMaleVoice] = useState<SpeechSynthesisVoice | null>(null);
   const isRecording = useRef(false);
-  const {setIsRecording} = useMenuStore.getState();
+  const { setIsRecording } = useMenuStore.getState();
   const isFetchingResponse = useRef(false);
   const canRestart = useRef(true);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const sessionStarted = useMenuStore((state) => state.sessionStarted);
+  const [modelState,  setModelState] = useState<number>(0); //0 -> listening // 1-> processing // 2-> speaking
   // useEffect(()=>{
   //   if(sessionStarted){
   //     manualStartRecording();
   //   }
   // },[sessionStarted])
+  useEffect(()=>{
+    console.error("modelState",modelState);
+  },[modelState])
+  const moveToNextModelState = () => {
+    // setModelState((prev) => (prev + 1) % 3);
+  }
 
   useEffect(() => {
     const synth = window.speechSynthesis;
-
+    // setModelState(1);
     const loadVoices = () => {
       if (maleVoice) return;
       const voices = synth.getVoices();
@@ -51,6 +59,7 @@ const VoiceAssistant: React.FC = () => {
         synth.onvoiceschanged = null;
       };
     }
+    // setModelState(2)
     return () => stopRecording(); // Cleanup on unmount
   }, []);
 
@@ -63,15 +72,18 @@ const VoiceAssistant: React.FC = () => {
   }, [chatHistory]);
 
   const startRecording = async () => {
+    // setModelState(0);
     // Only start recording if canRestart is true and not already recording or speaking
     if (!canRestart.current || isSpeaking || isRecording.current) return;
 
     isRecording.current = true;
-    setIsRecording(true)
+    setIsRecording(true);
+    // setModelState(0)
     canRestart.current = false;
 
     console.log("🎤 Listening...");
     try {
+      setModelState(0)
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const mediaRecorder = new MediaRecorder(stream);
       mediaRecorderRef.current = mediaRecorder;
@@ -90,7 +102,9 @@ const VoiceAssistant: React.FC = () => {
         isFetchingResponse.current = true;
         setShowLoading(true);
 
-        const audioBlob = new Blob(audioChunksRef.current, { type: "audio/wav" });
+        const audioBlob = new Blob(audioChunksRef.current, {
+          type: "audio/wav",
+        });
         audioChunksRef.current = [];
 
         const reader = new FileReader();
@@ -99,7 +113,9 @@ const VoiceAssistant: React.FC = () => {
           const base64Audio = reader.result?.toString().split(",")[1];
 
           try {
+            // setModelState(1)
             console.log("📡 Sending audio...");
+            setModelState(1)
             const response = await fetch(
               "http://localhost:8000/voice-assistant/",
               {
@@ -118,16 +134,17 @@ const VoiceAssistant: React.FC = () => {
               }, 2000);
               return;
             }
-
+            setModelState(2)
             const data = await response.json();
-            if(data?.transcription){
-              setCurrentUserTranscription(data?.transcription)
+            if (data?.transcription) {
+              setCurrentUserTranscription(data?.transcription);
             }
-            if(data?.items){
-              setCurrentLLMResponse(data?.items)
+            if (data?.items) {
+              setCurrentLLMResponse(data?.items);
             }
             console.log("📩 Response received:", data);
             setShowLoading(false);
+            // setModelState(1)
 
             // 🛑 If no transcription, restart listening immediately
             if (data.message === "No transcription detected") {
@@ -164,15 +181,16 @@ const VoiceAssistant: React.FC = () => {
               ]);
 
               if (data.response) {
-                speakResponse(data.response.substring(0,250));
+                speakResponse(data.response.substring(0, 250));
               } else {
                 console.log("No valid response, restarting listening...");
                 toast.error("Server busy handling too many orders ");
-
+                // setModelState(1)
                 setTimeout(() => {
                   isFetchingResponse.current = false;
                   canRestart.current = true;
                   startRecording();
+                  // setModelState(2)
                 }, 5000);
               }
             }
@@ -184,7 +202,9 @@ const VoiceAssistant: React.FC = () => {
               isFetchingResponse.current = false;
               canRestart.current = true;
               startRecording();
+              // setModelState(0)
             }, 2000);
+            // setModelState(1)
           }
         };
       };
@@ -206,29 +226,30 @@ const VoiceAssistant: React.FC = () => {
   const speakResponse = (text: string) => {
     stopRecording(); // Stop recording before speaking
     setIsSpeaking(true);
+    // setModelState(2)
     console.log("🗣️ Speaking:", text);
-  
+
     const synth = window.speechSynthesis;
-    
+
     // Cancel any ongoing speech
     synth.cancel();
-  
+
     const utterance = new SpeechSynthesisUtterance(text);
-  
+
     if (maleVoice) {
       utterance.voice = maleVoice;
     }
-  
+
     utterance.pitch = 0.9;
     utterance.rate = 1.0;
-  
+
     utterance.onstart = () => {
       console.log("Speech started");
     };
-  
+
     utterance.onend = () => {
       console.log("✅ Speech completely finished");
-      
+
       // Use a more robust method to ensure speech has stopped
       const checkSpeechEnd = () => {
         if (synth.speaking) {
@@ -240,31 +261,36 @@ const VoiceAssistant: React.FC = () => {
           isFetchingResponse.current = false;
           canRestart.current = true;
           console.log("🎤 Ready to listen...");
-          
+
           // Ensure we start recording after a short delay
+          // setModelState(0)
           setTimeout(manualStartRecording, 500);
         }
       };
-  
+
       checkSpeechEnd();
     };
-  
+
     utterance.onerror = (event) => {
       console.error("Speech synthesis error:", event);
-      
+
       // Fallback error handling
       setIsSpeaking(false);
+      // setModelState(0)
       isFetchingResponse.current = false;
       canRestart.current = true;
       setTimeout(manualStartRecording, 500);
     };
-  
+
     // Speak the utterance
     synth.speak(utterance);
   };
 
   const stopRecording = () => {
-    if (mediaRecorderRef.current && mediaRecorderRef.current.state === "recording") {
+    if (
+      mediaRecorderRef.current &&
+      mediaRecorderRef.current.state === "recording"
+    ) {
       mediaRecorderRef.current.stop();
     }
     mediaRecorderRef.current = null;
@@ -292,7 +318,10 @@ const VoiceAssistant: React.FC = () => {
               <ChevronLeft size={16} className="text-red-800" />
             </button>
           )}
-          <h2 className="font-bold text-yellow-400 font-pica text-lg" onClick={manualStartRecording}>
+          <h2
+            className="font-bold text-yellow-400 font-pica text-lg"
+            onClick={manualStartRecording}
+          >
             McBuddy
           </h2>
         </div>
@@ -407,27 +436,35 @@ const VoiceAssistant: React.FC = () => {
       <div className="absolute bottom-0 right-0 p-1 w-[180px]">
         <div className="flex items-center justify-between bg-red-800 p-2 rounded-full border-1 border-yellow-500">
           <div className="flex-1 px-2">
-            {showLoading ? (
-              <div className="flex items-center space-x-2">
-                <div className="text-yellow-400 font-medium">Processing...</div>
-                <div className="flex space-x-1">
-                  <div
-                    className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"
-                    style={{ animationDelay: "0ms" }}
-                  ></div>
-                  <div
-                    className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"
-                    style={{ animationDelay: "150ms" }}
-                  ></div>
-                  <div
-                    className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"
-                    style={{ animationDelay: "300ms" }}
-                  ></div>
+            <div className="flex items-center space-x-2">
+              {modelState === 0 && (
+                <div className="text-yellow-400 font-medium">Listening...</div>
+              )}
+              {modelState === 1 && (
+                <div className="flex items-center space-x-2">
+                  <div className="text-yellow-400 font-medium">
+                    Processing...
+                  </div>
+                  <div className="flex space-x-1">
+                    <div
+                      className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"
+                      style={{ animationDelay: "0ms" }}
+                    ></div>
+                    <div
+                      className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"
+                      style={{ animationDelay: "150ms" }}
+                    ></div>
+                    <div
+                      className="w-2 h-2 bg-yellow-400 rounded-full animate-bounce"
+                      style={{ animationDelay: "300ms" }}
+                    ></div>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div className="text-yellow-300">{"Listening..."}</div>
-            )}
+              )}
+              {modelState === 2 && (
+                <div className="text-yellow-400 font-medium">Speaking...</div>
+              )}
+            </div>
           </div>
           <div className="relative">
             <div
