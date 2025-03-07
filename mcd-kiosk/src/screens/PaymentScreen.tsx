@@ -21,7 +21,7 @@ export default function PaymentScreen() {
       const { data: payment } = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/payment/checkout`,
         { amount: totalPrice },
-        { withCredentials: true }
+        { withCredentials: false }
       );
 
       const options = {
