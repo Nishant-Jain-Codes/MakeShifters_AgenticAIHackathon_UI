@@ -1,18 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BasketItem } from "../store/useMenuStore";
 import useMenuStore from "../store/useMenuStore";
+import Shimmer from "../components/Shimmer";
 
 export default function OrderSummaryScreen() {
   const basket = useMenuStore((state) => state.basket);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+        setLoading(false);
+        clearInterval(interval);
+    }, 700);
+
+    return () => clearInterval(interval);
+}, []);
 
   const totalPrice = basket.reduce(
     (total, item) => total + item.price * item.qty,
     0
   );
+
+  
   const totalItems = basket.length;
   const totalQuantity = basket.reduce((total, item) => total + item.qty, 0);
 
   return (
+    <div>{loading ? <Shimmer /> :(
     <div className="flex flex-col items-center h-full  mx-auto mt-5">
       {/* Header */}
       <div className="max-w-lg mx-auto flex items-center justify-center">
@@ -56,6 +70,8 @@ export default function OrderSummaryScreen() {
         </div>
       </div>
     </div>
+    )}
+      </div>
   );
 }
 

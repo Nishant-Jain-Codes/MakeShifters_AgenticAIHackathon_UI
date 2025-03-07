@@ -3,6 +3,8 @@ import { Plus, Minus, ShoppingBag } from "lucide-react";
 import CustomizationOption from "../components/CustomisationOption";
 import toast from "react-hot-toast";
 import { moveToSpecificScreen } from "../utils/functions";
+import { useEffect, useState } from "react";
+import Shimmer from "../components/Shimmer";
 
 const ItemViewScreen = () => {
   const basket = useMenuStore((state) => state.basket);
@@ -10,6 +12,16 @@ const ItemViewScreen = () => {
   const addItemToBasket = useMenuStore((state) => state.addItemToBasket);
   const removeItemFromBasket = useMenuStore((state) => state.removeItemFromBasket);
   const currentSelectedItem = useMenuStore((state) => state.currentSelectedItem);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+
+    const interval = setInterval(() => {
+        setLoading(false);
+        clearInterval(interval);
+    }, 700);
+
+    return () => clearInterval(interval);
+}, []);
 
   const id = currentSelectedItem;
   const item = menuList.find((menuItem) => menuItem.id === id);
@@ -26,6 +38,7 @@ const ItemViewScreen = () => {
   }
 
   return (
+    <div> {loading ? <Shimmer /> : (
     <div className="flex flex-col bg-white min-h-screen">
       {/* Main Content */}
       <div className="max-w-3xl mx-auto w-full py-6 px-4 flex flex-col">
@@ -101,6 +114,8 @@ const ItemViewScreen = () => {
           <CustomizationOption cust={item} />
         </div>
       </div>
+    </div>
+    )}
     </div>
   );
 };
